@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server side for Waveguide",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielbourget/Waveguide2.git"
+  },
+  "author": "Gabriel Bourget",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielbourget/Waveguide2/issues"
+  },
+  "homepage": "https://github.com/gabrielbourget/Waveguide2#readme"
+}
