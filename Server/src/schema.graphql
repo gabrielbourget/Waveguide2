@@ -33,6 +33,10 @@ type Friends_With @relation(name: "FRIENDS_WITH") {
 	createdAt: DateTime
 }
 
+# - TOFIGUREOUT -> How to handle the fact that follows relationship might be 
+# 						 		 be between multiple types of types other than just user 
+#								   to user (e.g. user to artproject or user to artcollective)
+#									 Either way, no friendship or follows for a while, that's complicated. 
 type Follows @relation(name: "FOLLOWS") {
 	from: User
 	to: User
@@ -121,9 +125,15 @@ type Address {
 	postalCode: String
 	zipCode: String
 	city: City
+	county: County 
 	province: Province
 	state: State 
 	country: Country
+}
+
+type County {
+	id: ID!
+	name: String 
 }
 
 type City {
