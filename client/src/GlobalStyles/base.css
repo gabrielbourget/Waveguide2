@@ -1,0 +1,15 @@
+html {
+	box-sizing: border-box; /* Include padding and border as part of element width and height */
+	font-size: 62.5%; /* Font sizes in REM are now base ten => 1.2 rem = 12px */
+	min-height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+	min-height: 100%;
+}
+
+

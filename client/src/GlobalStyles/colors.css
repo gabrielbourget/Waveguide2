@@ -1,0 +1,37 @@
+:root {
+	--white: #FFF	;
+	--whiteSmoke: #F5F5F5	;
+	--gainsboro: #DCDCDC;
+	--lightGrey: #D3D3D3;
+	--silver: #C0C0C0	;
+	--grey: #A9A9A9	;
+	--darkGrey: #808080	;
+	--veryDarkGrey: #515151;
+	/*--veryveryDarkGrey: #404040	;*/ /* Old one */
+	--veryveryDarkGrey: #333333;
+	--black: #000000	;
+	--leafyGreen: #319606;
+	--strongRed: #b73434;
+	--lightestInteractive: #ab77c6;
+	--lighterInteractive: #9a66b2 ;
+	--covenantPurple: #ab77c6; /* #8a559e */
+	--darkerInteractive: #744c87;
+	--darkestInteractive: #5c3f6d;
+
+	--c_mainAccent: #ab77c6;
+	--c_success: #319606;
+	--c_error: #b73434;
+	--c_light: #FFF;
+	--c_lowContrastLightMode: #D3D3D3;
+	--c_lowContrastDarkMode: #515151;
+	--c_highContrastLightMode: #515151;
+	--c_highContrastDarkMode: #D3D3D3;
+	--c_dark: #333333;
+	--c_interactionLightest: var(--lightestInteractive);
+	--c_interactionLight: var(--lighterInteractive);
+	--c_interaction: var(--covenantPurple);
+	--c_interactionDarker: var(--darkerInteractive);
+	--c_interactionDarkest: var(--darkestInteractive);
+}
+
+
