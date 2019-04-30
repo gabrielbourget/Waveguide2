@@ -115,6 +115,14 @@ type Venue {
 	socialMediaLinks: [SocialMediaLink] @relation(name: "HAS_LINK_TO", direction: "OUT")
 }
 
+type Event {
+	venue: Venue
+	festival: Festival
+	title: String!
+	description: String
+	date: DateTime
+}
+
 type Address {
 	id: ID!
 	latitude: Float!

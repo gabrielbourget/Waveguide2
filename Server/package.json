@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/gabrielbourget/Waveguide2/issues"
   },
-  "homepage": "https://github.com/gabrielbourget/Waveguide2#readme"
+  "homepage": "https://github.com/gabrielbourget/Waveguide2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^7.0.0",
+    "graphql": "^14.2.1",
+    "graphql-cli": "^3.0.11",
+    "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.5.1"
+  }
 }
