@@ -1,6 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
+import { ThemeContext } from '../../../ThemeContext';
 
 import styles from './IconButton.module.scss';
 
@@ -75,4 +76,5 @@ class IconButton extends React.Component {
 	}		
 }
 
-export default CircleButton;
+IconButton.contextType = ThemeContext;
+export default IconButton;
