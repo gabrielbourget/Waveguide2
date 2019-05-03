@@ -1,0 +1,141 @@
+.button {
+  height: auto;
+  width: auto;
+  padding: 6px;
+
+  display: grid;
+  place-items: center;
+
+  &.rounded { border-radius: 10px; }
+
+  transition: all 0.25s ease-in-out;
+  
+  
+  &:link, &:visited, &:hover, &:active {
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+  }  
+
+  &.darkTheme {
+    background-color: transparent;
+    border: 3px solid var(--c_light);
+
+    &:hover { 
+      cursor: pointer; 
+      color: var(--c_mainAccent);
+      border: 3px solid var(--c_mainAccent);
+    }    
+  }
+
+  &.lightTheme {
+    background-color: transparent;
+    border: 3px solid var(--black);
+  
+    &:hover { 
+      cursor: pointer; 
+      color: var(--c_mainAccent);
+      border: 3px solid var(--c_mainAccent);
+    }    
+  }
+}
+
+.buttonText {
+
+  transition: all 0.25s ease-in-out;
+
+  &.darkTheme { 
+    color: var(--c_light); 
+
+    &:hover { color: var(--c_mainAccent); }
+  }
+  &.lightTheme { 
+    color: var(--black); 
+
+    &:hover { color: var(--c_mainAccent); }
+  }
+
+  font: {
+    family: var(--sansSerifStack);
+    weight: bold;
+    size: 1.4rem;
+  };  
+
+  &.float {
+    &.darkTheme { box-shadow: var(--boxShadowDarkTheme); }
+    &.lightTheme { box-shadow: var(--boxShadowLightTheme); }
+  }  
+}
+
+
+
+a {
+
+  // width: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  &:link {
+    text-decoration: none;
+
+    &:active { color: none; }
+  }
+
+  &:visited {
+    text-decoration: none;
+
+    &:active { color: none; }
+  }
+
+  .button {
+    height: auto;
+    width: auto;
+    padding: 6px;
+
+    display: grid;
+    place-items: center;
+
+    &.rounded { border-radius: 10px; }
+
+    transition: all 0.25s ease-in-out;
+    
+
+    &:hover { cursor: pointer; }
+    &:link, &:visited, &:hover, &:active {
+      cursor: pointer;
+      text-decoration: none;
+      outline: none;
+    }  
+
+    &.darkTheme {
+      // background-color: var(--veryveryDarkGrey);
+      border: 3px solid var(--c_light);
+    }
+
+    &.lightTheme {
+      // background-color: var(--c_light);
+      border: 3px solid var(--black);
+    }
+  }
+
+  .buttonText {
+
+    &.darkTheme { color: var(--c_light); }
+    &.lightTheme { color: var(--black); }
+
+    font: {
+      family: var(--sansSerifStack);
+      weight: bold;
+      size: 1.4rem;
+    };  
+  
+    &.float {
+      &.darkTheme { box-shadow: var(--boxShadowDarkTheme); }
+      &.lightTheme { box-shadow: var(--boxShadowLightTheme); }
+    }      
+  }
+}

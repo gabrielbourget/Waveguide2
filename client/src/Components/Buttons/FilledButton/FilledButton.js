@@ -33,7 +33,7 @@ class Filledbutton extends React.Component {
 
 }
 
-const preparecomponent = () => {
+const prepareComponent = () => {
 	const shapeClass = (this.props.shape === 'rounded') ? styles.rounded : null;
 	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
 
