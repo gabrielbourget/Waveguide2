@@ -13,12 +13,13 @@ dotenv.config();
 
 const app = express();
 const server = createServer();
+const port = process.env.GRAPHQL_LISTEN_PORT || 4000;
 
 // console.log('Got past createServer()');
 // console.log(server);
 
 // - Logging
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 // - Body Parser
 app.use(bodyParser.json());
@@ -32,20 +33,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // - TODO -> Include userIDs and user details on each request.
 
-const port = process.env.GRAPHQL_LISTEN_PORT || 4000;
+// - Grab userID if a user is signed into the application.
+// app.use((req, res, next) => {
+// 	const { token } = req.cookies;
+
+// 	if (token) {
+// 		const { userID } = jwt.verify(token, process.env.APP_SECRET);
+// 	}
+
+// 	next();
+// });
+
+// - If a user is logged in, populate their details into an object that 
+//   is pushed into the request object.
+app.use((req, res, next) => {
+	if (!req.userID) return next();
+	// const user = << somehow query neo4J database here >>
+	// req.user = user;
+	next();
+});
 
 server.applyMiddleware({ app, path: '/graphql' });
 
-app.listen({ port }, () => console.log(`Server ready at ${port}`));
+app.listen({ port }, () => console.log(`GraphQL server listening at http://localhost:${port}/graphql`));
 
-// server.start(
-// 	{
-// 		cors: {
-// 			credentials: true,
-// 			origin: process.env.FRONTEND_URL
-// 		}
-// 	},
-// 	(details) => {
-// 		console.log(`GraphQL Server is now running on port http://localhost:${details.port}`);
-// 	}
-// );
