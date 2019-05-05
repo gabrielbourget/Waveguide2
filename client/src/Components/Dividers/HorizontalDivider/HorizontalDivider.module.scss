@@ -1,0 +1,5 @@
+.horizontalDivider {
+	border: none;
+	&.darkTheme { background: var(--c_dark); }
+	&.lightTheme { background: var(--c_light); }
+}

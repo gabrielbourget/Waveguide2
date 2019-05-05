@@ -1,0 +1,193 @@
+/*******************************/
+/* Overall container for card. */
+/*******************************/
+.twoSizeCard {
+	/* Giving agency to overall grid container to size cards appropriately. */
+	height: 100%;
+	width: 100%;
+
+	transition: all 2s ease-in-out;
+
+	/* Grid display will allow for one column, 
+	   and then two rows, sized at a 1:4 ratio
+	   for the card header and body. Header row
+	   can be a fraction of remaining space, up to
+	   50px. */
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 50px 1fr;
+
+	&.lightTheme { 
+		background: var(--c_light); 
+		box-shadow: var(--boxShadowLightTheme);
+	}
+	&.darkTheme { 
+		background: var(--c_dark); 
+		box-shadow: var(--boxShadowDarkTheme);
+	}
+
+	&.takeTwoSpots { grid-row: span 2; }
+
+	&.rounded { border-radius: 5px; }
+}
+
+/**********/
+/* HEADER */
+/**********/
+.header {
+	width: 100%;
+	height: 100%;
+
+	&.rounded { border-radius: 5px 5px 0px 0px; }
+
+	/* Grid container to hold elements that go into header. */
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: 1fr;
+	justify-content: space-between;
+
+	&.lightTheme { 
+		background: var(--c_light); 
+		color: var(--c_dark);
+	}
+
+	&.darkTheme { 
+		background: var(--c_dark); 
+		color: var(--c_light);
+	}
+
+	/* TITLE */
+	& .cardTitle {
+
+		height: 100%;
+		width: auto;
+		padding: 2.5px 0px 2.5px 10px;
+
+		display: grid;
+		justify-items: start;
+		align-items: center;
+
+		& h3 {
+			font: {
+				family: var(--sansSerifStack);
+				size: 1.5rem; 
+			}
+		}
+	}
+
+	/* TOP CARD BUTTONS */
+	& .topCardButtons {
+		height: 100%;
+		width: 100%;
+		// padding: 10px 10px 2.5px 0px;
+		padding-right: 10px;
+
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 1fr);
+		grid-auto-flow: column;
+		// grid-template-rows: 1fr;
+		justify-items: end;
+		align-items: center;
+		//justify-content: right;
+		
+	}
+}
+
+/*************/
+/* CARD BODY */
+/*************/
+.body {
+	width: 100%;
+	height: 100%;
+
+	display: grid;
+	justify-items: center;
+	align-items: center;
+
+	overflow-y: auto;
+
+	grid-template-rows: 200px;
+
+	&.expanded{ grid-template-rows: 200px calc(250px + 1rem); }
+
+	&.lightTheme { 
+		background: var(--c_light); 
+		color: var(--c_dark);
+	}
+
+	&.darkTheme { 
+		background: var(--c_dark); 
+		color: var(--c_light);
+	}	
+
+	/* EXPANDED CARD BOTTOM */
+	& .cardBottom {
+		width: 100%;
+		height: 100%;
+	
+		&.lightTheme { 
+			background: var(--c_light); 
+			color: var(--c_dark);
+		}
+
+		&.darkTheme { 
+			background: var(--c_dark); 
+			color: var(--c_light);
+		}			
+
+		&.rounded { border-radius: 5px; }
+
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 35px 1fr 10fr;
+
+		/* TITLE */
+		& .title {
+			height: 100%;
+			width: 100%;
+			padding: 2.5px 0px 2.5px 10px;
+
+			display: grid;
+			justify-items: start;
+			align-items: center;
+
+			& h3 {
+				font: {
+					family: var(--sansSerifStack);
+					size: 1.5rem;
+				}
+				text-transform: uppercase;
+			}
+		}
+
+		& .hDividerCradle {
+			padding: 0 10px;
+			display: grid;
+			align-items: top;
+		}
+
+		/* LINK ICON GRID */
+		& .linkListContainer {
+			padding: 0px 10px;
+
+			overflow-y: auto;
+			display: grid;
+			justify-content: center;
+			justify-items: center;
+			grid-gap: 1rem;
+			grid-template-columns: repeat(auto-fit, 55px);
+			//grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+			grid-template-rows: repeat(auto-fit, 55px);
+
+			&.rounded { border-radius: 0px 0px 5px 5px; }
+		}
+	}
+}
+
+
+
+
+
+
+
+

@@ -19,7 +19,7 @@ const port = process.env.GRAPHQL_LISTEN_PORT || 4000;
 // console.log(server);
 
 // - Logging
-// app.use(logger('dev'));
+app.use(logger('dev'));
 
 // - Body Parser
 app.use(bodyParser.json());
