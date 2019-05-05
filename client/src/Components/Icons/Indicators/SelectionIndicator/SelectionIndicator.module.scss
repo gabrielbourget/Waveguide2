@@ -1,0 +1,27 @@
+.border {
+	height: 15px;
+	width: 15px;
+	padding: 0;
+
+	display: grid;
+	place-items: center;
+
+	&.square { border-radius: 0px; }
+	&.roundedSquare { border-radius: 2px; }
+	&.round { border-radious: 100%; }
+
+	&.lightTheme { border: 1.5px solid var(--c_dark); }
+	&.darkTheme { border: 1.5px solid var(--c_light); }
+}
+
+.inside {
+	height: 7.5px;
+	width: 7.5px;
+
+	&.square { border-radius: 0px; }
+	&.roundedSquare { border-radius: 0.5px; }
+	&.round { border-radius: 100%; }
+
+	&.lightTheme.selected { background: var(--c_dark); }
+	&.darkTheme.selected { background: var(--c_light); }
+}
