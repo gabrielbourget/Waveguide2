@@ -1,0 +1,6 @@
+.verticalDivider {
+	border: none;
+	&.darkTheme { background: var(c_light); }
+	&.darkTheme { background: var(c_dark); }
+}
+

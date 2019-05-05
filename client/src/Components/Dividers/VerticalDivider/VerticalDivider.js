@@ -3,18 +3,18 @@ import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../ThemeContext';
 
-import styles from './HorizontalDivider.module.scss';
+import styles from './VerticalDivider.module.scss';
 
-class HorizontalDivider extends React.Component { 
-	static propTypes = {
+class VerticalDivider extends React.Component {
+	static propTypes = { 
+		width: PropTypes.string,
 		height: PropTypes.string
-		color: PropTypes.string
 	};
 
 	static defaultProps = {
-		width: '100%';
-		height: '3px'
-	};
+		width: '3px';
+		height: '100%'
+	}
 
 	render() {
 		const renderTimeStyle = {
@@ -24,17 +24,17 @@ class HorizontalDivider extends React.Component {
 
 		const initObject = prepareComponent();
 
-		return ( <div className={ initObject.dividerClasses } style={ style }></div>);
+		return ( <div className="dividerClasses" style={ renderTimeStyle }></div> ); 
 	}
 }
 
 const prepareComponent = () => {
 	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
-	const dividerClasses = ClassNames(styles.horizontalDivider, themeClass);
+	const dividerClasses = ClassNames(styles.verticalDivider, themeClass);
 
 	return { dividerClasses };
-}
+};
 
-HorizontalDivider.contextType = ThemeContext;
+VerticalDivider.contextType = ThemeContext;
 
-export default HorizontalDivider;
+export default VerticalDivider;
