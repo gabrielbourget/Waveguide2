@@ -1,0 +1,15 @@
+.cradle {
+	display: grid;
+	grid-column: 2 / -2;
+	justify-items: center;
+	align-items: center;
+	height: 100%;
+}
+
+.darkTheme {
+	background: var(--c_dark);
+}
+
+.lightTheme {
+	background: var(--c_light);
+}

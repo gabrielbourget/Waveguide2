@@ -1,6 +1,6 @@
 import { SIDE_DRAWER_OPEN_QUERY,
-				 CURRENT_THEME_QUERY } from '../GraphQL/Queries';
-import { CHANGE_THEME_MUTATION } from '../GraphQL/Mutations';
+				 CURRENT_THEME_QUERY } from '../Queries';
+import { CHANGE_THEME_MUTATION } from '../Mutations';
 
 export const Mutation = {
 	toggleSideDrawer(_, variables, { cache }) {

@@ -1,0 +1,8 @@
+.cradle {
+	display: grid;
+	place-items: center;
+	place-content: center;
+}
+
+.lightTheme { background: var(--c_light); }
+.darkTheme { background: var(--c_dark); }
