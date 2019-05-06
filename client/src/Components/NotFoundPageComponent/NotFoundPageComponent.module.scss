@@ -1,0 +1,25 @@
+.message {
+	height: 100%;
+	width: 100%;
+
+	display: grid;
+	place-content: center;
+	grid-gap: 2rem;
+
+	&.darkTheme {
+		color: var(--white);
+		background: var(--c_dark);
+	}
+
+	&.lighTheme {
+		color: var(--black);
+		background: var(--white);
+	}
+}
+
+p {
+	font: {
+		family: var(--sansSerifStack);
+		size: 1.4rem;
+	}
+}
