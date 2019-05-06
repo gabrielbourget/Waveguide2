@@ -1,0 +1,22 @@
+.gallery {
+	width: 100%;
+	height: 100%;
+	padding-bottom: 30px;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fill, var(--cardWidth));
+	grid-template-rows: repeat(auto-fit, var(--cardHeight));
+	justify-content: center;
+	justify-items: center;
+	grid-gap: 1.5rem;
+	grid-auto-flow: dense;
+	overflow-y: auto;
+
+	&.darkTheme {
+		background: var(--c_dark);
+	}
+
+	&.lightTheme {
+		background: var(--white);
+	}
+}
