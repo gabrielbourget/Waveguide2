@@ -1,6 +1,4 @@
-import { SIDE_DRAWER_OPEN_QUERY,
-				 CURRENT_THEME_QUERY } from '../Queries';
-import { CHANGE_THEME_MUTATION } from '../Mutations';
+import { SIDE_DRAWER_OPEN_QUERY } from '../Queries';
 
 export const Mutation = {
 	toggleSideDrawer(_, variables, { cache }) {
@@ -38,3 +36,4 @@ export const Mutation = {
 		return data;
 	}	
 };
+

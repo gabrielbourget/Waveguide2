@@ -1,0 +1,12 @@
+.topBar {
+	height: 100%;
+	width: 100%;
+
+	padding: 2.5px 0px 2.5px 10px;
+
+	display: grid;
+	align-content: center;
+	justify-content: start;
+	grid-auto-flow: column;
+	grid-gap: 1.5rem	
+}

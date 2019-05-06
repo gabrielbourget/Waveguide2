@@ -27,7 +27,7 @@
     }		
 	}
 	&.lightTheme { 
-		background-color: var(--c_dark); 
+		background-color: var(--black); 
 
     &:hover { 
       cursor: pointer; 
@@ -40,7 +40,7 @@
 	transition: all 0.25s ease-in-out;
 	
 	&.darkTheme { 
-		color: var(--c_dark); 
+		color: var(--black); 
 		&:hover { color: var(--c_mainAccent); }
 	}
 	&.lightTheme { 

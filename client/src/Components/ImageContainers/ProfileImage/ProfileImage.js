@@ -8,7 +8,7 @@ class ProfileImage extends React.Component {
 	render() {
 		return (
 			<img 
-				src={ this.props.imagePath } 
+				src={ this.props.src } 
 				alt={ this.props.title }
 				className={ styles.image }
 			/>

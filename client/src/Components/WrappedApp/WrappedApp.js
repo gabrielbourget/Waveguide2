@@ -4,7 +4,6 @@ import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router } from 'react-router-dom';
 import dotenv from 'dotenv';
 
-import { ThemeContext } from '../../ThemeContext';
 import { Mutation } from '../../GraphQL/LocalResolvers/Mutations';
 
 import App from '../App/App';

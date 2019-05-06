@@ -17,7 +17,7 @@ class Filledbutton extends React.Component {
 	};
 
 	render() {
-		const initObject = this.prepareComponent();
+		const initObject = this.prepareComponent(this.context, this.props);
 
 		return (
 			<button
@@ -33,9 +33,9 @@ class Filledbutton extends React.Component {
 
 }
 
-const prepareComponent = () => {
-	const shapeClass = (this.props.shape === 'rounded') ? styles.rounded : null;
-	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
+const prepareComponent = (context, props) => {
+	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
+	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 
 	const buttonClasses = ClassNames(styles.button, shapeClass, themeClass);
 	const buttonTextClasses = ClassNames(styles.buttonText, themeClass);

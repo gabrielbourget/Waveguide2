@@ -1,8 +1,11 @@
+// - Component partially inspired by https://github.com/tplusrex/react-soundcloud-component
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import ClassNames from 'classnames';
 import qs from 'qs';
-import { ThemeContext } from '../../../ThemeContext';
+import jsonp from 'jsonp';
+
+import styles from './SoundcloudEmbed.module.scss';
 
 class SoundcloudEmbed extends React.Component {
 
@@ -10,7 +13,7 @@ class SoundcloudEmbed extends React.Component {
 		__html: null
 	};
 
-	propTypes = {
+	static propTypes = {
 		height: PropTypes.string.isRequired,
 		width: PropTypes.string.isRequired,
 		url: PropTypes.string.isRequired
@@ -20,14 +23,29 @@ class SoundcloudEmbed extends React.Component {
 	handleFetchFailure = () => this.setState({ __html: null });
 
 	fetchEmbed = async (queryParams) => {
-		try {
-			const payload = await fetch(`https://soundcloud.com/oembed?${queryParams}`);
-		} catch (err) {
-			console.log(`Error -> ${ err }`);
-			handleFetchFailure();
-		}
+		// let payload;
+		// //console.log(queryParams);
+		// try {
+		// 	payload = await fetch(`https://soundcloud.com/oembed?${queryParams}`);
+		// 	console.log(payload.html);
+		// } catch (err) {
+		// 	console.log(`Error -> ${ err }`);
+		// 	this.handleFetchFailure();
+		// }
 
-		handleFetchSuccess(payload);
+		// this.handleFetchSuccess(payload);
+
+    const payload = new Promise((resolve, reject) => {
+      jsonp(`https://soundcloud.com/oembed?${queryParams}`, null, (err, data) => {
+        if (err) {
+          reject(err.message);
+        } else {
+          resolve(data);
+        }
+      });
+    });
+
+    payload.then(this.handleFetchSuccess).catch(this.handleFetchFailure);
 	};
 
 	getQueryParams = ({ url, height, width }) => {
@@ -35,13 +53,13 @@ class SoundcloudEmbed extends React.Component {
 			url,
 			format: 'js',
 			maxHeight: height,
-			maxWidth: width 
+			maxWidth: width,
 		});
 	};
 
 	componentDidMount() {
-		const fetchParams = getQueryParams(this.props);
-		fetchEmbed(fetchParams);
+		const fetchParams = this.getQueryParams(this.props);
+		this.fetchEmbed(fetchParams);
 	};
 
 	shouldComponentUpdate(nextState, nextProps) {
@@ -54,8 +72,30 @@ class SoundcloudEmbed extends React.Component {
 	};
 
 	render() {
-		return <div dangerouslySetInnerHTML={ { __html: this.state.__html } }/>;
+		
+		const renderTimeStyle = {
+			width: this.props.width,
+			height: this.props.height
+		}
+
+		return (
+			<div
+				dangerouslySetInnerHTML={ { __html: this.state.__html } }
+			/>
+		);
 	}
 }
 
+const prepareComponent = () => {
+
+}
+
 export default SoundcloudEmbed;
+
+
+
+
+
+
+
+

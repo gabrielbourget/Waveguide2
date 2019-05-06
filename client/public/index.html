@@ -1,8 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Base styles that are global to the project -->
+  <style> 
+    html {
+      box-sizing: border-box; /* Include padding and border as part of element width and height */
+      font-size: 62.5% !important; /* Font sizes in REM are now base ten => 1.2 rem = 12px */
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body, #root {
+      height: 100%;
+      overflow-y: auto;
+    }
+    
+    :root {
+      --white: #FFF ;
+      --whiteSmoke: #F5F5F5 ;
+      --gainsboro: #DCDCDC;
+      --lightGrey: #D3D3D3;
+      --silver: #C0C0C0 ;
+      --grey: #A9A9A9 ;
+      --darkGrey: #808080 ;
+      --veryDarkGrey: #515151;
+      /*--veryveryDarkGrey: #404040 ;*/ /* Old one */
+      --veryveryDarkGrey: #333333;
+      --black: #000000  ;
+      --leafyGreen: #319606;
+      --strongRed: #b73434;
+      --lightestInteractive: #ab77c6;
+      --lighterInteractive: #9a66b2 ;
+      --covenantPurple: #ab77c6; /* #8a559e */
+      --darkerInteractive: #744c87;
+      --darkestInteractive: #5c3f6d;
+
+      --c_mainAccent: #ab77c6;
+      --c_success: #319606;
+      --c_error: #b73434;
+      --c_light: #FFF;
+      --c_lowContrastLightMode: #D3D3D3;
+      --c_lowContrastDarkMode: #515151;
+      --c_highContrastLightMode: #515151;
+      --c_highContrastDarkMode: #D3D3D3;
+      --c_dark: #333333;
+
+      --sansSerifStack: Helvetica, Roboto;
+
+      --cardHeight: 250px;
+      --cardWidth: 250px;
+
+      --boxShadowLightTheme: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      --boxShadowDarkTheme: 0 5px 28px rgba(255,255,255,0.15);
+
+      --backDropZIndex: 100;
+      --navbarZIndex: 150;
+      --floatingElementZIndex: 200;
+      --aboveFloatingElementZIndex: 250;
+    }
+
+  </style>
+
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../src/GlobalStyles/colors.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--

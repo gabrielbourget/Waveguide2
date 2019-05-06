@@ -15,7 +15,7 @@ class OutlineButton extends React.Component {
 	}
 
 	render() {
-		const initObject = prepareComponent();
+		const initObject = prepareComponent(this.props, this.context);
 
 		return (
 			<button
@@ -30,10 +30,10 @@ class OutlineButton extends React.Component {
 	}
 }
 
-const prepareComponent = () => {
-	const shapeClass = (this.props.shape === 'rounded') ? styles.rounded : null;
-	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
-	const floatClass = (this.props.float) ? styles.float : null;
+const prepareComponent = (props, context) => {
+	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
+	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
+	const floatClass = (props.float) ? styles.float : null;
 
 	const buttonClassNames = ClassNames(styles.button, shapeClass, themeClass);
 	const buttonTextClassNames = ClassNames(styles.buttonText, themeClass);

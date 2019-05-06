@@ -1,11 +1,14 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+//import { Route, Switch } from 'react-router-dom';
 import { ThemeContext } from '../../ThemeContext';
 import { Query } from 'react-apollo';
 
 import { CURRENT_THEME_QUERY } from '../../GraphQL/Queries';
-import logo from './logo.svg';
-import './App.css';
+import CenteringCradle from '../Cradles/CenteringCradle/CenteringCradle';
+// import SoundcloudEmbed from '../Embeds/SoundcloudEmbed/SoundcloudEmbed';
+import ConversationWindow from '../ChatClient/ConversationWindow/ConversationWindow';
+
+import styles from './App.module.css';
 
 class App extends React.Component {
 
@@ -21,7 +24,11 @@ class App extends React.Component {
         {
           ({ data }) => (
             <ThemeContext.Provider value={ data.theme }>
-              
+              <div className={ styles.app }>
+                <CenteringCradle>
+                  <ConversationWindow />
+                </CenteringCradle>
+              </div>
             </ThemeContext.Provider>
           )
         }
@@ -29,26 +36,5 @@ class App extends React.Component {
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;

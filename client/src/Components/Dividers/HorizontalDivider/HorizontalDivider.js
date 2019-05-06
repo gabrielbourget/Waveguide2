@@ -22,14 +22,14 @@ class HorizontalDivider extends React.Component {
 			height: this.props.height
 		};
 
-		const initObject = prepareComponent();
+		const initObject = prepareComponent(this.context);
 
 		return ( <div className={ initObject.dividerClasses } style={ style }></div>);
 	}
 }
 
-const prepareComponent = () => {
-	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
+const prepareComponent = (context) => {
+	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const dividerClasses = ClassNames(styles.horizontalDivider, themeClass);
 
 	return { dividerClasses };

@@ -7,7 +7,7 @@ import styles from './MiddleContentCradle.module.scss';
 class MiddleContentCradle extends React.Component {
 
 	render() {
-		const initObject = prepareComponent();
+		const initObject = prepareComponent(this.context);
 
 		return (
 			<div className={ initObject.cradleClasses }>
@@ -17,8 +17,8 @@ class MiddleContentCradle extends React.Component {
 	}
 }
 
-const prepareComponent = () => {
-	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
+const prepareComponent = (context) => {
+	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const cradleClasses = ClassNames(styles.cradle, themeClass);
 
 	return { cradleClasses };

@@ -25,7 +25,7 @@ class SelectionIndicator extends React.Component {
 	};
 
 	render() {
-		const initObject = prepareComponent();
+		const initObject = prepareComponent(this.context, this.state);
 
 		return (
 			<div className={ initObject.borderClassNames } onClick={ this.handleClick }>
@@ -35,10 +35,10 @@ class SelectionIndicator extends React.Component {
 	};
 }
 
-const prepareComponent = () => {
-	const selectedClass = this.state.selected ? styles.selected : null;
+const prepareComponent = (context, state) => {
+	const selectedClass = state.selected ? styles.selected : null;
 	const shapeClass = this.determineShapeClass();
-	const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
+	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 
 	const borderClassNames = ClassNames(styles.border, selectedClass, themeClass);
 	const insideClassNames = ClassNames(styles.inside, selectedClass, themeClass);

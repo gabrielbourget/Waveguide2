@@ -1,0 +1,25 @@
+@import "../../../GlobalStyles/generalVars.scss";
+
+.conversationWindow {
+
+	height: 500px;
+	width: 350px;
+	
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 50px 1fr;
+
+
+	&.darkTheme {
+		color: var(--c_light);
+		background: var(--black);
+		box-shadow: var(--boxShadowDarkTheme)
+	}
+
+	&.lightTheme {
+		color: var(--black);
+		background: var(--c_light);
+		box-shadow: var(--boxShadowLightTheme);
+	}
+}
