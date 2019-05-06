@@ -10,8 +10,8 @@ class OutlineButton extends React.Component {
 		this.props.onClick();
 	};
 
-	static PropTypes = {
-		text: PropTypes.string.isRequired;
+	static propTypes = {
+		text: PropTypes.string.isRequired
 	}
 
 	render() {

@@ -1,0 +1,25 @@
+.paragraph {
+	font: {
+		size: 1.5rem;
+		family: Helvetica;
+	}
+
+	line-height: 1.5;
+
+	/* Maybes 
+	letter-spacing: ;
+	word-spacing: ;
+	font-kerning: ;
+	text-indent: ;
+	white-space: ;  Defing how whitespace and associated lined breaks inside the element are handled.
+	direction: ; Good for languages like Arabic.
+	text-orientation: ;
+	word-wrap: ;
+	writing-mode: ; Define whether lines of text are laid out horizontally or vertically and 
+	 								the direction in which subsequent lines flow.
+	
+	 */
+
+	&.lightTheme { color: var(--black); }
+	&.darkTheme { color: var(--lightGrey); }
+}
