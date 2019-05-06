@@ -22,7 +22,7 @@
 		box-shadow: var(--boxShadowLightTheme);
 	}
 	&.darkTheme { 
-		background: var(--c_dark); 
+		background: var(--black); 
 		box-shadow: var(--boxShadowDarkTheme);
 	}
 
@@ -48,11 +48,11 @@
 
 	&.lightTheme { 
 		background: var(--c_light); 
-		color: var(--c_dark);
+		color: var(--black);
 	}
 
 	&.darkTheme { 
-		background: var(--c_dark); 
+		background: var(--black); 
 		color: var(--c_light);
 	}
 
@@ -112,11 +112,11 @@
 
 	&.lightTheme { 
 		background: var(--c_light); 
-		color: var(--c_dark);
+		color: var(--black);
 	}
 
 	&.darkTheme { 
-		background: var(--c_dark); 
+		background: var(--black); 
 		color: var(--c_light);
 	}	
 
@@ -127,11 +127,11 @@
 	
 		&.lightTheme { 
 			background: var(--c_light); 
-			color: var(--c_dark);
+			color: var(--black);
 		}
 
 		&.darkTheme { 
-			background: var(--c_dark); 
+			background: var(--black); 
 			color: var(--c_light);
 		}			
 
