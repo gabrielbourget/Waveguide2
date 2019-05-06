@@ -9,7 +9,7 @@ class TwoSizeCardGallery extends React.Component {
 		const initObject = prepareComponent(this.context);
 
 		return (
-			<div className={ initObject. galleryClasses }>
+			<div className={ initObject.galleryClasses }>
 				{ this.props.children }
 			</div>
 		);

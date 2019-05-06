@@ -1,0 +1,30 @@
+.artistGallery {
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+}
+
+// .noResults {
+// 	height: 100%;
+// 	width: 100%;
+// 	min-height: 100%;
+
+// 	display: grid;
+// 	place-items: center;
+// 	place-content: center;
+
+// 	&.darkTheme { color: var(--white); }
+// 	&.lightTheme { color: var(--black); }
+
+// 	& h4 {
+// 		font: {
+// 			size: 1.5rem;
+// 			style: var(--sanSerifStack);
+// 			weight: 500;
+// 		}
+// 	}
+// }

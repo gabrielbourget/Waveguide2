@@ -24,7 +24,7 @@ class App extends React.Component {
       <Query query={ CURRENT_THEME_QUERY }>
         {
           ({ data }) => {
-            data.theme = 'light'
+            //data.theme = 'light'
             const themeClass = (data.theme === 'dark') ? styles.darkTheme : styles.lightTheme;
             const appClasses = ClassNames(styles.app, themeClass);
 
