@@ -55,14 +55,14 @@ class SideDrawer extends React.Component {
 						return (
 							<div className={ initObject.sideMenuClasses } >
 								<div className={ initObject.topBarClasses }>
-									<CircleButton 
+									<IconButton 
 										size='20px'
 										darkTheme={ <XIconDarkTheme/> }
 										lightTheme={ <XIconLightTheme/> }
 										highlighted={ <XIconHighlighted/> }
 										onClick={ this.handleSideMenuButtonClick }
 									/>					
-									<h3 className={ themeClass }>Settings</h3>
+									<h3 className={ initObject.themeClass }>Settings</h3>
 								</div>
 								<div className={ styles.hDividerCradle }>
 									<HorizontalDivider height='3px'/>
@@ -92,7 +92,7 @@ class SideDrawer extends React.Component {
 										/>
 									</div>					
 								</div>
-								<h3 className={ themeClass }>Site Navigation</h3>
+								<h3 className={ initObject.themeClass }>Site Navigation</h3>
 								<div className={ styles.hDividerCradle }>
 									<HorizontalDivider height='3px'/>
 								</div>
@@ -113,7 +113,7 @@ class SideDrawer extends React.Component {
 									</Link>	
 								</div>
 								<div className={ styles.communityLinksTitleBar }>
-									<h3 className={ themeClass }>Community Links</h3>
+									<h3 className={ initObject.themeClass }>Community Links</h3>
 									<div className={ styles.expandCollapseButton }>
 										{
 											this.state.communityLinksExpanded ?

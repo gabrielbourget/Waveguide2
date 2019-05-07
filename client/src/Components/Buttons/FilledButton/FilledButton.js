@@ -5,7 +5,7 @@ import { ThemeContext } from '../../../ThemeContext';
 
 import styles from './FilledButton.module.scss';
 
-class Filledbutton extends React.Component {
+class FilledButton extends React.Component {
 
 	handleClick = () => {
 		this.props.onClick();

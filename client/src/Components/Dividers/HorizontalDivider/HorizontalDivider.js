@@ -7,24 +7,24 @@ import styles from './HorizontalDivider.module.scss';
 
 class HorizontalDivider extends React.Component { 
 	static propTypes = {
-		height: PropTypes.string
+		height: PropTypes.string,
 		color: PropTypes.string
 	};
 
 	static defaultProps = {
-		width: '100%';
+		width: '100%',
 		height: '3px'
 	};
 
 	render() {
-		const renderTimeStyle = {
+		const renderTimeStyles = {
 			width: this.props.width,
 			height: this.props.height
 		};
 
 		const initObject = prepareComponent(this.context);
 
-		return ( <div className={ initObject.dividerClasses } style={ style }></div>);
+		return ( <div className={ initObject.dividerClasses } style={ renderTimeStyles }></div>);
 	}
 }
 

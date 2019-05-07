@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
 import { ThemeContext } from '../../ThemeContext';
 
@@ -68,6 +69,8 @@ class SearchBar extends React.Component {
 	};	
 
 	render() {
+		const initObject = prepareComponent(this.context, this.props, this.state);
+
 		return (
 			<div className={ initObject.searchBarClasses }>
 				{
@@ -107,6 +110,20 @@ class SearchBar extends React.Component {
 		);
 	}
 }
+
+const prepareComponent = (context, props, state) => {
+	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
+	const activeClass = (state.active) ? styles.active : null;
+
+	const searchBarClasses = ClassNames(styles.searchBar, themeClass, activeClass);
+	const searchInputClasses = ClassNames(styles.searchInput, themeClass);
+
+	return {
+		searchBarClasses,
+		searchInputClasses
+	};
+};
+
 
 SearchBar.contextType = ThemeContext;
 const SearchBarWithRouter = withRouter(SearchBar);

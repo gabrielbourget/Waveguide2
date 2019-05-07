@@ -1,0 +1,67 @@
+.tableItem {
+
+	height: 60px;
+	width: 100%;
+
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 0.75fr 2fr 5fr; 
+	grid-gap: 2rem;
+	
+	&.darkTheme {
+		// border-top: 1.5px solid var(--veryDarkGrey); 
+		border-bottom: 1.5px solid var(--veryDarkGrey);
+	}
+
+	&.lightTheme {
+		// border-top: 1.5px solid var(--lightGrey);
+		border-bottom: 1.5px solid var(--lightGrey);
+	}
+}
+
+.profileImage {
+
+	height: 100%;
+	width: 100%;
+
+	display: grid;
+	justify-content: center;
+	align-content: center;
+
+	& .imageCradle {
+		height: 50px;
+		width: 50px;
+		background: transparent;
+	}
+}
+
+.title {
+
+	height: 100%;
+	width: 100%;
+	padding: 0px 5px;
+
+	display: grid;
+	align-items: center;
+	justify-items: start;
+	font: {
+		family: var(--sansSerifStack);
+		size: 1.5rem;
+	}
+
+	& p {
+		margin: none;
+	}
+}
+
+.socialLinks {
+	height: 100%;
+	width: 100%;
+	
+	overflow-x: auto;
+
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(auto-fit, 50px);
+
+}

@@ -1,0 +1,41 @@
+.artistTable {
+	display: grid;
+	grid-template-columns: 1fr; // Full width items, just stack them on top of eachother with their own custom heights.
+
+	padding: 15px 25px;
+	border-collapse: collapse;
+	border-radius: 4px;
+
+	height: auto;
+	width: 100%;
+
+	&.darkTheme {
+		background: var(--black);
+		color: var(--c_light);
+		box-shadow: var(--boxShadowDarkTheme);
+	}
+
+	&.lightTheme {
+		background: var(--c_light);
+		color: var(--black);
+		box-shadow: var(--boxShadowLightTheme);
+	}
+
+}
+
+.tableHeader {
+	display: grid;
+}
+
+.tableBody {
+	display: grid;
+	vertical-align: none;
+
+	height: auto;
+	width: 100%;
+	
+}
+
+.tableFooter {
+	display: grid;
+}
