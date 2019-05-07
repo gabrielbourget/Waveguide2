@@ -26,7 +26,7 @@
 
 	&.active {
 		&.darkTheme { 
-			border: 2px solid var(--white); 
+			border: 2px solid var(--c_light); 
 			border-radius: 5px;
 		}
 		&.lightTheme { 
@@ -41,7 +41,7 @@
 	border: none;
 
 	&.darkTheme { 
-		color: var(--white); 
+		color: var(--c_light); 
 	}
 	&.lightTheme { 
 		color: var(--black); 

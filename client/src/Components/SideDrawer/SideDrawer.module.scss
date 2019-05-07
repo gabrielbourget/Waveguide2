@@ -1,0 +1,139 @@
+.sideMenu {
+	position: fixed;
+	//top: 85px; // - Hardcoded for now according to navbar it slides in under.
+	top: 15px;
+	left: 15px; 
+	z-index: var(--floatingElementZIndex);
+
+	//height: calc(100% - 100px); // - Make up for top shift and take away 15 more pixels
+	width: 300px;								//   so that menu doesn't sit flush with bottom of page.
+	height: 95%;
+	padding: 15px 15px;
+	border-radius: 3px;
+	overflow-y: auto;
+
+	transform: translateX(-120%);
+	transition: all 0.35s ease-in-out;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-content: start;
+	align-content: start;
+	grid-gap: 1rem;
+
+	&.darkTheme {
+		background: var(--black);
+		color: var(--c_light);
+		box-shadow: var(--boxShadowDarkTheme);
+	}
+
+	&.lightTheme {
+		background: var(--c_light);
+		color: var(--black);
+		box-shadow: var(--boxShadowLightTheme);
+	}
+
+	& h3 {
+		font: {
+			family: var(--sansSerifStack);
+			size: 2rem;
+		}
+
+		// &.darkTheme { text-decoration: underline var(--c_light); }
+		// &.lightTheme { text-decoration: underline var(--black); }
+	}
+
+	& h4 {
+		font: {
+			family: var(--sansSerifStack);
+			size: 1.4rem;
+		}
+	}	
+
+	&.open {
+		transform: translateX(0);
+	}
+}
+
+.topBar {
+	width: 100%;
+	height: auto;
+	display: grid;
+	align-items: center;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	grid-gap: 1rem;
+}
+
+.hDividerCradle {
+	//padding: 0px 10px;
+	display: grid;
+	align-items: top;
+}
+
+
+.themePick {
+	
+	margin: 15px 0px;
+
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 3fr 1fr 1fr;
+	grid-gap: 1rem;
+
+	& .label {
+		display: grid;
+		align-items: center;
+		justify-items: start;
+	}
+
+	& .optionButton {
+		display: grid;
+		place-items: center;
+	}
+}
+
+.buttonGrid {
+	margin: 15px;
+	display: grid;
+	jusity-content: start;
+	grid-gap: 1rem;
+	// grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+	& a {
+		display: grid;
+		justify-content: start;
+
+		&:visited, &:hover, &:focus {
+			text-decoration: none;
+		}
+	}	
+}
+
+.communityLinksTitleBar {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 4fr 1fr;
+
+	& .expandCollapseButton {
+		height: 100%;
+		width: 100%;
+		// padding: 10px 10px 2.5px 0px;
+		// padding-right: 10px;
+
+		display: grid;
+		//grid-template-columns: repeat(auto-fit, 1fr);
+		//grid-auto-flow: column;
+		// grid-template-rows: 1fr;
+		justify-items: end;
+		align-items: center;
+		//justify-content: right;
+		
+	}	
+}
+
+
+
+
+
+
