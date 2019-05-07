@@ -10,7 +10,7 @@ import CenteringCradle from '../Cradles/CenteringCradle/CenteringCradle';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import SideDrawer from '../SideDrawer/SideDrawer';
-//import HomePage from '../../Ecosystems/HomePage/HomePage';
+import HomePage from '../../Ecosystems/HomePage/HomePage';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 
 import styles from './App.module.css';

@@ -17,7 +17,7 @@ class FilledButton extends React.Component {
 	};
 
 	render() {
-		const initObject = this.prepareComponent(this.context, this.props);
+		const initObject = prepareComponent(this.context, this.props);
 
 		return (
 			<button
