@@ -22,3 +22,23 @@ export const CURRENT_THEME_QUERY = gql`
 		theme @client
 	}
 `;
+
+/**
+ * SEARCH_ARTPROJECTS_QUERY
+ * Description: Search database for art projects based 
+ * on project name.
+ */
+export const SEARCH_ARTPROJECTS_QUERY = gql`
+	query SEARCH_ARTPROJECTS_QUERY($searchTerm: String!) {
+		ArtProject(where: { title_contains: $searchTerm }) {
+			id
+			imageURL
+			name 
+			socialMediaLinks {
+				id 
+				network 
+				link 
+			}
+		}
+	}
+`;

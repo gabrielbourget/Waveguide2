@@ -9,7 +9,7 @@ const Mutation = require('./resolvers/Mutation');
 const Query = require('./resolvers/Query');
 const driver = require('./databaseConnection');
 
-dotenv.config({ path: '../.env'});
+dotenv.config();
 
 // - Convert graphQL schema down to a single template string.
 const typeDefs = fs
