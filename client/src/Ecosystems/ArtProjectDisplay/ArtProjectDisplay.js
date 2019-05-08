@@ -8,10 +8,12 @@ import ArtistTable from '../../Components/Tables/ArtistTable/ArtistTable';
 import FromTheTopCradle from '../../Components/Cradles/FromTheTopCradle/FromTheTopCradle';
 
 import styles from './ArtProjectDisplay.module.scss';
+import { sortArtists } from './helpers';
+import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 
 class ArtProjectDisplay extends React.Component {
 	state = {
-		displayMode: 'table',
+		displayMode: 'gallery',
 		displayedArtProjects: []
 	};
 
@@ -20,7 +22,7 @@ class ArtProjectDisplay extends React.Component {
 	};
 
 	resolveDisplayMode = (initObject) => {
-		if (this.props.artists.length === 0) {
+		if (this.state.displayedArtProjects.length === 0) {
 			return (
         <div className={ initObject.noResultsClasses }>
           <h4>Search for an artist up top in the navigation bar.</h4>
@@ -34,41 +36,47 @@ class ArtProjectDisplay extends React.Component {
 		}
 		if (this.state.displayMode === 'gallery') {
 			return (
-				<ArtistGallery 
-					// - This itself will eventually be props mapped in from the connect redux function. 
-					artists={ this.props.artists }
-				/>
+				<ArtistGallery artists={ this.state.displayedArtProjects }/>
 			);
 		}
 		else if (this.state.displayMode === 'table') {
 			return (
-				<ArtistTable
-					// - This itself will eventually be props mapped in from the connect redux function. 
-					artists={ this.props.artists }
-				/>
+				<ArtistTable artists={ this.state.displayedArtProjects }/>
 			);
 		}
 	};
 
 	render() {
-		const initObject = prepareComponent(this.context, this.props, this.state);
-
 		return (
-			<FromTheTopCradle>
-				<div className={ initObject.artistProfileDisplayClasses }>
-					<TopBar 
-						// - OLD -> onSortClick={ this.props.onSortClick }
-						onSortAlphabeticalClick={ this.props.onSortAlphabeticalClick }
-						onSortRevAlphabeticalClick={ this.props.onSortRevAlphabeticalClick }	
-						onSwitchViewModeClick={ this.switchViewMode }
-					/>
-					{/* Method below renders out gallery or list, based on mapped state props */}
-					{ this.resolveDisplayMode(initObject) }
-				</div>				
-			</FromTheTopCradle>
+			<Query query={ ALL_ARTPROJECTS_QUERY }>
+				{
+					({ data, loading, error }) => {
+						console.log(data);
+						if (loading) return <p>Loading...</p>;
+						if (error) return <p>Error!...</p>;
+
+						// - Move artprojects from graphql result into local state.
+						this.setState({ displayedArtProjects: data.ArtProject })
+						
+						const initObject = prepareComponent(this.context, this.props, this.state);
+
+						return (
+							<FromTheTopCradle>
+								<div className={ initObject.artistProfileDisplayClasses }>
+									<TopBar 
+										onSortClick={ sortArtists }
+										onSortClick={ sortArtists }	
+										onSwitchViewModeClick={ this.switchViewMode }
+									/>
+									{ this.resolveDisplayMode(initObject) }
+								</div>				
+							</FromTheTopCradle>
+						);
+					}
+				}
+			</Query>
 		);
 	}
-
 }
 
 const prepareComponent = (context, props, state) => {

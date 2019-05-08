@@ -55,16 +55,14 @@ class TopBar extends React.Component {
 								darkTheme={ <AscAlphaIconDarkTheme/> }
 								lightTheme={ <AscAlphaIconLightTheme/> }
 								highlighted={ <AscAlphaIconHighlighted/> }
-								// - OLD -> onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
-								onClick={ () => this.props.onSortAlphabeticalClick(sortCriteriaEnum.ALPHABETICAL) }
+								onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
 							/>
 							<IconButton
 								size='25px'
 								darkTheme={ <DescAlphaIconDarkTheme/> }
 								lightTheme={ <DescAlphaIconLightTheme/> }
 								highlighted={ <DescAlphaIconHighlighted/> }
-								// - OLD -> onClick={ () => this.props.onSortClick(sortCriteriaEnum.REVERSE_ALPHABETICAL) }
-								onClick={ () => this.props.onSortRevAlphabeticalClick(sortCriteriaEnum.ALPHABETICAL) }
+								onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
 							/>
 						</React.Fragment>	:
 						null
@@ -83,7 +81,7 @@ class TopBar extends React.Component {
 						darkTheme={ <ListViewIconDarkTheme/> }
 						lightTheme={ <ListViewIconLightTheme/> }
 						highlighted={ <ListViewIconHighlighted/> }
-						onClick={ () => this.props.onSwitchViewModeClick('list') }
+						onClick={ () => this.props.onSwitchViewModeClick('table') }
 					/>
 					{/* Gallery Display Button */}
 					<IconButton 
