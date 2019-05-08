@@ -24,6 +24,24 @@ export const CURRENT_THEME_QUERY = gql`
 `;
 
 /**
+ * ALL_ARTPROJECTS_QUERY
+ * Description: Return all artprojects stored in the graph topology.
+ */
+export const ALL_ARTPROJECTS_QUERY = gql`
+	query ALL_ARTPROJECTS_QUERY {
+		ArtProject {
+			id 
+			imageURL 
+			name 
+			socialMediaLinks {
+				network 
+				link 
+			}
+		}
+	}
+`
+
+/**
  * SEARCH_ARTPROJECTS_QUERY
  * Description: Search database for art projects based 
  * on project name.

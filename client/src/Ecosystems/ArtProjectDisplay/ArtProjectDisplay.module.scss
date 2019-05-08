@@ -1,0 +1,45 @@
+.artistProfileDisplay {
+	//height: calc(100vh - 75px - 350px);
+	width: 100%;
+	min-height: 100%;
+	padding: 0px 30px; //30px 30px;
+
+	display: grid;
+	grid-template-rows: 50px 1fr;
+	grid-gap: 2rem;
+	align-content: start;
+	// grid-template-columns: 1fr;
+
+	background: transparent;
+
+	&.darkTheme { color: var(--c_light); }
+	&.lightTheme { color: var(--black); }	
+
+	& h3 {
+		font: {
+			family: var(--sansSerifStack);
+			size: 2rem;
+		}
+	}	
+}
+
+.noResults {
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+
+	display: grid;
+	place-items: center;
+	place-content: center;
+
+	&.darkTheme { color: var(--c_light); }
+	&.lightTheme { color: var(--black); }
+
+	& h4 {
+		font: {
+			size: 1.5rem;
+			style: var(--sanSerifStack);
+			weight: 500;
+		}
+	}
+}

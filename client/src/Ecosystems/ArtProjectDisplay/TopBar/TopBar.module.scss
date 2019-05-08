@@ -1,0 +1,27 @@
+.topBar {
+	height: 50px;
+	width: 100%;
+	
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 4fr 1fr;
+	align-items: center;
+}
+
+.left {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	align-items: center;
+	justify-content: start;
+}
+
+.right {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-auto-flow: column;
+	grid-gap: 2rem;
+	align-items: center;
+	justify-content: end;
+}
