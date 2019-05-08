@@ -11,6 +11,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import SideDrawer from '../SideDrawer/SideDrawer';
 import HomePage from '../../Ecosystems/HomePage/HomePage';
+import ArtProjectDisplay from '../../Ecosystems/ArtProjectDisplay/ArtProjectDisplay';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 
 import styles from './App.module.css';
@@ -38,18 +39,12 @@ class App extends React.Component {
                   <Nav/>
                   <Switch>
                     <Route path='/' exact component={ HomePage }/>
-                   {/* <Route 
+                   <Route 
                       path='/artists'
                       render={ () => (
-                        // <ArtistProfileDisplay 
-                        //   displayMode='gallery'
-                        //   onSortClick={ this.sortArtists }
-                        //   onSortAlphabeticalClick={ this.props.sortArtistsAlphabetical }
-                        //   onSortRevAlphabeticalClick={ this.props.sortArtistsReverseAlphabetical }
-                        //   artists={ this.props.displayedArtists }
-                        // />                
+                        <ArtProjectDisplay displayMode='gallery'/>                
                       )}
-                    />*/}
+                    />
 
                     <Route render={ ({ location }) => <NotFoundPageComponent/> }/>
                   </Switch>

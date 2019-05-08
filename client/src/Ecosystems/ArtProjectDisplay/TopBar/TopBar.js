@@ -1,4 +1,5 @@
 import React from 'react';
+import ClassNames from 'classnames';
 import { ThemeContext } from '../../../ThemeContext';
 
 // - Sort Icon
@@ -23,7 +24,6 @@ import { ReactComponent as GalleryViewIconLightTheme } from './SVG/GalleryViewIc
 import { ReactComponent as GalleryViewIconHighlighted } from './SVG/GalleryViewIcon/GalleryViewIconHighlighted.svg';
 
 import styles from './TopBar.module.scss';
-import { prepareComponent } from './helpers';
 import { sortCriteriaEnum } from '../../../Helpers/generalDataStructures';
 import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
@@ -34,7 +34,7 @@ class TopBar extends React.Component {
 
 	handleSortMenuClick = () => {
 		const prevState = this.state;
-		this.setState((prevState) => { sortMenuOpen: !prevState.sortMenuOpen });
+		this.setState((prevState) => ({ sortMenuOpen: !prevState.sortMenuOpen }));
 	};
 
 	render() {

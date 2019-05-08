@@ -1,4 +1,5 @@
 import React from 'react';
+import ClassNames from 'classnames';
 import { ThemeContext } from '../../../ThemeContext';
 
 import styles from './ArtistTable.module.scss';
@@ -25,12 +26,12 @@ class ArtistTable extends React.Component {
 				}
 				<tbody className={ initObject.tableBodyClasses }>
 					{
-						this.props.artists.map((artist,index) => (
+						this.props.artProjects.map((artProject) => (
 							<TableItem 
-								key={ index } 
-								name={ artist.name }
-								src={ artist.imageURL }
-								socialURLs={ artist.socialURLs }
+								key={ artProject.id } 
+								name={ artProject.name }
+								src={ artProject.imageURL }
+								socialURLs={ artProject.socialMediaLinks }
 							/> 
 						))
 					}
@@ -62,7 +63,5 @@ const prepareComponent = (context, props, state) => {
 	};	
 }
 
-
-
-
-
+ArtistTable.contextType = ThemeContext;
+export default ArtistTable;

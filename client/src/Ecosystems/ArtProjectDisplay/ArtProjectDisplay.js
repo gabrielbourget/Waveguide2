@@ -1,4 +1,5 @@
 import React from 'react';
+import ClassNames from 'classnames';
 import { Query } from 'react-apollo';
 import { ThemeContext } from '../../ThemeContext';
 
@@ -13,7 +14,7 @@ import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 
 class ArtProjectDisplay extends React.Component {
 	state = {
-		displayMode: 'gallery',
+		displayMode: this.props.displayMode,
 		displayedArtProjects: []
 	};
 
@@ -29,19 +30,19 @@ class ArtProjectDisplay extends React.Component {
           <br/>
           <h4>
             Enter 'everyone' as the search term to return all <br/>
-            artists contained in the community directory.
+            art projects contained in the community directory.
           </h4>
         </div>
 			);
 		}
 		if (this.state.displayMode === 'gallery') {
 			return (
-				<ArtistGallery artists={ this.state.displayedArtProjects }/>
+				<ArtistGallery artProjects={ this.state.displayedArtProjects }/>
 			);
 		}
 		else if (this.state.displayMode === 'table') {
 			return (
-				<ArtistTable artists={ this.state.displayedArtProjects }/>
+				<ArtistTable artProjects={ this.state.displayedArtProjects }/>
 			);
 		}
 	};
@@ -52,6 +53,7 @@ class ArtProjectDisplay extends React.Component {
 				{
 					({ data, loading, error }) => {
 						console.log(data);
+						console.log(error);
 						if (loading) return <p>Loading...</p>;
 						if (error) return <p>Error!...</p>;
 

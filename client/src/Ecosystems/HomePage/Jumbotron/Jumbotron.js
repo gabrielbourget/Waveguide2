@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeContext } from '../../../ThemeContext';
 
 import SingleIcon from '../../../Components/Icons/SingleIcon/SingleIcon';
 import styles from './Jumbotron.module.scss';

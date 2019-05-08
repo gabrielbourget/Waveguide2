@@ -11,13 +11,15 @@ class ArtistGallery extends React.Component {
 			<div className="artistGallery">
 				<TwoSizeCardGallery>
 					{
-						this.props.artists.map((artist, i) => {
-							key={ i }
-							shape='round'
-							name={ artist.name }
-							src={ artist.imageURL }
-							socialURL={ artist.socialURLs }
-						});
+						this.props.artProjects.map((artProject) => (
+							<TwoSizeCard
+								key={ artProject.id }
+								shape='round'
+								name={ artProject.name }
+								src={ artProject.imageURL }
+								socialURL={ artProject.socialMediaLinks }
+							/>
+						))
 					}
 				</TwoSizeCardGallery>
 			</div>
