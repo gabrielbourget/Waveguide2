@@ -7,12 +7,12 @@
 
 	display: grid;
 	grid-auto-flow: column;
-	grid-template-columns: 2fr 7fr 1.4fr;
+	grid-template-columns: 0.5fr 10fr 0.5fr;
 	align-items: center;
 	grid-gap: 0px;
 
 	@media (max-width: 600px) {
-		grid-template-columns: 1fr 8fr 0.5fr;
+		grid-template-columns: 1fr 8fr 1fr;
 	}
 
 	&.darkTheme {
