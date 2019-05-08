@@ -5,6 +5,7 @@ const path = require('path');
 const logger= require('morgan');
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 const createServer = require('./createServer');
 const db = require('./databaseConnection');
@@ -30,6 +31,9 @@ app.use(cookieParser());
 
 // - Static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+// - Allow all CORS requests for now, lock this down eventually.
+app.use(cors());
 
 // - TODO -> Include userIDs and user details on each request.
 

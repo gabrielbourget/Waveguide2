@@ -3,8 +3,6 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-console.log(process.env.DATABASE_ENDPOINT);
-
 const driver = neo4j.driver(process.env.DATABASE_ENDPOINT,
 								neo4j.auth.basic(
 									process.env.DATABASE_USERNAME,
