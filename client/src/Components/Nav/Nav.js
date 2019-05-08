@@ -7,10 +7,9 @@ import { Mutation } from 'react-apollo';
 import { ThemeContext } from '../../ThemeContext';
 
 import styles from './Nav.module.scss';
-import { CHANGE_THEME_MUTATION } from '../../GraphQL/Mutations';
+import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
 
 import IconButton from '../Buttons/IconButton/IconButton';
-import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
 import SearchBarWithRouter from '../SearchBar/SearchBar';
 
 // - Hamburger Menu Icon
@@ -63,13 +62,19 @@ class Nav extends React.Component {
 		return (
 			<div className={ initObject.navbarClasses }>
 				<div className={ initObject.sideMenuButtonClasses }>
-					<IconButton 
-						size='20px'
-						darkTheme={ <HamburgerMenuDarkTheme/> }
-						lightTheme={ <HamburgerMenuLightTheme/> }
-						highlighted={ <HamburgerMenuHighlighted/> }
-						onClick={ this.handleSideMenuButtonClick }
-					/>
+				<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+					{
+						(toggleSideDrawer) => (
+							<IconButton 
+								size='20px'
+								darkTheme={ <HamburgerMenuDarkTheme/> }
+								lightTheme={ <HamburgerMenuLightTheme/> }
+								highlighted={ <HamburgerMenuHighlighted/> }
+								onClick={ toggleSideDrawer }
+							/>
+						)
+					}
+				</Mutation>
 				</div>
 				<SearchBarWithRouter
 					defaultText='"Everyone" -> all artists.'

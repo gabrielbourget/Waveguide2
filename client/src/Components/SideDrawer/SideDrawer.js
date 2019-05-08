@@ -2,11 +2,13 @@ import React from 'react';
 import ClassNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
+import { Mutation } from 'react-apollo';
 import { ThemeContext } from '../../ThemeContext';
 
 import styles from './SideDrawer.module.scss';
 import { communityLinks } from './Data/communityLinks';
 import { SIDE_DRAWER_OPEN_QUERY } from '../../GraphQL/Queries';
+import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
 
 import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
@@ -55,13 +57,19 @@ class SideDrawer extends React.Component {
 						return (
 							<div className={ initObject.sideMenuClasses } >
 								<div className={ initObject.topBarClasses }>
-									<IconButton 
-										size='20px'
-										darkTheme={ <XIconDarkTheme/> }
-										lightTheme={ <XIconLightTheme/> }
-										highlighted={ <XIconHighlighted/> }
-										onClick={ this.handleSideMenuButtonClick }
-									/>					
+									<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+										{
+											(toggleSideDrawer) => (
+												<IconButton 
+													size='20px'
+													darkTheme={ <XIconDarkTheme/> }
+													lightTheme={ <XIconLightTheme/> }
+													highlighted={ <XIconHighlighted/> }
+													onClick={ toggleSideDrawer }
+												/>
+											)
+										}
+									</Mutation>
 									<h3 className={ initObject.themeClass }>Settings</h3>
 								</div>
 								<div className={ styles.hDividerCradle }>
