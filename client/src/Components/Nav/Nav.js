@@ -31,7 +31,7 @@ class Nav extends React.Component {
 	};
 
 	static propTypes = {
-		onSideMenuButtonClick: PropTypes.func.isRequired,
+		//onSideMenuButtonClick: PropTypes.func.isRequired,
 		match: PropTypes.object.isRequired,
 		location: PropTypes.object.isRequired,
 		history: PropTypes.object.isRequired		
