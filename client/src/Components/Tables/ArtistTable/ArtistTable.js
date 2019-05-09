@@ -26,15 +26,27 @@ class ArtistTable extends React.Component {
 				}
 				<tbody className={ initObject.tableBodyClasses }>
 					{
-						this.props.artProjects.map((artProject) => (
-							<TableItem 
-								key={ artProject.id } 
-								name={ artProject.name }
-								src={ artProject.imageURL }
-								socialURLs={ artProject.socialMediaLinks }
-							/> 
-						))
+						// this.props.artProjects.map((artProject) => (
+						// 	<TableItem 
+						// 		key={ artProject.id } 
+						// 		name={ artProject.name }
+						// 		src={ artProject.imageURL }
+						// 		socialMediaLinks={ artProject.socialMediaLinks }
+						// 	/> 
+						// ))
 					}
+					<TableItem 
+						key={ this.props.artProjects[0].id }
+						name={ this.props.artProjects[0].name }
+						src={ this.props.artProjects[0].imageURL }
+						socialMediaLinks={ this.props.artProjects[0].socialMediaLinks }
+					/>
+					<TableItem 
+						key={ this.props.artProjects[1].id }
+						name={ this.props.artProjects[1].name }
+						src={ this.props.artProjects[1].imageURL }
+						socialMediaLinks={ this.props.artProjects[1].socialMediaLinks }
+					/>					
 				</tbody>
 				{
 					this.state.hasFooter &&

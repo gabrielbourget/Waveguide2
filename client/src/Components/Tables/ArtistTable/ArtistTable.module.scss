@@ -29,7 +29,9 @@
 
 .tableBody {
 	display: grid;
-	vertical-align: none;
+	// vertical-align: none;
+	align-content: start;
+	align-items: center;
 
 	height: auto;
 	width: 100%;

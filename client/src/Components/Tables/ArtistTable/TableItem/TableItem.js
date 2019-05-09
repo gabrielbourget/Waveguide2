@@ -14,6 +14,8 @@ class TableItem extends React.Component {
 		const initObject = prepareComponent(this.context, this.props, styles);
 		const artistSocialLinks = prepareLinkGallery(this.props, SocialMediaIconComponents);
 
+		console.log(artistSocialLinks);
+
 		return (
 			<tr className={ initObject.tableItemClasses }>
 				<td className={ initObject.profileImageClasses }>
@@ -29,23 +31,26 @@ class TableItem extends React.Component {
 				</td>
 				<td className={ initObject.socialLinksClasses }>
 					{
-						artistSocialLinks.map((LinkInfo,index) => (
-							<a 
-								key={ index }
-								href={ LinkInfo.link } 
-								target='_blank'
-								rel='noopener noreferrer' 
-							>											
-								<IconButton
+						artistSocialLinks.map((LinkInfo,index) => {
+							console.log(LinkInfo);
+							return (
+								<a 
 									key={ index }
-									size='30px'
-									darkTheme={ LinkInfo.icons['darkTheme']() }
-									lightTheme={ LinkInfo.icons['lightTheme']() }
-									highlighted={ LinkInfo.icons['highlighted']() }
-									onClick={ () => {} }
-								/>
-							</a>													
-						))						
+									href={ LinkInfo.link } 
+									target='_blank'
+									rel='noopener noreferrer' 
+								>											
+									<IconButton
+										key={ index }
+										size='30px'
+										darkTheme={ React.createElement(LinkInfo.icons['darkTheme']) }
+										lightTheme={ React.createElement(LinkInfo.icons['lightTheme']) }
+										highlighted={ React.createElement(LinkInfo.icons['highlighted']) }
+										onClick={ () => {} }
+									/>
+								</a>													
+							);
+						})						
 					}
 				</td>
 			</tr>

@@ -41,7 +41,6 @@ class TwoSizeCard extends React.Component {
 	render() {
 		const initObject = prepareComponent(this.context, this.state, this.props, styles);
 		const artistSocialLinks = prepareLinkGallery(this.props, SocialMediaIconComponents);
-		console.log(artistSocialLinks);
 
 		return (
 			<div className={ initObject.twoSizeCardClasses }>
