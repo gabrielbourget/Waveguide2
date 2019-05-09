@@ -11,8 +11,7 @@ import { GRAPHQL_ENDPOINT } from '../../clientConfig';
 
 const apolloClient = new ApolloClient({
 	// - This will have a different endpoint to pop over to once Waveguide is in prod. 
-	//uri: process.env.NODE_ENV === 'development' ? process.env.GRAPHQL_ENDPOINT : process.env.GRAPHQL_ENDPOINT,
-	uri: 'http://localhost:4444/graphql',
+	uri: process.env.NODE_ENV === 'development' ? GRAPHQL_ENDPOINT : GRAPHQL_ENDPOINT,
 	// request: operation => {
 	// 	operation.setContext({
 	// 		fetchOptions: {

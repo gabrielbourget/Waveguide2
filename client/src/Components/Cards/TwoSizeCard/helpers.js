@@ -38,23 +38,18 @@ export const parseExpansionDirection = (expansionDir, styles) => {
 
 /* Prepare data that social media icon gallery needs to render links. */
 export const prepareLinkGallery = (props, SocialMediaIconComponents) => {
-		// - Grab keys of socialURL object in order to figure out which 
-		//   social media links are provided with an artist's profile.
-		const URLKeys = Object.keys(props.socialURLs);		
-		// - Map over each of those keys and match it to an object that holds 
-		// 	 the icons for that link type. End up with an object holding objects
-		// 	 that hold icons. 
-		const cardSocialLinks = URLKeys.map((key) => {
-		
-		// const iconTitle = `${key}Icons`;
 
-		// return {
-		// 	link: props.socialURLs[key],
-		// 	[iconTitle]: SocialMediaIconComponents[key]	
-		// };
+		// - Grab network names to match agains available icon sets.
+		const iconKeys = props.socialMediaLinks.map((linkItem) => linkItem.network);
+		//console.log(iconKeys);
+		
+		// - Put together a payload that lets the card render out the icons 
+		//   with their approriate links.
+		const cardSocialLinks = iconKeys.map((key, index) => {
+		
 			return {
 				icons: SocialMediaIconComponents[key],
-				link: props.socialURLs[key]
+				link: props.socialMediaLinks[index].link
 			};
 		});
 

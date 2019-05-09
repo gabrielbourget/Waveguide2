@@ -41,6 +41,7 @@ class TwoSizeCard extends React.Component {
 	render() {
 		const initObject = prepareComponent(this.context, this.state, this.props, styles);
 		const artistSocialLinks = prepareLinkGallery(this.props, SocialMediaIconComponents);
+		console.log(artistSocialLinks);
 
 		return (
 			<div className={ initObject.twoSizeCardClasses }>
@@ -101,9 +102,9 @@ class TwoSizeCard extends React.Component {
 										<IconButton
 											key={ index }
 											size='50px'
-											darkTheme={ LinkInfo.icons['darkTheme']() }
-											highlighted={ LinkInfo.icons['highlighted']() }
-											lightTheme={ LinkInfo.icons['lightTheme']() }
+											darkTheme={ React.createElement(LinkInfo.icons['darkTheme']) }
+											highlighted={ React.createElement(LinkInfo.icons['highlighted']) }
+											lightTheme={ React.createElement(LinkInfo.icons['lightTheme']) }
 											onClick={ () => {} }
 										/>
 									</a>													
