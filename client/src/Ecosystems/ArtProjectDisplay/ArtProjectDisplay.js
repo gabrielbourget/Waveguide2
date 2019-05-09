@@ -52,13 +52,8 @@ class ArtProjectDisplay extends React.Component {
 			<Query query={ ALL_ARTPROJECTS_QUERY }>
 				{
 					({ data, loading, error }) => {
-						console.log(data);
-						console.log(error);
 						if (loading) return <p>Loading...</p>;
 						if (error) return <p>Error!...</p>;
-
-						// - Move artprojects from graphql result into local state.
-						//this.setState({ displayedArtProjects: data.ArtProject })
 						
 						const initObject = prepareComponent(this.context, this.props);
 
@@ -67,7 +62,6 @@ class ArtProjectDisplay extends React.Component {
 								<div className={ initObject.artistProfileDisplayClasses }>
 									<TopBar 
 										onSortClick={ sortArtists }
-										onSortClick={ sortArtists }	
 										onSwitchViewModeClick={ this.switchViewMode }
 									/>
 									{ this.resolveDisplayMode(initObject, data) }

@@ -3,21 +3,11 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router } from 'react-router-dom';
 import dotenv from 'dotenv';
-
 import { Mutation } from '../../GraphQL/LocalResolvers/Mutations';
 
 import App from '../App/App';
 
-//dotenv.config({ path: '../../../.env'});
-
-const result = dotenv.config({ path: '../../../.env'});
- 
-// if (result.error) {
-//   throw result.error;
-// }
-
-const { GRAPHQL_ENDPOINT } = process.env;
-console.log(`GraphQL Endpoint: -> ${process.env.GRAPHQL_ENDPOINT}`);
+import { GRAPHQL_ENDPOINT } from '../../clientConfig';
 
 const apolloClient = new ApolloClient({
 	// - This will have a different endpoint to pop over to once Waveguide is in prod. 
