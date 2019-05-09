@@ -2,7 +2,6 @@ import React from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router } from 'react-router-dom';
-import dotenv from 'dotenv';
 import { Mutation } from '../../GraphQL/LocalResolvers/Mutations';
 
 import App from '../App/App';

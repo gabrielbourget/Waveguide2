@@ -16,6 +16,10 @@ class ArtistTable extends React.Component {
 
 		const initObject = prepareComponent(this.context, this.props, this.state);
 
+		// const artists = this.props.artProjects.filter((artProject) => artProject.name !== 'Everous');
+
+		console.log(this.props.artProjects);
+
 		return (
 			<table className={ initObject.artistTableClasses }>
 				{
@@ -26,16 +30,16 @@ class ArtistTable extends React.Component {
 				}
 				<tbody className={ initObject.tableBodyClasses }>
 					{
-						// this.props.artProjects.map((artProject) => (
-						// 	<TableItem 
-						// 		key={ artProject.id } 
-						// 		name={ artProject.name }
-						// 		src={ artProject.imageURL }
-						// 		socialMediaLinks={ artProject.socialMediaLinks }
-						// 	/> 
-						// ))
+						this.props.artProjects.map((artProject) => (
+							<TableItem 
+								key={ artProject.id } 
+								name={ artProject.name }
+								src={ artProject.imageURL }
+								socialMediaLinks={ artProject.socialMediaLinks }
+							/> 
+						))
 					}
-					<TableItem 
+{/*					<TableItem 
 						key={ this.props.artProjects[0].id }
 						name={ this.props.artProjects[0].name }
 						src={ this.props.artProjects[0].imageURL }
@@ -46,7 +50,19 @@ class ArtistTable extends React.Component {
 						name={ this.props.artProjects[1].name }
 						src={ this.props.artProjects[1].imageURL }
 						socialMediaLinks={ this.props.artProjects[1].socialMediaLinks }
-					/>					
+					/>		
+					<TableItem 
+						key={ this.props.artProjects[2].id }
+						name={ this.props.artProjects[2].name }
+						src={ this.props.artProjects[2].imageURL }
+						socialMediaLinks={ this.props.artProjects[2].socialMediaLinks }
+					/>	
+					<TableItem 
+						key={ this.props.artProjects[3].id }
+						name={ this.props.artProjects[3].name }
+						src={ this.props.artProjects[3].imageURL }
+						socialMediaLinks={ this.props.artProjects[3].socialMediaLinks }
+					/>	*/}	
 				</tbody>
 				{
 					this.state.hasFooter &&

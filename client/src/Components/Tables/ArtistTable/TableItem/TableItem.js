@@ -14,8 +14,6 @@ class TableItem extends React.Component {
 		const initObject = prepareComponent(this.context, this.props, styles);
 		const artistSocialLinks = prepareLinkGallery(this.props, SocialMediaIconComponents);
 
-		console.log(artistSocialLinks);
-
 		return (
 			<tr className={ initObject.tableItemClasses }>
 				<td className={ initObject.profileImageClasses }>
@@ -32,7 +30,6 @@ class TableItem extends React.Component {
 				<td className={ initObject.socialLinksClasses }>
 					{
 						artistSocialLinks.map((LinkInfo,index) => {
-							console.log(LinkInfo);
 							return (
 								<a 
 									key={ index }

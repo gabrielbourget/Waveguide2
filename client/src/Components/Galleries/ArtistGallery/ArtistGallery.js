@@ -8,7 +8,7 @@ import styles from './ArtistGallery.module.scss';
 class ArtistGallery extends React.Component {
 	render() {
 		return (
-			<div className="artistGallery">
+			<div className={ styles.artistGallery }>
 				<TwoSizeCardGallery>
 					{
 						this.props.artProjects.map((artProject) => (

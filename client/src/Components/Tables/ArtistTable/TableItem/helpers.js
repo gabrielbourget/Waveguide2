@@ -1,13 +1,8 @@
 /* Prepare data that social media icon gallery needs to render links. */
 export const prepareLinkGallery = (props, SocialMediaIconComponents) => {
 
-		// debugger;
-
-		// console.log(props);
-
 		// - Grab network names to match agains available icon sets.
 		const iconKeys = props.socialMediaLinks.map((linkItem) => linkItem.network);
-		//console.log(iconKeys);
 		
 		// - Put together a payload that lets the card render out the icons 
 		//   with their approriate links.

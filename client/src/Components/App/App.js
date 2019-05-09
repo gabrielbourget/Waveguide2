@@ -5,8 +5,6 @@ import { ThemeContext } from '../../ThemeContext';
 import { Query } from 'react-apollo';
 
 import { CURRENT_THEME_QUERY } from '../../GraphQL/Queries';
-import CenteringCradle from '../Cradles/CenteringCradle/CenteringCradle';
-// import SoundcloudEmbed from '../Embeds/SoundcloudEmbed/SoundcloudEmbed';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import SideDrawer from '../SideDrawer/SideDrawer';
