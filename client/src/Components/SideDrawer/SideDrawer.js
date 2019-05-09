@@ -9,6 +9,7 @@ import styles from './SideDrawer.module.scss';
 import { communityLinks } from './Data/communityLinks';
 import { SIDE_DRAWER_OPEN_QUERY } from '../../GraphQL/Queries';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
+import { CHANGE_THEME_MUTATION } from '../../GraphQL/Mutations';
 
 import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
@@ -80,6 +81,12 @@ class SideDrawer extends React.Component {
 										<h4>Theme</h4>
 									</div>
 									<div className={ styles.optionButton }>
+{/*									<Mutation 
+										mutation={ CHANGE_THEME_MUTATION }
+										variables={{  }}
+									>
+										
+									</Mutation>*/}
 										<OutlineButton
 											text='DARK'
 											shape='rounded'

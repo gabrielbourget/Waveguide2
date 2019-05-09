@@ -17,7 +17,7 @@ class ArtistGallery extends React.Component {
 								shape='round'
 								name={ artProject.name }
 								src={ artProject.imageURL }
-								socialURL={ artProject.socialMediaLinks }
+								socialURLs={ artProject.socialMediaLinks }
 							/>
 						))
 					}

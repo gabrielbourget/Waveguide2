@@ -19,6 +19,8 @@ const port = process.env.GRAPHQL_LISTEN_PORT || 4000;
 // console.log('Got past createServer()');
 // console.log(server);
 
+app.options('*', cors())
+
 // - Logging
 app.use(logger('dev'));
 
@@ -33,7 +35,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // - Allow all CORS requests for now, lock this down eventually.
-app.use(cors());
+//app.use(cors({credentials: true, origin: process.env.FRONTEND_URL}));
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 // - TODO -> Include userIDs and user details on each request.
 

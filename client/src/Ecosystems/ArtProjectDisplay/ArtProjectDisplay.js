@@ -22,8 +22,8 @@ class ArtProjectDisplay extends React.Component {
 		this.setState({ displayMode });
 	};
 
-	resolveDisplayMode = (initObject) => {
-		if (this.state.displayedArtProjects.length === 0) {
+	resolveDisplayMode = (initObject, data) => {
+		if (data.ArtProject.length === 0) {
 			return (
         <div className={ initObject.noResultsClasses }>
           <h4>Search for an artist up top in the navigation bar.</h4>
@@ -37,12 +37,12 @@ class ArtProjectDisplay extends React.Component {
 		}
 		if (this.state.displayMode === 'gallery') {
 			return (
-				<ArtistGallery artProjects={ this.state.displayedArtProjects }/>
+				<ArtistGallery artProjects={ data.ArtProject }/>
 			);
 		}
 		else if (this.state.displayMode === 'table') {
 			return (
-				<ArtistTable artProjects={ this.state.displayedArtProjects }/>
+				<ArtistTable artProjects={ data.ArtProject }/>
 			);
 		}
 	};
@@ -58,9 +58,9 @@ class ArtProjectDisplay extends React.Component {
 						if (error) return <p>Error!...</p>;
 
 						// - Move artprojects from graphql result into local state.
-						this.setState({ displayedArtProjects: data.ArtProject })
+						//this.setState({ displayedArtProjects: data.ArtProject })
 						
-						const initObject = prepareComponent(this.context, this.props, this.state);
+						const initObject = prepareComponent(this.context, this.props);
 
 						return (
 							<FromTheTopCradle>
@@ -70,7 +70,7 @@ class ArtProjectDisplay extends React.Component {
 										onSortClick={ sortArtists }	
 										onSwitchViewModeClick={ this.switchViewMode }
 									/>
-									{ this.resolveDisplayMode(initObject) }
+									{ this.resolveDisplayMode(initObject, data) }
 								</div>				
 							</FromTheTopCradle>
 						);
@@ -81,7 +81,7 @@ class ArtProjectDisplay extends React.Component {
 	}
 }
 
-const prepareComponent = (context, props, state) => {
+const prepareComponent = (context, props) => {
 
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 
