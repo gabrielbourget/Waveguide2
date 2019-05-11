@@ -36,6 +36,6 @@ export const Mutation = {
 		}
 		cache.writeData(data);
 		return data;
-	}	
+	}
 };
 

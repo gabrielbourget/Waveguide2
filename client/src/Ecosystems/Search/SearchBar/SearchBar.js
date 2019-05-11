@@ -2,20 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../../ThemeContext';
 
-import IconButton from '../Buttons/IconButton/IconButton';
-import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
+import IconButton from '../../../Components/Buttons/IconButton/IconButton';
+import OutlineButton from '../../../Components/Buttons/OutlineButton/OutlineButton';
 
 import styles from './SearchBar.module.scss';
 
-import MagnifyingGlassHighlighted from './SVG/MagnifyingGlass/MagnifyingGlassHighlighted';
-import MagnifyingGlassDarkTheme from './SVG/MagnifyingGlass/MagnifyingGlassDarkTheme';
-import MagnifyingGlassLightTheme from './SVG/MagnifyingGlass/MagnifyingGlassLightTheme';
-
 class SearchBar extends React.Component {
 	state = {
-		active: false,
+		//active: false,
 		searchQueryText: ''
 	};
 
@@ -69,49 +65,37 @@ class SearchBar extends React.Component {
 	};	
 
 	render() {
-		const initObject = prepareComponent(this.context, this.props, this.state);
+		const initObject = prepareComponent(this.context, this.state);
 
 		return (
 			<div className={ initObject.searchBarClasses }>
-				{
-					(this.state.active) &&
-					<React.Fragment>
-						<form 
-							className={ styles.searchField }
-							onSubmit={ this.handleSearchFormSubmit }
-						>
-							<input 
-								type='text'
-								ref={ this.searchInputRef }
-								id='searchInput' // - Temporary until ref issue fixed.
-								value={ this.state.searchQueryText }
-								onChange={ (e) => this.setState({ searchQueryText: e.target.value }) }
-								className={ initObject.searchInputClasses }
-								placeholder={ this.props.defaultText }
-							/>
-						</form>
-						<OutlineButton
-							text='Search'
-							onClick={ this.handleSearchSubmit }
-							shape='rounded'
+				<React.Fragment>
+					<form 
+						className={ styles.searchField }
+						onSubmit={ this.handleSearchFormSubmit }
+					>
+						<input 
+							type='text'
+							ref={ this.searchInputRef }
+							id='searchInput' // - Temporary until ref issue fixed.
+							value={ this.state.searchQueryText }
+							onChange={ (e) => this.setState({ searchQueryText: e.target.value }) }
+							className={ initObject.searchInputClasses }
+							placeholder={ this.props.defaultText }
 						/>
-					</React.Fragment> 
-				}
-				<div className={ styles.searchButton }>
-					<IconButton
-						size='20px'
-						highlighted={ <MagnifyingGlassHighlighted/> }
-						darkTheme={ <MagnifyingGlassDarkTheme/> }
-						lightTheme={ <MagnifyingGlassLightTheme/> }
-						onClick= { this.handleSearchButtonClick }
+					</form>
+					<OutlineButton
+						text='Search'
+						onClick={ this.handleSearchSubmit }
+						shape='rounded'
 					/>
-				</div>					
+				</React.Fragment> 			
 			</div>
 		);
 	}
 }
 
-const prepareComponent = (context, props, state) => {
+const prepareComponent = (context, state) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const activeClass = (state.active) ? styles.active : null;
 

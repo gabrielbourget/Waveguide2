@@ -9,6 +9,7 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import SideDrawer from '../SideDrawer/SideDrawer';
 import HomePage from '../../Ecosystems/HomePage/HomePage';
+import Search from '../../Ecosystems/Search/Search';
 import ArtProjectDisplay from '../../Ecosystems/ArtProjectDisplay/ArtProjectDisplay';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 
@@ -37,13 +38,13 @@ class App extends React.Component {
                   <Nav/>
                   <Switch>
                     <Route path='/' exact component={ HomePage }/>
-                   <Route 
+                    <Route 
                       path='/artists'
                       render={ () => (
                         <ArtProjectDisplay displayMode='gallery'/>                
                       )}
                     />
-
+                    <Route path='/search' component ={ Search }/>
                     <Route render={ ({ location }) => <NotFoundPageComponent/> }/>
                   </Switch>
                   <Footer/>

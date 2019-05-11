@@ -7,13 +7,10 @@
 
 	display: grid;
 	grid-auto-flow: column;
-	grid-template-columns: 0.5fr 10fr 0.5fr;
+	grid-template-columns: 50% 50%;
 	align-items: center;
+	justify-content: space-between;
 	grid-gap: 0px;
-
-	@media (max-width: 600px) {
-		grid-template-columns: 1fr 8fr 1fr;
-	}
 
 	&.darkTheme {
 		color: var(--c_light);
@@ -35,7 +32,6 @@
 
 	display: grid;
 	align-items: center;
-	justify-items: center;
 	justify-content: start;
 }
 
@@ -44,8 +40,7 @@
 	width: 100%;
 
 	display: grid;
-	align-items: center;
-	justify-items: center;
+	place-items: center;
 	grid-auto-flow: column;
 	justify-content: end;
 	grid-gap: 1.5rem;

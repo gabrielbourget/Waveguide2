@@ -40,7 +40,7 @@ class Footer extends React.Component {
 
 				<div className={ styles.links }>
 					<a
-						href='https://www.github.com/gabrielbourget/WaveMusicCommunity'
+						href='https://github.com/gabrielbourget/Waveguide2'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -53,13 +53,6 @@ class Footer extends React.Component {
 					<Link to='/'>
 						<OutlineButton
 							text='Home'
-							shape='rounded'
-							onClick={ () => {} }
-						/>							
-					</Link>
-					<Link to='/documentation'>
-						<OutlineButton
-							text='Documentation'
 							shape='rounded'
 							onClick={ () => {} }
 						/>							

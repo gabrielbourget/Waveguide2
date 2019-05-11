@@ -10,19 +10,21 @@ import styles from './Nav.module.scss';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
 
 import IconButton from '../Buttons/IconButton/IconButton';
-import SearchBarWithRouter from '../SearchBar/SearchBar';
 
 // - Hamburger Menu Icon
 import { ReactComponent as HamburgerMenuDarkTheme } from './SVG/HamburgerMenu/HamburgerIconDarkTheme.svg';
 import { ReactComponent as HamburgerMenuLightTheme } from './SVG/HamburgerMenu/HamburgerIconLightTheme.svg';
 import { ReactComponent as HamburgerMenuHighlighted } from './SVG/HamburgerMenu/HamburgerIconHighlighted.svg';
 
+// - Magnifying Glass Icon
+import MagnifyingGlassHighlighted from './SVG/MagnifyingGlass/MagnifyingGlassHighlighted';
+import MagnifyingGlassDarkTheme from './SVG/MagnifyingGlass/MagnifyingGlassDarkTheme';
+import MagnifyingGlassLightTheme from './SVG/MagnifyingGlass/MagnifyingGlassLightTheme';
+
 // - Home Icon
 import HomeIconDarkTheme from './SVG/HomeIcon/HomeIconDarkTheme';
 import HomeIconLightTheme from './SVG/HomeIcon/HomeIconLightTheme';
 import HomeIconHighlighted from './SVG/HomeIcon/HomeIconHighlighted';
-
-// - TODO -> Implement graphql mutation for closing the side drawer. 
 
 class Nav extends React.Component {
 	state = {
@@ -36,17 +38,7 @@ class Nav extends React.Component {
 		history: PropTypes.object.isRequired		
 	};
 
-	handleSideMenuButtonClick = () => {
-		// - CALL GRAPHQL LOCAL MUTATION HERE
-		//this.props.onSideMenuButtonClick();
-	};
-
 	handleResize = () => this.setState( {windowWidth: window.innerWidth });
-
-	conditionalButtonRendering = () => {
-		if (this.state.windowWidth >= 600) return null;
-		else return null;
-	};	
 
 	componentDidMount = () => {
 		this.setState( { windowWidth: window.innerWidth } );
@@ -76,12 +68,18 @@ class Nav extends React.Component {
 					}
 				</Mutation>
 				</div>
-				<SearchBarWithRouter
-					defaultText='"Everyone" -> all artists.'
-				/>
+
 				<div className={ initObject.rightNavClasses }>
-					
-					{ this.conditionalButtonRendering() }
+
+					<Link to='/search'>
+						<IconButton
+							size='20px'
+							highlighted={ <MagnifyingGlassHighlighted/> }
+							darkTheme={ <MagnifyingGlassDarkTheme/> }
+							lightTheme={ <MagnifyingGlassLightTheme/> }
+							onClick= { this.handleSearchButtonClick }
+						/>
+					</Link>
 
 					<Link to ='/'>
 						<IconButton

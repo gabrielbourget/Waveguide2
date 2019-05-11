@@ -39,7 +39,7 @@ export const ALL_ARTPROJECTS_QUERY = gql`
 			}
 		}
 	}
-`
+`;
 
 /**
  * SEARCH_ARTPROJECTS_QUERY
@@ -60,3 +60,27 @@ export const SEARCH_ARTPROJECTS_QUERY = gql`
 		}
 	}
 `;
+
+/**
+ * 								---- TODO ----
+ * RECENT_SEARCHES_QUERY
+ * Description: Returns a list of recent search queries made 
+ * by the person using the application.
+ */
+// export const RECENT_SEARCHES_QUERY = gql`
+// 	query RECENT_SEARCHES_QUERY {
+		
+// 	}
+// `;
+
+
+
+
+
+
+
+
+
+
+
+
