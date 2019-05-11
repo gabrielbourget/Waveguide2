@@ -21,7 +21,7 @@ const apolloClient = new ApolloClient({
 	// },
 	// - LOCAL STATE
 	clientState: {
-		resolvers: { Mutation }, 
+		resolvers: { Mutation },
 		defaults: {
 			sideDrawerOpen: false,
 			theme: 'dark'

@@ -3,13 +3,14 @@ import ClassNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
 import { Mutation } from 'react-apollo';
+//import { adopt } from 'react-adopt';
 import { ThemeContext } from '../../ThemeContext';
 
 import styles from './SideDrawer.module.scss';
 import { communityLinks } from './Data/communityLinks';
 import { SIDE_DRAWER_OPEN_QUERY } from '../../GraphQL/Queries';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
-import { CHANGE_THEME_MUTATION } from '../../GraphQL/Mutations';
+import { SWITCH_THEME_MUTATION } from '../../GraphQL/Mutations';
 
 import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
@@ -29,6 +30,10 @@ import CircleUpIconHighlighted from './SVG/CircleUpIcon/CircleUpIcon_Highlighted
 import { ReactComponent as XIconDarkTheme } from './SVG/XIcon/XIconDarkTheme.svg';
 import { ReactComponent as XIconLightTheme } from './SVG/XIcon/XIconLightTheme.svg';
 import { ReactComponent as XIconHighlighted } from './SVG/XIcon/XIconHighlighted.svg';
+
+// const Composed = adopt({
+// 	toggleSideDrawer
+// });
 
 class SideDrawer extends React.Component {
 	state = {
@@ -81,31 +86,55 @@ class SideDrawer extends React.Component {
 										<h4>Theme</h4>
 									</div>
 									<div className={ styles.optionButton }>
-{/*									<Mutation 
-										mutation={ CHANGE_THEME_MUTATION }
-										variables={{  }}
-									>
-										
-									</Mutation>*/}
-										<OutlineButton
-											text='DARK'
-											shape='rounded'
-											onClick={ () => {
-												this.props.onThemeSwitch('dark');
-												this.handleSideMenuButtonClick();
-											}}
-										/>
+										<Mutation 
+											mutation={ SWITCH_THEME_MUTATION }
+											variables={{ theme: 'dark' }}
+										>
+	                    {
+	                    	(switchTheme) => (
+													<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+														{
+															(toggleSideDrawer) => (
+																<OutlineButton
+																	text='DARK'
+																	shape='rounded'
+																	onClick={ () => {
+																		switchTheme();
+																		toggleSideDrawer();
+																	}}
+																/>
+															)
+														}
+													</Mutation>
+	                    	)
+	                    }
+										</Mutation>
 									</div>
 									<div className={ styles.optionButton }>
-										<OutlineButton 
-											text='LIGHT'
-											shape='rounded'
-											onClick={ () => { 
-												this.props.onThemeSwitch('light');
-												this.handleSideMenuButtonClick();
-											}}
-										/>
-									</div>					
+										<Mutation 
+											mutation={ SWITCH_THEME_MUTATION }
+											variables={{ theme: 'light' }}
+										>
+	                    {
+	                    	(switchTheme) => (
+													<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+														{
+															(toggleSideDrawer) => (
+																<OutlineButton 
+																	text='LIGHT'
+																	shape='rounded'
+																	onClick={ () => { 
+																		switchTheme();
+																		toggleSideDrawer();
+																	}}
+																/>
+															)
+														}
+													</Mutation>
+	                    	)
+	                    }
+										</Mutation>
+									</div>														
 								</div>
 								<h3 className={ initObject.themeClass }>Site Navigation</h3>
 								<div className={ styles.hDividerCradle }>

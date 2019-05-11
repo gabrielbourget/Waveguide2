@@ -17,7 +17,7 @@ export const searchThroughArtists = (queryToMatch, artists) => {
 	return artists.filter((artist) => {
 		const regex = new RegExp(queryToMatch, 'gi');
 		return artist.name.match(regex);
-	})
+	});
 };
 
 // - Return given array of artists sorted either alphabetically or reverse alphabetically.
@@ -38,4 +38,4 @@ export const sortArtists = (direction, artistsCopy) => {
 	}
 
 	return sortedArtists;
-}
+};

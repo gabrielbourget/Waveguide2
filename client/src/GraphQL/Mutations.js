@@ -1,14 +1,14 @@
 import gql from 'graphql-tag';
 
 /**
- * CHANGE_THEME_MUTATION
+ * SWITCH_THEME_MUTATION
  * Description: Takes in a theme string and 
  * changes the current theme string in the 
  * local data cache. 
  */
-export const CHANGE_THEME_MUTATION = gql`
-	mutation ChangeTheme($theme: String!) {
-		changeTheme(theme: $theme) @client
+export const SWITCH_THEME_MUTATION = gql`
+	mutation SWITCH_THEME_MUTATION($theme: String!) {
+		switchTheme(theme: $theme) @client
 	}
 `;
 

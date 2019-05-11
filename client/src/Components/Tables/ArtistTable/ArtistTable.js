@@ -17,9 +17,7 @@ class ArtistTable extends React.Component {
 		const initObject = prepareComponent(this.context, this.props, this.state);
 
 		// const artists = this.props.artProjects.filter((artProject) => artProject.name !== 'Everous');
-
-		console.log(this.props.artProjects);
-
+ 
 		return (
 			<table className={ initObject.artistTableClasses }>
 				{

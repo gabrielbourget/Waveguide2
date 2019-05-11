@@ -15,9 +15,8 @@ export const Mutation = {
 		return data;
 	},
 	switchTheme(_, variables, { cache }) {
-		const { newTheme } = variables.theme;
 		let data;
-		switch (newTheme) {
+		switch (variables.theme) {
 			case 'dark': {
 				data = {
 					data: { theme: 'dark' }
@@ -30,7 +29,10 @@ export const Mutation = {
 				};
 				break;
 			}
-			default: break;
+			default: {
+				console.log('in default case');
+				break;
+			}
 		}
 		cache.writeData(data);
 		return data;
