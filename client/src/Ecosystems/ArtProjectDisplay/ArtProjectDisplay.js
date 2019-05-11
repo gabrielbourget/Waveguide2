@@ -7,7 +7,6 @@ import TopBar from './TopBar/TopBar';
 import ArtistGallery from '../../Components/Galleries/ArtistGallery/ArtistGallery';
 import ArtistTable from '../../Components/Tables/ArtistTable/ArtistTable';
 import FromTheTopCradle from '../../Components/Cradles/FromTheTopCradle/FromTheTopCradle';
-import HorizontalDivider from '../../Components/Dividers/HorizontalDivider/HorizontalDivider';
 
 import styles from './ArtProjectDisplay.module.scss';
 import { sortArtists } from './helpers';
@@ -65,7 +64,6 @@ class ArtProjectDisplay extends React.Component {
 										onSortClick={ sortArtists }
 										onSwitchViewModeClick={ this.switchViewMode }
 									/>
-									<HorizontalDivider/>
 									{ this.resolveDisplayMode(initObject, data) }
 								</div>				
 							</FromTheTopCradle>

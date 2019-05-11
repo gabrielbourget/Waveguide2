@@ -14,6 +14,10 @@ import CircleDownIconHighlighted from './SVG/CircleDownIcon/CircleDownIcon_Highl
 import CircleUpIconDarkTheme from './SVG/CircleUpIcon/CircleUpIcon_DarkTheme';
 import CircleUpIconLightTheme from './SVG/CircleUpIcon/CircleUpIcon_LightTheme';
 import CircleUpIconHighlighted from './SVG/CircleUpIcon/CircleUpIcon_Highlighted';
+// - Circle Expand Icon
+import CircleExpandIconDarkTheme from './SVG/CircleExpandIcon/CircleExpandIcon_DarkTheme';
+import CircleExpandIconLightTheme from './SVG/CircleExpandIcon/CircleExpandIcon_LightTheme';
+import CircleExpandIconHighlighted from './SVG/CircleExpandIcon/CircleExpandIcon_Highlighted';
 
 import styles from './TwoSizeCard.module.scss';
 import { prepareLinkGallery, prepareComponent } from './helpers';
@@ -66,13 +70,13 @@ class TwoSizeCard extends React.Component {
 								onClick={ this.handleDownIconClick }
 							/>
 						}
-{/*						<IconButton
+						<IconButton
 							size='25px'
 							highlighted={ <CircleExpandIconHighlighted/> }
 							darkTheme={ <CircleExpandIconDarkTheme/> }
 							lightTheme={ <CircleExpandIconLightTheme/> }
 							onClick={ this.handleExpandIconClick }
-						/>*/}
+						/>
 					</div>
 				</div>
 				<div className={ initObject.bodyClasses }>

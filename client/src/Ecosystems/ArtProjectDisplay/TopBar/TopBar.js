@@ -26,6 +26,7 @@ import { ReactComponent as GalleryViewIconHighlighted } from './SVG/GalleryViewI
 import styles from './TopBar.module.scss';
 import { sortCriteriaEnum } from '../../../Helpers/generalDataStructures';
 import IconButton from '../../../Components/Buttons/IconButton/IconButton';
+import HorizontalDivider from '../../../Components/Dividers/HorizontalDivider/HorizontalDivider';
 
 class TopBar extends React.Component {
 	state = {
@@ -41,58 +42,63 @@ class TopBar extends React.Component {
 		const initObject = prepareComponent(this.context, this.props, this.state);
 
 		return (
-				<div className={ initObject.topBarClasses }>
-				<div className={ styles.left }>
-					<h3>Artists</h3>
-				</div>
-				<div className={ styles.right }>
-					{/* Sort Menu conditionally reveals itself */}
-					{
-						this.state.sortMenuOpen ?
-						<React.Fragment>
-							<IconButton
-								size='25px'
-								darkTheme={ <AscAlphaIconDarkTheme/> }
-								lightTheme={ <AscAlphaIconLightTheme/> }
-								highlighted={ <AscAlphaIconHighlighted/> }
-								onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
-							/>
-							<IconButton
-								size='25px'
-								darkTheme={ <DescAlphaIconDarkTheme/> }
-								lightTheme={ <DescAlphaIconLightTheme/> }
-								highlighted={ <DescAlphaIconHighlighted/> }
-								onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
-							/>
-						</React.Fragment>	:
-						null
-					}				
-					{/* Sort Menu Button */}
-					<IconButton
-						size='25px'
-						darkTheme={ <SortIconDarkTheme/> }
-						lightTheme={ <SortIconLightTheme/> }
-						highLighted={ <SortIconHighlighted/> }
-						onClick={ this.handleSortMenuClick }
-					/>
-					{/* List Display Button */}
-					<IconButton
-						size='25px'
-						darkTheme={ <ListViewIconDarkTheme/> }
-						lightTheme={ <ListViewIconLightTheme/> }
-						highlighted={ <ListViewIconHighlighted/> }
-						onClick={ () => this.props.onSwitchViewModeClick('table') }
-					/>
-					{/* Gallery Display Button */}
-					<IconButton 
-						size='25px'
-						darkTheme={ <GalleryViewIconDarkTheme/> }
-						lightTheme={ <GalleryViewIconLightTheme/> }
-						highlighted={ <GalleryViewIconHighlighted/> }
-						onClick={ () => this.props.onSwitchViewModeClick('gallery') }
-					/>
-				</div>
-			</div>		
+			<div className={ initObject.topBarClasses }>
+				<div className={ styles.top }>
+					
+					<div className={ styles.left }>
+						<h3>Artists</h3>
+					</div>
+					
+					<div className={ styles.right }>
+						{/* Sort Menu conditionally reveals itself */}
+						{
+							this.state.sortMenuOpen ?
+							<React.Fragment>
+								<IconButton
+									size='25px'
+									darkTheme={ <AscAlphaIconDarkTheme/> }
+									lightTheme={ <AscAlphaIconLightTheme/> }
+									highlighted={ <AscAlphaIconHighlighted/> }
+									onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
+								/>
+								<IconButton
+									size='25px'
+									darkTheme={ <DescAlphaIconDarkTheme/> }
+									lightTheme={ <DescAlphaIconLightTheme/> }
+									highlighted={ <DescAlphaIconHighlighted/> }
+									onClick={ () => this.props.onSortClick(sortCriteriaEnum.ALPHABETICAL) }
+								/>
+							</React.Fragment>	:
+							null
+						}				
+						{/* Sort Menu Button */}
+						<IconButton
+							size='25px'
+							darkTheme={ <SortIconDarkTheme/> }
+							lightTheme={ <SortIconLightTheme/> }
+							highLighted={ <SortIconHighlighted/> }
+							onClick={ this.handleSortMenuClick }
+						/>
+						{/* List Display Button */}
+						<IconButton
+							size='25px'
+							darkTheme={ <ListViewIconDarkTheme/> }
+							lightTheme={ <ListViewIconLightTheme/> }
+							highlighted={ <ListViewIconHighlighted/> }
+							onClick={ () => this.props.onSwitchViewModeClick('table') }
+						/>
+						{/* Gallery Display Button */}
+						<IconButton 
+							size='25px'
+							darkTheme={ <GalleryViewIconDarkTheme/> }
+							lightTheme={ <GalleryViewIconLightTheme/> }
+							highlighted={ <GalleryViewIconHighlighted/> }
+							onClick={ () => this.props.onSwitchViewModeClick('gallery') }
+						/>
+					</div> 
+				</div> 
+				<HorizontalDivider />
+			</div> 
 		);
 	}
 } 
