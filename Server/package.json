@@ -4,7 +4,8 @@
   "description": "Server side for Waveguide",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,8 @@
     "morgan": "^1.9.1",
     "neo4j-graphql-js": "^2.6.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
   }
 }

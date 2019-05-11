@@ -27,6 +27,8 @@ const createServer = () => {
 		}
 	});
 
+	// console.log(augmentedSchema);
+
 	return new ApolloServer({ 
 		schema: augmentedSchema,
 		context: req => ({ ...req, driver }),
