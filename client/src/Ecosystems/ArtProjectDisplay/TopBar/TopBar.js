@@ -97,7 +97,9 @@ class TopBar extends React.Component {
 						/>
 					</div> 
 				</div> 
-				<HorizontalDivider />
+				<div className={ styles.bottom }>
+					<HorizontalDivider />
+				</div>
 			</div> 
 		);
 	}
