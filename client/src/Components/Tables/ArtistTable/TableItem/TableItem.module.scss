@@ -27,6 +27,14 @@
 		grid-template-areas: "photo title"
 												 "links links";
 	}
+
+	.profileImage {
+		justify-items: start;
+	}
+
+	.title {
+		justify-items: start;
+	}
 }
 
 .profileImage {
