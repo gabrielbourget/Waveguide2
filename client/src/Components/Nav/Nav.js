@@ -54,23 +54,22 @@ class Nav extends React.Component {
 		return (
 			<div className={ initObject.navbarClasses }>
 				<div className={ initObject.sideMenuButtonClasses }>
-				<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
-					{
-						(toggleSideDrawer) => (
-							<IconButton 
-								size='20px'
-								darkTheme={ <HamburgerMenuDarkTheme/> }
-								lightTheme={ <HamburgerMenuLightTheme/> }
-								highlighted={ <HamburgerMenuHighlighted/> }
-								onClick={ toggleSideDrawer }
-							/>
-						)
-					}
-				</Mutation>
+					<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+						{
+							(toggleSideDrawer) => (
+								<IconButton 
+									size='20px'
+									darkTheme={ <HamburgerMenuDarkTheme/> }
+									lightTheme={ <HamburgerMenuLightTheme/> }
+									highlighted={ <HamburgerMenuHighlighted/> }
+									onClick={ toggleSideDrawer }
+								/>
+							)
+						}
+					</Mutation>
 				</div>
 
 				<div className={ initObject.rightNavClasses }>
-
 					<Link to='/search'>
 						<IconButton
 							size='20px'

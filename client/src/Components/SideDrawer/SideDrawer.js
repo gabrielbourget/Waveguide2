@@ -54,11 +54,6 @@ class SideDrawer extends React.Component {
 		this.setState({ communityLinksExpanded: false });
 	};
 
-	handleSideMenuButtonClick = () => {
-		// this.props.onSideMenuButtonClick();
-		// - TODO -> Trigger GraphQL stuff here
-	};
-
 	render() {
 		return (
 			<Query query={ SIDE_DRAWER_OPEN_QUERY }>
@@ -164,20 +159,19 @@ class SideDrawer extends React.Component {
 									<HorizontalDivider height='3px'/>
 								</div>
 								<div className={ styles.buttonGrid }>
-									<Link to='/'>					
-										<OutlineButton
-											text='Home'
-											shape='rounded'
-											onClick={ this.handleSideMenuButtonClick }
-										/>
-									</Link>	
-									<Link to='/documentation/'>					
-										<OutlineButton
-											text='Documentation'
-											shape='rounded'
-											onClick={ this.handleSideMenuButtonClick }
-										/>
-									</Link>	
+									<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+										{
+											(toggleSideDrawer) => (
+												<Link to='/'>					
+													<OutlineButton
+														text='Home'
+														shape='rounded'
+														onClick={ toggleSideDrawer }
+													/>
+												</Link>	
+											)
+										}
+									</Mutation>
 								</div>
 								<div className={ styles.communityLinksTitleBar }>
 									<h3 className={ initObject.themeClass }>Community Links</h3>
