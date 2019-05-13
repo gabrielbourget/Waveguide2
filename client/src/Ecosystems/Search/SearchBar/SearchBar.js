@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
+import { ApolloConsumer } from 'react-apollo';
+import debounce from 'lodash.debounce';
 import { ThemeContext } from '../../../ThemeContext';
 
 import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 import OutlineButton from '../../../Components/Buttons/OutlineButton/OutlineButton';
 
 import styles from './SearchBar.module.scss';
+import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 
 class SearchBar extends React.Component {
 	state = {

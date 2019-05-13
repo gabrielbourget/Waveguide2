@@ -11,6 +11,7 @@ import SearchResults from './SearchResults/SearchResults';
 
 import styles from './Search.module.scss';
 
+
 class Search extends React.Component {
 
 	state = {

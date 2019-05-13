@@ -25,7 +25,10 @@ const apolloClient = new ApolloClient({
 		defaults: {
 			sideDrawerOpen: false,
 			settingsPanelOpen: false,
-			theme: 'dark'
+			theme: 'dark',
+			storedArtProjects: [],
+			storedEvents: [],
+			storedUsers: []
 		}
 	}
 });

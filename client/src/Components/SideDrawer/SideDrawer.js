@@ -11,7 +11,6 @@ import { communityLinks } from './Data/communityLinks';
 import { SIDE_DRAWER_OPEN_QUERY } from '../../GraphQL/Queries';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
 import { SWITCH_THEME_MUTATION } from '../../GraphQL/Mutations';
-import { TOGGLE_SETTINGS_PANEL_MUTATION } from '../../GraphQL/Mutations';
 
 import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 import OutlineButton from '../Buttons/OutlineButton/OutlineButton';

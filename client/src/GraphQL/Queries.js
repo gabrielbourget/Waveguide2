@@ -35,6 +35,25 @@ export const CURRENT_THEME_QUERY = gql`
 `;
 
 /**
+ * STORED_ART_PROJECTS_QUERY
+ * Description: Reads the local store to see what art projects have been returned 
+ * from a query in the Search component. 
+ */
+export const STORED_ART_PROJECTS_QUERY = gql`
+	query {
+		storedArtProjects @client {
+			id 
+			imageURL 
+			name 
+			socialMediaLinks {
+				network 
+				link 
+			}
+		}
+	}
+`;
+
+/**
  * ALL_ARTPROJECTS_QUERY
  * Description: Return all artprojects stored in the graph topology.
  */
