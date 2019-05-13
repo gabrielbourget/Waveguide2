@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
+import { ApolloConsumer } from 'react-apollo';
+import debounce from 'lodash';
 import { ThemeContext } from '../../ThemeContext';
 
 import FromTheTopCradle from '../../Components/Cradles/FromTheTopCradle/FromTheTopCradle';
-import SearchBar from './SearchBar/SearchBar';
 import RecentSearches from './RecentSearches/RecentSearches';
 import SearchResults from './SearchResults/SearchResults';
 
 import styles from './Search.module.scss';
+import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
+import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
 
 class Search extends React.Component {
@@ -37,11 +40,22 @@ class Search extends React.Component {
 
 		return (
 			<div className={ styles.search }>
-				<SearchBar 
-					defaultText='Search'
-					handleSearchSubmit={ this.handleSearchSubmit }
-					handleSearchFormSubmit={ this.handleSearchFormSubmit }
-				/>
+				<div className={ initObject.searchBarClasses }>
+					<form 
+						className={ initObject.searchFormClasses }
+						onSubmit={ (e) => this.props.handleSearchFormSubmit(e) }
+					>
+						<input 
+						  className={ initObject.searchInputClasses }
+							type='text'
+							ref={ this.searchInputRef }
+							id='searchInput' // - Temporary until ref issue fixed.
+							value={ this.state.searchQueryText }
+							onChange={ (e) => this.setState({ searchQueryText: e.target.value }) }
+							placeholder='Search'
+						/>
+					</form>
+				</div>
 				{
 					(this.state.searchQuery === '') ?
 					<RecentSearches /> :
@@ -54,9 +68,17 @@ class Search extends React.Component {
 
 const prepareComponent = (context) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
+	const searchBarClasses = ClassNames(styles.searchBar, themeClass);
+	const searchFormClasses = ClassNames(styles.searchForm, themeClass)
+	const searchInputClasses = ClassNames(styles.searchInput, themeClass);
 	const searchResultsClasses = ClassNames(styles.searchResults, themeClass);
 
-	return { searchResultsClasses };
+	return { 
+					 searchBarClasses,
+					 searchFormClasses,
+					 searchInputClasses,
+					 searchResultsClasses
+				 };
 }
 
 Search.contextType = ThemeContext;

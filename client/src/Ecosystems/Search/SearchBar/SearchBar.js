@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
-import { ApolloConsumer } from 'react-apollo';
-import debounce from 'lodash.debounce';
 import { ThemeContext } from '../../../ThemeContext';
 
 import IconButton from '../../../Components/Buttons/IconButton/IconButton';
@@ -11,6 +9,7 @@ import OutlineButton from '../../../Components/Buttons/OutlineButton/OutlineButt
 
 import styles from './SearchBar.module.scss';
 import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
+import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
 class SearchBar extends React.Component {
 	state = {
@@ -49,6 +48,10 @@ class SearchBar extends React.Component {
 		// this.searchInput.focus();
 		//document.getElementById('searchInput').focus();		
 	};
+
+	onChange = debounce(async (e, client) => {
+		
+	}, SEARCH_DEBOUNCE_TIME);
 
 	render() {
 		const initObject = prepareComponent(this.context, this.state);
