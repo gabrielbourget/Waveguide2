@@ -49,10 +49,6 @@ class SearchBar extends React.Component {
 		//document.getElementById('searchInput').focus();		
 	};
 
-	onChange = debounce(async (e, client) => {
-		
-	}, SEARCH_DEBOUNCE_TIME);
-
 	render() {
 		const initObject = prepareComponent(this.context, this.state);
 

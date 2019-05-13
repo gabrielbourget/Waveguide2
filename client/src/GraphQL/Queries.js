@@ -83,7 +83,6 @@ export const SEARCH_ARTPROJECTS_QUERY = gql`
 			imageURL
 			name 
 			socialMediaLinks {
-				id 
 				network 
 				link 
 			}
