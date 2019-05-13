@@ -1,0 +1,30 @@
+.recentSearches {
+	// height: 100%;
+	// width: 100%;
+
+	display: grid;
+	grid-template-rows: 50px 1fr;
+	padding: 0px 30px;
+}
+
+.top {
+
+	height: 45px;
+	width: 100%;
+
+	display: grid;
+	grid-template-rows: 30px 1fr;
+	align-content: space-between;
+}
+
+.recentSearchList {
+	height: 100%;
+  width: 100%;
+	display: grid;
+}
+
+ul {
+	list-style-type: disc;
+	margin: 0;
+	padding: 0;
+}	

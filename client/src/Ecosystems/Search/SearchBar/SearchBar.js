@@ -47,23 +47,6 @@ class SearchBar extends React.Component {
 		//document.getElementById('searchInput').focus();		
 	};
 
-	handleSearchSubmit = (e) => {
-		if (this.state.searchQueryText === '') return;
-
-		//this.props.searchThroughArtists(this.state.searchQueryText);
-		// - TODO -> Call grqphql query here instead.
-		this.props.history.push('/artists');		
-	};
-
-	handleSearchFormSubmit = (e) => {
-
-		e.preventDefault();
-		if (this.state.searchQueryText === '') return;
-		//this.props.searchThroughArtists(this.state.searchQueryText);	
-		// - TODO -> Call grqphql query here instead.
-		this.props.history.push('/artists');
-	};	
-
 	render() {
 		const initObject = prepareComponent(this.context, this.state);
 
@@ -72,7 +55,7 @@ class SearchBar extends React.Component {
 				<React.Fragment>
 					<form 
 						className={ styles.searchField }
-						onSubmit={ this.handleSearchFormSubmit }
+						onSubmit={ (e) => this.props.handleSearchFormSubmit(e) }
 					>
 						<input 
 							type='text'
@@ -86,7 +69,7 @@ class SearchBar extends React.Component {
 					</form>
 					<OutlineButton
 						text='Search'
-						onClick={ this.handleSearchSubmit }
+						onClick={ (e) => this.props.handleSearchSubmit(e) }
 						shape='rounded'
 					/>
 				</React.Fragment> 			

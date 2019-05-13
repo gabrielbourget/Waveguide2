@@ -1,12 +1,13 @@
 .tableItem {
 
-	height: 60px;
+	height: 65px;
 	width: 100%;
+	padding: 2.5px 0px;
 
 	display: grid;
 	grid-auto-flow: column;
 	grid-template-columns: 0.75fr 2fr 5fr; 
-	grid-gap: 2rem;
+	grid-template-areas: "photo title links";
 	
 	&.darkTheme {
 		// border-top: 1.5px solid var(--veryDarkGrey); 
@@ -19,6 +20,15 @@
 	}
 }
 
+@media(max-width: 725px) {
+	.tableItem {
+		height: 130px;
+		grid-template-columns: 1fr 6fr;
+		grid-template-areas: "photo title"
+												 "links links";
+	}
+}
+
 .profileImage {
 
 	height: 100%;
@@ -27,6 +37,7 @@
 	display: grid;
 	justify-content: center;
 	align-content: center;
+	grid-area: photo;
 
 	& .imageCradle {
 		height: 50px;
@@ -40,6 +51,7 @@
 	height: 100%;
 	width: 100%;
 	padding: 0px 5px;
+	grid-area: title;
 
 	display: grid;
 	align-items: center;
@@ -61,7 +73,14 @@
 	overflow-x: auto;
 
 	display: grid;
+	grid-area: links;
 	grid-auto-flow: column;
 	grid-template-columns: repeat(auto-fit, 50px);
+	grid-gap: 1rem;
+
+	& > a {
+		width: auto;
+		padding: 0;
+	}
 
 }

@@ -1,3 +1,6 @@
-.searchResults {
+.search {
 	display: grid;
+	grid-template-rows: auto;
+	align-content: start;
+	min-height: 100vh;
 }
