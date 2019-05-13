@@ -13,6 +13,17 @@ export const SIDE_DRAWER_OPEN_QUERY = gql`
 `;
 
 /**
+ * SETTINGS_PANEL_OPEN_QUERY 
+ * Description: Checks to see if the application's 
+ * settings panel is open.
+ */
+export const SETTINGS_PANEL_OPEN_QUERY = gql`
+	query {
+		settingsPanelOpen @client
+	}
+`;
+
+/**
  * CURRENT_THEME_QUERY
  * Description: Checks to see which color theme is 
  * currently set for the application.
@@ -48,7 +59,7 @@ export const ALL_ARTPROJECTS_QUERY = gql`
  */
 export const SEARCH_ARTPROJECTS_QUERY = gql`
 	query SEARCH_ARTPROJECTS_QUERY($searchTerm: String!) {
-		ArtProject(where: { title_contains: $searchTerm }) {
+		ArtProject(filter: { name_contains: $searchTerm }) {
 			id
 			imageURL
 			name 

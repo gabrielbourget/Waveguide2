@@ -24,6 +24,7 @@ const apolloClient = new ApolloClient({
 		resolvers: { Mutation },
 		defaults: {
 			sideDrawerOpen: false,
+			settingsPanelOpen: false,
 			theme: 'dark'
 		}
 	}

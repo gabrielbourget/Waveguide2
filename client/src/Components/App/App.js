@@ -11,6 +11,7 @@ import SideDrawer from '../SideDrawer/SideDrawer';
 import HomePage from '../../Ecosystems/HomePage/HomePage';
 import Search from '../../Ecosystems/Search/Search';
 import ArtProjectDisplay from '../../Ecosystems/ArtProjectDisplay/ArtProjectDisplay';
+import Settings from '../../Ecosystems/Settings/Settings';
 import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
 
 import styles from './App.module.css';
@@ -21,6 +22,10 @@ class App extends React.Component {
     // const clientDateTime = new Date();
     // const hour = clientDateTime.getHours();
     // ( hour > 7 && hour < 21 ) ? this.props.switchTheme('light') : this.props.switchTheme('dark');
+  }
+
+  state = {
+
   }
 
   render() {
@@ -45,6 +50,7 @@ class App extends React.Component {
                       )}
                     />
                     <Route path='/search' component ={ Search }/>
+                    <Route path='/settings' component = { Settings }/>
                     <Route render={ ({ location }) => <NotFoundPageComponent/> }/>
                   </Switch>
                   <Footer/>

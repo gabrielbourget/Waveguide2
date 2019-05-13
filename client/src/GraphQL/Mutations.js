@@ -15,10 +15,21 @@ export const SWITCH_THEME_MUTATION = gql`
 /**
  * TOGGLE_SIDE_DRAWER_MUTATION 
  * Description: Toggles the side drawer as open or closed
- * triggering it to go into and out of the application. 
+ * triggering it to render in and out of the application. 
  */
 export const TOGGLE_SIDE_DRAWER_MUTATION = gql`
 	mutation {
 		toggleSideDrawer @client
+	}
+`;
+
+/**
+ * TOGGLE SETTINGS PANEL MUTATION
+ * Description: Toggles the settings panel as open or closed,
+ * triggering it to render in and out of the application.
+ */
+export const TOGGLE_SETTINGS_PANEL_MUTATION = gql`
+	mutation {
+		toggleSettingsPanel @client
 	}
 `;

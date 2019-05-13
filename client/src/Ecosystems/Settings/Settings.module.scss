@@ -1,0 +1,28 @@
+.settingsCradle {
+	height: 100%;
+	min-height: 100vh;
+	width: 100%;
+	padding-bottom: 30px;
+
+	display: grid;
+	grid-template-rows: 1fr;
+	overflow-y: auto;
+	align-content: start;
+	justify-content: center;
+
+	&.darkTheme{ 
+		background: var(--c_dark); 
+		color: var(--c_light);
+	}
+	&.lightTheme{ 
+		background: var(--c_light); 
+		color: var(--c_dark);
+	}
+
+}
+
+.settings {
+	padding: 0px 30px;
+	width: 700px;
+	height: 100%;
+}

@@ -11,6 +11,7 @@ import { communityLinks } from './Data/communityLinks';
 import { SIDE_DRAWER_OPEN_QUERY } from '../../GraphQL/Queries';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
 import { SWITCH_THEME_MUTATION } from '../../GraphQL/Mutations';
+import { TOGGLE_SETTINGS_PANEL_MUTATION } from '../../GraphQL/Mutations';
 
 import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
@@ -31,6 +32,11 @@ import { ReactComponent as XIconDarkTheme } from './SVG/XIcon/XIconDarkTheme.svg
 import { ReactComponent as XIconLightTheme } from './SVG/XIcon/XIconLightTheme.svg';
 import { ReactComponent as XIconHighlighted } from './SVG/XIcon/XIconHighlighted.svg';
 
+// - Gear Icon
+import { ReactComponent as GearIconDarkTheme } from './SVG/GearIcon/GearIconDarkTheme.svg';
+import { ReactComponent as GearIconLightTheme } from './SVG/GearIcon/GearIconLightTheme.svg';
+import { ReactComponent as GearIconHighlighted } from './SVG/GearIcon/GearIconHighlighted.svg';
+
 // const Composed = adopt({
 // 	toggleSideDrawer
 // });
@@ -46,7 +52,7 @@ class SideDrawer extends React.Component {
 
 	handleUpIconClick = () => {
 		this.setState({ communityLinksExpanded: false });
-	};	
+	};
 
 	handleSideMenuButtonClick = () => {
 		// this.props.onSideMenuButtonClick();
@@ -76,7 +82,24 @@ class SideDrawer extends React.Component {
 											)
 										}
 									</Mutation>
-									<h3 className={ initObject.themeClass }>Settings</h3>
+									{/*<h3 className={ initObject.themeClass }>Settings</h3>*/}
+									<Mutation mutation={ TOGGLE_SIDE_DRAWER_MUTATION }>
+										{
+											(toggleSideDrawer) => (
+												<Link to='/settings'>	
+													<IconButton
+														size='25px'
+														highlighted={ <GearIconHighlighted/> }
+														darkTheme={ <GearIconDarkTheme/> }
+														lightTheme={ <GearIconLightTheme/> }
+														onClick={ () => {
+															toggleSideDrawer();
+														}}
+													/>
+												</Link>
+											)
+										}
+									</Mutation>
 								</div>
 								<div className={ styles.hDividerCradle }>
 									<HorizontalDivider height='3px'/>

@@ -1,6 +1,10 @@
 import { SIDE_DRAWER_OPEN_QUERY } from '../Queries';
+import { SETTINGS_PANEL_OPEN_QUERY } from '../Queries';
 
 export const Mutation = {
+	// ---------------------- //
+	// - TOGGLE SIDE DRAWER - //
+	// ---------------------- //
 	toggleSideDrawer(_, variables, { cache }) {
 		// - Read sideDrawerOpen value from the cache
 		const { sideDrawerOpen } = cache.readQuery({
@@ -14,6 +18,22 @@ export const Mutation = {
 		cache.writeData(data);
 		return data;
 	},
+	// ------------------------- // 
+	// - TOGGLE SETTINGS PANEL - //
+	// ------------------------- //
+	toggleSettingsPanel(_, variables, { cache }) {
+		const { settingsPanelOpen } = cache.readQuery({
+			query: SETTINGS_PANEL_OPEN_QUERY
+		});
+		const data = {
+			data: { settingsPanelOpen: !settingsPanelOpen }
+		};
+		cache.writeData(data);
+		return data;
+	},
+	// ---------------- //
+	// - SWITCH THEME - //
+	// ---------------- //
 	switchTheme(_, variables, { cache }) {
 		let data;
 		switch (variables.theme) {
