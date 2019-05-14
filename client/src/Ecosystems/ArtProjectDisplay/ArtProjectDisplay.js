@@ -22,8 +22,8 @@ class ArtProjectDisplay extends React.Component {
 		this.setState({ displayMode });
 	};
 
-	resolveDisplayMode = (initObject, data) => {
-		if (data.ArtProject.length === 0) {
+	resolveDisplayMode = (initObject) => {
+		if (this.props.srtProjects.length === 0) {
 			return (
         <div className={ initObject.noResultsClasses }>
           <h4>Search for an artist up top in the navigation bar.</h4>
@@ -37,40 +37,29 @@ class ArtProjectDisplay extends React.Component {
 		}
 		if (this.state.displayMode === 'gallery') {
 			return (
-				<ArtistGallery artProjects={ data.ArtProject }/>
+				<ArtistGallery artProjects={ this.props.artProjects }/>
 			);
 		}
 		else if (this.state.displayMode === 'table') {
 			return (
-				<ArtistTable artProjects={ data.ArtProject }/>
+				<ArtistTable artProjects={ this.props.artProjects }/>
 			);
 		}
 	};
 
 	render() {
-		return (
-			<Query query={ ALL_ARTPROJECTS_QUERY }>
-				{
-					({ data, loading, error }) => {
-						if (loading) return <p>Loading...</p>;
-						if (error) return <p>Error!...</p>;
-						
-						const initObject = prepareComponent(this.context, this.props);
+		const initObject = prepareComponent(this.context, this.props);
 
-						return (
-							<FromTheTopCradle>
-								<div className={ initObject.artistProfileDisplayClasses }>
-									<TopBar 
-										onSortClick={ sortArtists }
-										onSwitchViewModeClick={ this.switchViewMode }
-									/>
-									{ this.resolveDisplayMode(initObject, data) }
-								</div>				
-							</FromTheTopCradle>
-						);
-					}
-				}
-			</Query>
+		return (
+			<FromTheTopCradle>
+				<div className={ initObject.artistProfileDisplayClasses }>
+					<TopBar 
+						onSortClick={ sortArtists }
+						onSwitchViewModeClick={ this.switchViewMode }
+					/>
+					{ this.resolveDisplayMode(initObject) }
+				</div>				
+			</FromTheTopCradle>
 		);
 	}
 }
