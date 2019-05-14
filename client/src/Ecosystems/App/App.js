@@ -5,14 +5,14 @@ import { ThemeContext } from '../../ThemeContext';
 import { Query } from 'react-apollo';
 
 import { CURRENT_THEME_QUERY } from '../../GraphQL/Queries';
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-import SideDrawer from '../SideDrawer/SideDrawer';
-import HomePage from '../../Ecosystems/HomePage/HomePage';
-import Search from '../../Ecosystems/Search/Search';
-import ArtProjectDisplay from '../../Ecosystems/ArtProjectDisplay/ArtProjectDisplay';
-import Settings from '../../Ecosystems/Settings/Settings';
-import NotFoundPageComponent from '../NotFoundPageComponent/NotFoundPageComponent';
+import Nav from '../../Components/Nav/Nav';
+import Footer from '../../Components/Footer/Footer';
+import SideDrawer from '../../Components/SideDrawer/SideDrawer';
+import NotFoundPageComponent from '../../Components/NotFoundPageComponent/NotFoundPageComponent';
+import HomePage from '../HomePage/HomePage';
+import Search from '../Search/Search';
+import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
+import Settings from '../Settings/Settings';
 
 import styles from './App.module.css';
 

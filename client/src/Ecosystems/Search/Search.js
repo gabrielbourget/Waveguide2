@@ -7,13 +7,13 @@ import { ApolloConsumer } from 'react-apollo';
 import { ThemeContext } from '../../ThemeContext';
 
 import RecentSearches from './RecentSearches/RecentSearches';
-import SearchResults from './SearchResults/SearchResults';
+// import SearchResults from './SearchResults/SearchResults';
 import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
 
 import styles from './Search.module.scss';
 import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
-import { capitalize } from '../../Helpers/stringProcessing';
+// import { capitalize } from '../../Helpers/stringProcessing';
 // import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
 
@@ -40,7 +40,7 @@ class Search extends React.Component {
 		const restDown = searchQuery.slice(1).toLowerCase();
 
 		const searchQueryCapitalized = firstLetterUp + restDown;
-		//const searchQueryCapitalized = searchQuery.capitalize();
+		// const searchQueryCapitalized = searchQuery.capitalize();
 		const searchQueryCaps = searchQuery.toUpperCase();
 
 		this.setState({ loading: true });
@@ -92,10 +92,14 @@ class Search extends React.Component {
 		return (
 			<div className={ styles.search }>
 				<div className={ initObject.searchBarClasses }>
-					<form 
+					{/*<form 
 						className={ initObject.searchFormClasses }
-						onSubmit={ (e) => { e.stopPropagation() } }
-					>
+						onSubmit={ (e) => { 
+							e.stopPropagation();
+							console.log('boop');
+							return;
+						}}
+					>*/}
 						<ApolloConsumer>
 							{
 								(client) => (
@@ -109,12 +113,12 @@ class Search extends React.Component {
 											e.persist();
 											this.onChange(e, client);
 										}}
-										placeholder='Search'
+										placeholder='Search.'
 									/>
 								)
 							}
 						</ApolloConsumer>
-					</form>
+					{/*</form>*/}
 				</div>
 				{ this.renderLogic() }
 			</div>

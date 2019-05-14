@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Mutation } from '../../GraphQL/LocalResolvers/Mutations';
 
-import App from '../App/App';
+import App from '../../Ecosystems/App/App';
 
 import { GRAPHQL_ENDPOINT } from '../../clientConfig';
 
