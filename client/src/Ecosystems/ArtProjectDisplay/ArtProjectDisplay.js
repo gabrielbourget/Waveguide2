@@ -23,7 +23,7 @@ class ArtProjectDisplay extends React.Component {
 	};
 
 	resolveDisplayMode = (initObject) => {
-		if (this.props.srtProjects.length === 0) {
+		if (this.props.artProjects.length === 0) {
 			return (
         <div className={ initObject.noResultsClasses }>
           <h4>Search for an artist up top in the navigation bar.</h4>

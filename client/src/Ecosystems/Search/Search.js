@@ -8,9 +8,11 @@ import { ThemeContext } from '../../ThemeContext';
 
 import RecentSearches from './RecentSearches/RecentSearches';
 import SearchResults from './SearchResults/SearchResults';
+import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
 
 import styles from './Search.module.scss';
 import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
+import { capitalize } from '../../Helpers/stringProcessing';
 // import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
 
@@ -24,20 +26,30 @@ class Search extends React.Component {
 
 	onChange = async (e, client) => {
 
-		const query = e.target.value
+		const searchQuery = e.target.value;
 
 		this.setState({ 
-			searchQuery: e.target.value,
+			searchQuery
 		});
 
 		// - Don't hit the database for an empty query string.
-		if (query === '') return;
+		if (searchQuery === '') return;
+
+		const firstLetterUp = searchQuery.charAt(0).toUpperCase();
+		const restDown = searchQuery.slice(1).toLowerCase();
+
+		const searchQueryCapitalized = firstLetterUp + restDown;
+		const searchQueryCaps = searchQuery.toUpperCase();
 
 		this.setState({ loading: true });
 
 		const res = await client.query({
 			query: SEARCH_ARTPROJECTS_QUERY,
-			variables: { searchTerm: e.target.value }
+			variables: { 
+				searchQuery,
+				searchQueryCapitalized,
+				searchQueryCaps
+			}
 		});
 
 		this.setState({
@@ -50,9 +62,14 @@ class Search extends React.Component {
 	};
 
 	renderLogic = () => {
-		if (this.state.loading) return <p>Loading...</p>
-		if (this.state.searchQuery === '') return <RecentSearches/>
-		return <SearchResults/>
+		if (this.state.loading) return <p>Loading...</p>;
+		if (this.state.searchQuery === '') return <RecentSearches/>;
+		return (
+			<ArtProjectDisplay 
+				artProjects={ this.state.artProjects }
+				displayMode='gallery'
+			/>
+		);
 	};
 
 	render() {
@@ -62,10 +79,9 @@ class Search extends React.Component {
 		return (
 			<div className={ styles.search }>
 				<div className={ initObject.searchBarClasses }>
-
 					<form 
 						className={ initObject.searchFormClasses }
-						onSubmit={ (e) => this.props.handleSearchFormSubmit(e) }
+						onSubmit={ (e) => { e.stopPropagation() } }
 					>
 						<ApolloConsumer>
 							{
@@ -87,11 +103,7 @@ class Search extends React.Component {
 						</ApolloConsumer>
 					</form>
 				</div>
-				{
-					(this.state.searchQuery === '') ?
-					<RecentSearches /> :
-					<SearchResults />
-				}
+				{ this.renderLogic() }
 			</div>
 		);
 	}

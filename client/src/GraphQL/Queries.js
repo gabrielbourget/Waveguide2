@@ -77,8 +77,16 @@ export const ALL_ARTPROJECTS_QUERY = gql`
  * on project name.
  */
 export const SEARCH_ARTPROJECTS_QUERY = gql`
-	query SEARCH_ARTPROJECTS_QUERY($searchTerm: String!) {
-		ArtProject(filter: { name_contains: $searchTerm }) {
+	query SEARCH_ARTPROJECTS_QUERY($searchQuery: String!, 
+																 $searchQueryCapitalized: String!,
+																 $searchQueryCaps: String!) {
+		ArtProject(filter: {
+			OR :[
+				{ name_contains: $searchQuery },
+				{ name_contains: $searchQueryCapitalized },
+				{ name_contains: $searchQueryCaps }
+			]
+		}) {
 			id
 			imageURL
 			name 
@@ -89,6 +97,8 @@ export const SEARCH_ARTPROJECTS_QUERY = gql`
 		}
 	}
 `;
+
+
 
 /**
  * 								---- TODO ----
