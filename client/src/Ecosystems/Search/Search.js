@@ -12,6 +12,7 @@ import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
 
 import styles from './Search.module.scss';
 import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
+import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 import { capitalize } from '../../Helpers/stringProcessing';
 // import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
@@ -39,18 +40,30 @@ class Search extends React.Component {
 		const restDown = searchQuery.slice(1).toLowerCase();
 
 		const searchQueryCapitalized = firstLetterUp + restDown;
+		//const searchQueryCapitalized = searchQuery.capitalize();
 		const searchQueryCaps = searchQuery.toUpperCase();
 
 		this.setState({ loading: true });
 
-		const res = await client.query({
-			query: SEARCH_ARTPROJECTS_QUERY,
-			variables: { 
-				searchQuery,
-				searchQueryCapitalized,
-				searchQueryCaps
-			}
-		});
+		let res;
+
+		// - If search Query is 'Everyone', return all art projects.
+		//   Otherwise, do a lookup based on the search query.
+		if (searchQuery.toLowerCase() === 'everyone') {
+			res = await client.query({
+				query: ALL_ARTPROJECTS_QUERY
+			});
+		}
+		else {
+			res = await client.query({
+				query: SEARCH_ARTPROJECTS_QUERY,
+				variables: { 
+					searchQuery,
+					searchQueryCapitalized,
+					searchQueryCaps
+				}
+			});
+		}
 
 		this.setState({
 			loading: false,
