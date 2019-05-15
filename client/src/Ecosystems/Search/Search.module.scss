@@ -2,7 +2,9 @@
 	display: grid;
 	grid-template-rows: auto;
 	align-content: start;
-	min-height: 100vh;
+	grid-gap: 1rem;
+	// min-height: 100vh;
+	// overflow-y: auto;
 }
 
 .searchBar {
@@ -39,17 +41,22 @@
 .searchInput {
 	background: none;
 	border: none;
+	height: 40px;
+	padding: 5px 10px;
+	border-radius: 3px;
 
 	&.darkTheme { 
 		color: var(--c_light); 
+		border: 3px solid var(--c_light) 
 	}
 	&.lightTheme { 
-		color: var(--black); 
+		color: var(--black);
+		border: 3px solid var(--black);
 	}
 
 	font: {
 		family: var(--sansSerifStack);
-		size: 1.5rem;
+		size: 1.8rem;
 	}
 
 	&:focus {

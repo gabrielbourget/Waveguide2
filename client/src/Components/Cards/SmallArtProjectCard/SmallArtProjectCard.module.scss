@@ -1,6 +1,20 @@
 .card {
-	height: 250px;
-	width: 400px;
+	height: 105px;
+	width: 100%;
+	padding: 15px;
+
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: 75px 1fr;
+
+	transition: background 0.2s ease-in-out;
+
+	&:hover {
+		cursor: pointer;
+
+		// &.darkTheme { background: var(--c_lowContrastDarkTheme); }
+		// &.lightTheme { background: var(--c_dark); }
+	}
 
 	&.darkTheme {
 		background: var(--black);
@@ -13,4 +27,25 @@
 	}
 
 	&.rounded { border-radius: 5px; }
+}
+
+.info {
+	height: 100%;
+	width: 100%;
+
+	display: grid;
+	grid-gap: 0.5rem;
+	grid-template-rows: 40% 40%;
+	align-content: center;
+	align-items: center;
+
+	.title {
+		height: 100%;
+		width: 100%;
+	}
+
+	.type {
+		height: 100%;
+		width: 100%;
+	}
 }

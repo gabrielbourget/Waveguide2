@@ -17,7 +17,7 @@ import Settings from '../Settings/Settings';
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
 import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
-import { artists } from '../../Datasets/artists';
+import { artProjects } from '../../Datasets/artProjects';
 import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 
 import styles from './App.module.css';
@@ -62,10 +62,6 @@ class App extends React.Component {
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle stretch='true'>
-                          {/*<SmallArtProjectCard 
-                            artist={ artists[0] }
-                            shape='rounded'
-                          />*/}
                           <LaggingLinesLoader />
                         </CenteringCradle>
                       )}

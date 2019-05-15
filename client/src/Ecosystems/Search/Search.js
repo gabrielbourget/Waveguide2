@@ -84,7 +84,8 @@ class Search extends React.Component {
 				</CenteringCradle>
 			);
 		}
-		if (this.state.searchQuery === '') return <RecentSearches/>;
+		if (this.state.searchQuery === '') return <RecentSearches/>
+
 		return (
 			<ArtProjectDisplay 
 				artProjects={ this.state.artProjects }
@@ -100,33 +101,24 @@ class Search extends React.Component {
 		return (
 			<div className={ styles.search }>
 				<div className={ initObject.searchBarClasses }>
-					{/*<form 
-						className={ initObject.searchFormClasses }
-						onSubmit={ (e) => { 
-							e.stopPropagation();
-							console.log('boop');
-							return;
-						}}
-					>*/}
-						<ApolloConsumer>
-							{
-								(client) => (
-									<input 
-									  className={ initObject.searchInputClasses }
-										type='text'
-										ref={ this.searchInputRef }
-										id='searchInput' // - Temporary until ref issue fixed.
-										value={ this.state.searchQuery }
-										onChange={ (e) => {
-											e.persist();
-											this.onChange(e, client);
-										}}
-										placeholder='Search.'
-									/>
-								)
-							}
-						</ApolloConsumer>
-					{/*</form>*/}
+					<ApolloConsumer>
+						{
+							(client) => (
+								<input 
+								  className={ initObject.searchInputClasses }
+									type='text'
+									ref={ this.searchInputRef }
+									id='searchInput' // - Temporary until ref issue fixed.
+									value={ this.state.searchQuery }
+									onChange={ (e) => {
+										e.persist();
+										this.onChange(e, client);
+									}}
+									placeholder='Search.'
+								/>
+							)
+						}
+					</ApolloConsumer>
 				</div>
 				{ this.renderLogic() }
 			</div>

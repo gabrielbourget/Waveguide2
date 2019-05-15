@@ -1,4 +1,4 @@
-export const artists = [
+export const artProjects = [
   {
     name: 'Fyoomz',
     imageURL: process.env.PUBLIC_URL + '/Images/Fyoomz.jpg',
