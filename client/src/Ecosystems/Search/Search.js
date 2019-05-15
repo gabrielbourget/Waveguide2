@@ -9,6 +9,8 @@ import { ThemeContext } from '../../ThemeContext';
 import RecentSearches from './RecentSearches/RecentSearches';
 // import SearchResults from './SearchResults/SearchResults';
 import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
+import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
+import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 
 import styles from './Search.module.scss';
 import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
@@ -36,11 +38,11 @@ class Search extends React.Component {
 		// - Don't hit the database for an empty query string.
 		if (searchQuery === '') return;
 
+		// - Abstract this to helper function when I can figure out import problem.
 		const firstLetterUp = searchQuery.charAt(0).toUpperCase();
 		const restDown = searchQuery.slice(1).toLowerCase();
 
 		const searchQueryCapitalized = firstLetterUp + restDown;
-		// const searchQueryCapitalized = searchQuery.capitalize();
 		const searchQueryCaps = searchQuery.toUpperCase();
 
 		this.setState({ loading: true });
@@ -65,17 +67,23 @@ class Search extends React.Component {
 			});
 		}
 
+		// - Payload received. 
 		this.setState({
 			loading: false,
 			artProjects: res.data.ArtProject
 		});
 
-		console.log('Projects');
-		console.table(res.data.ArtProject);
 	};
 
 	renderLogic = () => {
-		if (this.state.loading) return <p>Loading...</p>;
+		// - TODO -> Build shadow component of this or use loading spinner of some sort. 
+		if (this.state.loading) {
+			return (
+				<CenteringCradle>
+					<LaggingLinesLoader/>
+				</CenteringCradle>
+			);
+		}
 		if (this.state.searchQuery === '') return <RecentSearches/>;
 		return (
 			<ArtProjectDisplay 

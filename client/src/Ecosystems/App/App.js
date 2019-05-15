@@ -14,6 +14,12 @@ import Search from '../Search/Search';
 import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
 import Settings from '../Settings/Settings';
 
+// - Component Development Imports
+import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
+import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
+import { artists } from '../../Datasets/artists';
+import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+
 import styles from './App.module.css';
 
 class App extends React.Component {
@@ -25,7 +31,7 @@ class App extends React.Component {
   }
 
   state = {
-
+    
   }
 
   render() {
@@ -51,6 +57,20 @@ class App extends React.Component {
                     />
                     <Route path='/search' component ={ Search }/>
                     <Route path='/settings' component = { Settings }/>
+
+                    <Route 
+                      path='/componentdevplayground'
+                      render={ () => (
+                        <CenteringCradle>
+                          {/*<SmallArtProjectCard 
+                            artist={ artists[0] }
+                            shape='rounded'
+                          />*/}
+                          <LaggingLinesLoader />
+                        </CenteringCradle>
+                      )}
+                    />
+
                     <Route render={ ({ location }) => <NotFoundPageComponent/> }/>
                   </Switch>
                   <Footer/>
