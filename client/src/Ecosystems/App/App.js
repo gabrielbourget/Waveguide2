@@ -61,7 +61,7 @@ class App extends React.Component {
                     <Route 
                       path='/componentdevplayground'
                       render={ () => (
-                        <CenteringCradle>
+                        <CenteringCradle stretch='true'>
                           {/*<SmallArtProjectCard 
                             artist={ artists[0] }
                             shape='rounded'

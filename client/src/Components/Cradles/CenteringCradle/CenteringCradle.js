@@ -1,12 +1,22 @@
 import React from 'react';
 import ClassNames from 'classnames';
+import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../ThemeContext';
 
 import styles from './CenteringCradle.module.scss';
 
 class CenteringCradle extends React.Component {
+
+	static propTypes = {
+		stretch: PropTypes.string
+	};
+
+	static defaultProps = {
+		stretch: 'true'
+	}
+
 	render() {
-		const initObject = prepareComponent(this.context);
+		const initObject = prepareComponent(this.context, this.props);
 		// console.log(this.context);
 
 		return (
@@ -17,9 +27,10 @@ class CenteringCradle extends React.Component {
 	}
 }
 
-const prepareComponent = (context) => {
+const prepareComponent = (context, props) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
-	const cradleClasses = ClassNames(styles.cradle, themeClass);
+	const stretchClass = (props.stretch === 'true') ? styles.stretch : null;
+	const cradleClasses = ClassNames(styles.cradle, themeClass, stretchClass);
 
 	return { cradleClasses }
 }
