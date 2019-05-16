@@ -1,3 +1,8 @@
+/**
+ *  Inspired by Filipe Kiss
+ *  Original Codepen: -> https://codepen.io/filipekiss/pen/yJxFo
+ */
+
 import React from 'react';
 import ClassNames from 'classnames';
 import { ThemeContext } from '../../../ThemeContext';

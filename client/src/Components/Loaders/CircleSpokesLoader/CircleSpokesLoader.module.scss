@@ -1,0 +1,83 @@
+$spoke-translate: 100%;
+$spoke-transform-origin: ($spoke-translate) * -1;
+$spoke-size: 7.5px;
+
+.loader {
+  margin: 0 auto;
+  text-align: center;
+  width: 250px;
+  height: 50px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.loadingSpokes {
+  position: relative;
+  margin: auto;
+  height: 45px;
+  
+  .spokeContainer {
+    position: absolute;
+    top: 100%;
+    left: calc(50% - #{$spoke-size}*1.5);
+    transform-origin: 50% $spoke-transform-origin;
+  
+    .spoke {
+      width: $spoke-size/1.5;
+      height: $spoke-size * 2.25;
+      animation: spoke 1s infinite;
+      animation-delay: inherit;
+
+      &.darkTheme { background: var(--c_light); }
+      &.lightTheme { background: var(--black); }
+		}
+  
+    &:nth-of-type(0n+1) {
+      transform: translateX($spoke-translate) rotate(-90deg);
+      animation-delay: -0.875s;
+    }
+
+    &:nth-of-type(0n+2) {
+      transform: translateX($spoke-translate) rotate(-45deg);
+      animation-delay: -0.750s;
+    }
+
+    &:nth-of-type(0n+3) {
+      transform: translateX($spoke-translate);
+      animation-delay: -0.625s;
+    }
+
+    &:nth-of-type(0n+4) {
+      transform: translateX($spoke-translate) rotate(45deg);
+      animation-delay: -0.5s;
+    }
+
+    &:nth-of-type(0n+5) {
+      transform: translateX($spoke-translate) rotate(90deg);
+      animation-delay: -0.375s;
+    }
+
+    &:nth-of-type(0n+6) {
+      transform: translateX($spoke-translate) rotate(135deg);
+      animation-delay: -0.25s;
+    }
+
+    &:nth-of-type(0n+7) {
+      transform: translateX($spoke-translate) rotate(180deg);
+      animation-delay: -0.125s;
+    }
+
+    &:nth-of-type(0n+8) {
+      transform: translateX($spoke-translate) rotate(225deg);
+      animation-delay: 0;
+    }
+  }
+}
+
+@keyframes spoke {
+  0% { opacity: 1; }
+  100% { opacity: 0.1; }
+}
+
+
+
