@@ -19,6 +19,7 @@ import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringC
 import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
 import { artProjects } from '../../Datasets/artProjects';
 import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import HorizontalBubbles from '../../Components/Loaders/HorizontalBubbles/HorizontalBubbles';
 
 import styles from './App.module.css';
 
@@ -28,10 +29,6 @@ class App extends React.Component {
     // const clientDateTime = new Date();
     // const hour = clientDateTime.getHours();
     // ( hour > 7 && hour < 21 ) ? this.props.switchTheme('light') : this.props.switchTheme('dark');
-  }
-
-  state = {
-    
   }
 
   render() {
@@ -61,8 +58,8 @@ class App extends React.Component {
                     <Route 
                       path='/componentdevplayground'
                       render={ () => (
-                        <CenteringCradle stretch='true'>
-                          <LaggingLinesLoader />
+                        <CenteringCradle>
+                          <HorizontalBubbles />
                         </CenteringCradle>
                       )}
                     />
