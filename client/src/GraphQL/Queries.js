@@ -98,6 +98,26 @@ export const SEARCH_ARTPROJECTS_QUERY = gql`
 	}
 `;
 
+/**
+ * ARTPROJECT_BY_ID_QUERY
+ * Description: Grab an artproject from the graph based 
+ * on its id. 
+ */
+export const ARTPROJECT_BY_ID_QUERY = gql`
+	query ARTPROJECT_BY_ID_QUERY($artProjectId: String!) {
+		ArtProject(id: $artProjectId) {
+			id 
+			imageURL
+			name
+			biography
+			socialMediaLinks {
+				network 
+				link
+			}
+		}
+	}
+`;
+
 
 
 /**
