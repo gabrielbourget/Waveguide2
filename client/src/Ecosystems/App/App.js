@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import ClassNames from 'classnames';
 import { ThemeContext } from '../../ThemeContext';
 import { Query } from 'react-apollo';
@@ -11,20 +12,20 @@ import SideDrawer from '../../Components/SideDrawer/SideDrawer';
 import NotFoundPageComponent from '../../Components/NotFoundPageComponent/NotFoundPageComponent';
 import HomePage from '../HomePage/HomePage';
 import Search from '../Search/Search';
-import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
+import SingleArtProject from '../SingleArtProject/SingleArtProject';
 import Settings from '../Settings/Settings';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
-import { artProjects } from '../../Datasets/artProjects';
+// import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
+// import { artProjects } from '../../Datasets/artProjects';
 // import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 // import HorizontalBubblesLoader from '../../Components/Loaders/HorizontalBubblesLoader/HorizontalBubblesLoader';
 // import CircleBubblesLoader from '../../Components/Loaders/CircleBubblesLoader/CircleBubblesLoader';
 // import CircleSpokesLoader from '../../Components/Loaders/CircleSpokesLoader/CircleSpokesLoader';
-// import ShiftingVerticalBarsLoader from '../../Components/Loaders/ShiftingVerticalBarsLoader/ShiftingVerticalBarsLoader';
+import ShiftingVerticalBarsLoader from '../../Components/Loaders/ShiftingVerticalBarsLoader/ShiftingVerticalBarsLoader';
 // import CircleLoader from '../../Components/Loaders/CircleLoader/CircleLoader';
-import QuarterCircleLoader from '../../Components/Loaders/QuarterCircleLoader/QuarterCircleLoader';
+// import QuarterCircleLoader from '../../Components/Loaders/QuarterCircleLoader/QuarterCircleLoader';
 
 import styles from './App.module.css';
 
@@ -37,6 +38,9 @@ class App extends React.Component {
   }
 
   render() {
+
+    const matchedPath = this.props.match;
+
     return (
       <Query query={ CURRENT_THEME_QUERY }>
         {
@@ -51,20 +55,26 @@ class App extends React.Component {
                   <Nav/>
                   <Switch>
                     <Route path='/' exact component={ HomePage }/>
-                    <Route 
-                      path='/artists'
-                      render={ () => (
-                        <ArtProjectDisplay displayMode='gallery'/>                
-                      )}
-                    />
                     <Route path='/search' component ={ Search }/>
                     <Route path='/settings' component = { Settings }/>
+
+                    <Route 
+                      //path={`${matchPath}/:artProjectId`}
+                      path='/artproject/:artProjectId'
+                      render={ ({ match }) => {
+                        const id = match.params.artProjectId;
+
+                        return (
+                          <SingleArtProject id={ id } />
+                        );
+                      }}
+                    />
 
                     <Route 
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle>
-                          <QuarterCircleLoader/>
+                          <ShiftingVerticalBarsLoader/>
                         </CenteringCradle>
                       )}
                     />
@@ -82,5 +92,5 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
+const AppWithRouter = withRouter(App);
+export default AppWithRouter;
