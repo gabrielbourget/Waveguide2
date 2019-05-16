@@ -7,9 +7,9 @@ import React from 'react';
 import ClassNames from 'classnames';
 import { ThemeContext } from '../../../ThemeContext';
 
-import styles from './HorizontalBubbles.module.scss';
+import styles from './HorizontalBubblesLoader.module.scss';
 
-class HorizontalBubbles extends React.Component {
+class HorizontalBubblesLoader extends React.Component {
   render() {
     const initObject = prepareComponent(this.context);
 
@@ -38,5 +38,5 @@ const prepareComponent = (context) => {
   return { bubbleClasses };
 };
 
-HorizontalBubbles.contextType = ThemeContext;
-export default HorizontalBubbles;
+HorizontalBubblesLoader.contextType = ThemeContext;
+export default HorizontalBubblesLoader;
