@@ -21,7 +21,8 @@ import { artProjects } from '../../Datasets/artProjects';
 // import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 // import HorizontalBubblesLoader from '../../Components/Loaders/HorizontalBubblesLoader/HorizontalBubblesLoader';
 // import CircleBubblesLoader from '../../Components/Loaders/CircleBubblesLoader/CircleBubblesLoader';
-import CircleSpokesLoader from '../../Components/Loaders/CircleSpokesLoader/CircleSpokesLoader';
+// import CircleSpokesLoader from '../../Components/Loaders/CircleSpokesLoader/CircleSpokesLoader';
+import ShiftingVerticalBarsLoader from '../../Components/Loaders/ShiftingVerticalBarsLoader/ShiftingVerticalBarsLoader';
 
 import styles from './App.module.css';
 
@@ -61,7 +62,7 @@ class App extends React.Component {
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle>
-                          <CircleSpokesLoader/>
+                          <ShiftingVerticalBarsLoader/>
                         </CenteringCradle>
                       )}
                     />
