@@ -3,9 +3,9 @@ import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../ThemeContext';
 
-import styles from './FromTheTopCradle.module.scss';
+import styles from './Cradle.module.scss';
 
-class FromTheTopCradle extends React.Component {
+class Cradle extends React.Component {
 
 	static propTypes = {
 		stretch: PropTypes.string
@@ -34,6 +34,6 @@ const prepareComponent = (context, props) => {
 	return { cradleClasses }
 };
 
-FromTheTopCradle.contextType = ThemeContext;
+Cradle.contextType = ThemeContext;
 
-export default FromTheTopCradle;
+export default Cradle;

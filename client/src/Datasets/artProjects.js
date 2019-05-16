@@ -1,5 +1,6 @@
 export const artProjects = [
   {
+    id: '00fc184a-8c03-42be-825b-131ed8fd746e',
     name: 'Fyoomz',
     imageURL: process.env.PUBLIC_URL + '/Images/Fyoomz.jpg',
     socialURLs: {
@@ -12,6 +13,7 @@ export const artProjects = [
     }     
   },
   {
+    id: 'aa89e678-d92e-48f2-bd59-a76d26903633',
     name: 'Yedgar',
     imageURL: process.env.PUBLIC_URL + '/Images/Yedgar.jpg',
     socialURLs: {
@@ -25,6 +27,7 @@ export const artProjects = [
     }
   },
   {
+    id: 'b6d5a323-c267-401d-b64c-fa8e61b89fee',
     name: 'Dyzphoria',
     imageURL: process.env.PUBLIC_URL + '/Images/Dyzphoria.jpg',
     socialURLs: {
@@ -37,6 +40,7 @@ export const artProjects = [
     }
   },  
   {
+    id: 'c2ac4544-2d84-472c-803e-2438e6610485',
     name: 'Sorsari',
     imageURL: process.env.PUBLIC_URL + '/Images/Sorsari.jpg',
     socialURLs: {
@@ -49,6 +53,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: '052a1c47-976b-4d1a-9142-15e400bce59f',
     name: 'Juche',
     imageURL: process.env.PUBLIC_URL + '/Images/Juche.jpg',
     socialURLs: {
@@ -63,6 +68,7 @@ export const artProjects = [
     }
   },
   {
+    id:'0fb2ca49-f38b-4130-8131-401858431f54',
     name: 'M!NGO',
     imageURL: process.env.PUBLIC_URL + '/Images/Mingo.jpg',
     socialURLs: {
@@ -75,6 +81,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: '9303fa23-924b-4df8-9fb8-7bff78006f02',
     name: 'brothel',
     imageURL: process.env.PUBLIC_URL + '/Images/Brothel.jpg',
     socialURLs: {
@@ -88,6 +95,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: '9303fa23-924b-4df8-9fb8-7bff78006f02',
     name: 'Deadcrow',
     imageURL: process.env.PUBLIC_URL + '/Images/Deadcrow.png',
     socialURLs: {
@@ -100,6 +108,7 @@ export const artProjects = [
     }
   },
   {
+    id: 'cdfc6ba2-451c-4637-8459-0b8994502354',
     name: 'WHITEMAGE',
     imageURL: process.env.PUBLIC_URL + '/Images/WHITEMAGE.jpg',
     socialURLs: {
@@ -110,6 +119,7 @@ export const artProjects = [
     }     
   },    
   {
+    id: 'c25d65e7-d2ff-401c-b17c-85b469de9e92',
     name: 'w/Out',
     imageURL: process.env.PUBLIC_URL + '/Images/wOut.jpg',
     socialURLs: {
@@ -121,6 +131,7 @@ export const artProjects = [
     }
   },
   {
+    id: '81bc7381-49e1-45ec-b6fb-7603644b58aa',
     name: 'INFDL',
     imageURL: process.env.PUBLIC_URL + '/Images/INFDL.jpg',
     socialURLs: {
@@ -133,6 +144,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: 'd441543a-ff72-4454-be78-f8edaceee78c',
     name: 'Othos',
     imageURL: process.env.PUBLIC_URL + '/Images/Othos.jpg',
     socialURLs: {
@@ -145,6 +157,7 @@ export const artProjects = [
     }
   },
   {
+    id: '6bfca79c-70fc-49d8-9ec9-2fa7d5ff9b55',
     name: 'Giant Ibis',
     imageURL: process.env.PUBLIC_URL + '/Images/GiantIbis.png',
     socialURLs: {
@@ -156,6 +169,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: '6404c821-5a29-4e63-b9ae-6fdc4d8b6b6c',
     name: 'lostageless',
     imageURL: process.env.PUBLIC_URL + '/Images/LostAgeless.png',
     socialURLs: {
@@ -168,6 +182,7 @@ export const artProjects = [
     }
   },
   {
+    id: '568ff3a9-80af-4e85-844b-5a7a6e629525',
     name: 'Sleep Well',
     imageURL: process.env.PUBLIC_URL + '/Images/SleepWell.png',
     socialURLs: {
@@ -178,6 +193,7 @@ export const artProjects = [
     }
   },
   {
+    id: 'db4a3e23-b928-4b20-b31e-6f6215f90bcc',
     name: 'Resonata',
     imageURL: process.env.PUBLIC_URL + '/Images/Resonata.jpg',
     socialURLs: {
@@ -189,6 +205,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: 'aecf5af5-f2da-4a0d-bf32-a7087651ce0a',
     name: 'Kareful',
     imageURL: process.env.PUBLIC_URL + '/Images/Kareful.jpg',
     socialURLs: {
@@ -202,6 +219,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: '215459ac-4516-47bb-9b48-8d457cb71cd1',
     name: 'Yama',
     imageURL: process.env.PUBLIC_URL + '/Images/Yama.jpg',
     socialURLs: {
@@ -211,6 +229,7 @@ export const artProjects = [
     }     
   },   
   {
+    id: '43277e82-2688-44f3-9966-0b1501718ab2',
     name: 'TW1GZ',
     imageURL: process.env.PUBLIC_URL + '/Images/TW1GZ.jpg',
     socialURLs: {
@@ -224,6 +243,7 @@ export const artProjects = [
     }
   }, 
   {
+    id: 'b64148b4-ddc2-459f-a3cc-2d85e0d352b9',
     name: 'Djedi',
     imageURL: process.env.PUBLIC_URL + '/Images/Djedi.jpg',
     socialURLs: {

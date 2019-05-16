@@ -1,5 +1,6 @@
 import React from 'react';
 import ClassNames from 'classnames';
+import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../ThemeContext';
 
@@ -13,17 +14,22 @@ class SmallArtProjectCard extends React.Component {
 		const { artProject } = this.props;
 
 		return (
-			<div className={ initObject.cardClasses }>
-				<ProfileImage src={ artProject.imageURL } title={ artProject.name }/>
-				<div className={ styles.info }>
-					<div className="title">
-						<h2 style={{ 'textDecoration': 'underline' }}>{ artProject.name }</h2>
-					</div>
-					<div className="type">
-						<h4>Art Project</h4>
+			<Link 
+				to={`/artproject/${artProject.id}`}
+				style={ { textDecoration: 'none' } } 
+			>
+				<div className={ initObject.cardClasses }>
+					<ProfileImage src={ artProject.imageURL } title={ artProject.name }/>
+					<div className={ styles.info }>
+						<div className="title">
+							<h2 style={{ 'textDecoration': 'underline' }}>{ artProject.name }</h2>
+						</div>
+						<div className="type">
+							<h4>Art Project</h4>
+						</div>
 					</div>
 				</div>
-			</div>
+			</Link>
 		);
 	}
 }

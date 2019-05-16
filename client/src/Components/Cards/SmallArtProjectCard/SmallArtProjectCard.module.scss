@@ -49,3 +49,10 @@
 		width: 100%;
 	}
 }
+
+a {
+	text-decoration: none;
+
+	&.darkTheme { color: var(--c_light); }
+	&.lightTheme { color: var(--black); }
+}
