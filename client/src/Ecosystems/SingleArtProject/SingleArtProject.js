@@ -31,8 +31,14 @@ class SingleArtProject extends React.Component {
 
 						const { ArtProject } = data;
 
+						console.log(ArtProject);
+
 						return (
-							<div>boop</div>
+							<React.Fragment>	
+								<div>{ ArtProject[0].name }</div>
+								<div>{ ArtProject[0].id }</div>
+								<div>{ ArtProject[0].imageURL }</div>
+							</React.Fragment>
 						)
 					}
 				}
