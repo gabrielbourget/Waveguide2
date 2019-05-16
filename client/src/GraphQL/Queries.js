@@ -100,11 +100,11 @@ export const SEARCH_ARTPROJECTS_QUERY = gql`
 
 /**
  * ARTPROJECT_BY_ID_QUERY
- * Description: Grab an artproject from the graph based 
+ * Description: Grab an art project from the graph based 
  * on its id. 
  */
 export const ARTPROJECT_BY_ID_QUERY = gql`
-	query ARTPROJECT_BY_ID_QUERY($artProjectId: String!) {
+	query ARTPROJECT_BY_ID_QUERY($artProjectId: ID!) {
 		ArtProject(id: $artProjectId) {
 			id 
 			imageURL
