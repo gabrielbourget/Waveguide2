@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../../ThemeContext';
-import SocialMediaIconComponents from '../../../Helpers/socialMediaIconComponents';
 
 import ProfileImage from '../../ImageContainers/ProfileImage/ProfileImage';
 import IconButton from '../../Buttons/IconButton/IconButton';
@@ -20,6 +20,7 @@ import CircleExpandIconLightTheme from './SVG/CircleExpandIcon/CircleExpandIcon_
 import CircleExpandIconHighlighted from './SVG/CircleExpandIcon/CircleExpandIcon_Highlighted';
 
 import styles from './TwoSizeCard.module.scss';
+import SocialMediaIconComponents from '../../../Helpers/socialMediaIconComponents';
 import { prepareLinkGallery, prepareComponent } from './helpers';
 
 class TwoSizeCard extends React.Component {
@@ -70,13 +71,15 @@ class TwoSizeCard extends React.Component {
 								onClick={ this.handleDownIconClick }
 							/>
 						}
-						<IconButton
-							size='25px'
-							highlighted={ <CircleExpandIconHighlighted/> }
-							darkTheme={ <CircleExpandIconDarkTheme/> }
-							lightTheme={ <CircleExpandIconLightTheme/> }
-							onClick={ this.handleExpandIconClick }
-						/>
+						<Link to={`/artproject/${this.props.id}`}>						
+							<IconButton
+								size='25px'
+								highlighted={ <CircleExpandIconHighlighted/> }
+								darkTheme={ <CircleExpandIconDarkTheme/> }
+								lightTheme={ <CircleExpandIconLightTheme/> }
+								onClick={ this.handleExpandIconClick }
+							/>
+						</Link>
 					</div>
 				</div>
 				<div className={ initObject.bodyClasses }>

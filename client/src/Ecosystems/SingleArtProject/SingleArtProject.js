@@ -9,7 +9,7 @@ import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/Lagg
 import ProfileImage from '../../Components/ImageContainers/ProfileImage/ProfileImage';
 import IconButton from '../../Components/Buttons/IconButton/IconButton';
 
-import { ARTPROJECT_BY_ID_QUERY } from '../../GraphQL/Queries';
+import { ARTPROJECT_BY_ID_QUERY } from '../../GraphQL/ArtProject/Queries';
 import styles from './SingleArtProject.module.scss';
 import Cradle from './Cradle/Cradle';
 import SocialMediaIconComponents from '../../Helpers/socialMediaIconComponents';

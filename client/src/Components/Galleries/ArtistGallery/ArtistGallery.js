@@ -15,6 +15,7 @@ class ArtistGallery extends React.Component {
 							<TwoSizeCard
 								key={ artProject.id }
 								shape='round'
+								id={ artProject.id }
 								name={ artProject.name }
 								src={ artProject.imageURL }
 								socialMediaLinks={ artProject.socialMediaLinks }

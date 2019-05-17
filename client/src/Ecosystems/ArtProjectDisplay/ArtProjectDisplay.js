@@ -10,7 +10,6 @@ import FromTheTopCradle from '../../Components/Cradles/FromTheTopCradle/FromTheT
 
 import styles from './ArtProjectDisplay.module.scss';
 import { sortArtists } from './helpers';
-import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 
 class ArtProjectDisplay extends React.Component {
 	state = {

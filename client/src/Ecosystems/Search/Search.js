@@ -13,8 +13,8 @@ import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringC
 import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 
 import styles from './Search.module.scss';
-import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
-import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
+import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/ArtProject/Queries';
+import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/ArtProject/Queries';
 // import { capitalize } from '../../Helpers/stringProcessing';
 // import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
