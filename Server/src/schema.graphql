@@ -56,6 +56,7 @@ type ArtProject {
 	biography: String
 	socialMediaLinks: [SocialMediaLink] @relation(name: "HAS_LINK_TO", direction: "OUT")
 	songs: [Song] @relation(name: "CREATOR_OF", direction: "OUT")
+	songGroups: [SongGroup] @relation(name: "CREATOR_OF", direction: "OUT")
 	creator: User @relation(name: "ALIAS_OF", direction: "OUT")
 }
 
@@ -67,6 +68,18 @@ type Song {
 	keySignature: String
 	tempo: Int
 	releaseDate: DateTime
+	socialMediaLinks: [SocialMediaLink] @relation(name:"HAS_LINK_TO", direction: "OUT")
+	songGroup: SongGroup @relation(name: "PART_OF", direction: "OUT")
+}
+
+type SongGroup {
+	id: ID!
+	title: String
+	type: String
+	image: String
+	releaseDate: DateTime
+	songs: [Song] @relation(name: "PART_OF", direction: "IN")
+	socialMediaLinks: [SocialMediaLink] @relation(name: "HAS_LINK_TO", direction: "OUT")
 }
 
 type SocialMediaLink {

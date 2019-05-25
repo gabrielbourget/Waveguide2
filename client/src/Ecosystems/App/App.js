@@ -24,9 +24,9 @@ import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringC
 // import { artProjects } from '../../Datasets/artProjects';
 // import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 // import HorizontalBubblesLoader from '../../Components/Loaders/HorizontalBubblesLoader/HorizontalBubblesLoader';
-// import CircleBubblesLoader from '../../Components/Loaders/CircleBubblesLoader/CircleBubblesLoader';
+import CircleBubblesLoader from '../../Components/Loaders/CircleBubblesLoader/CircleBubblesLoader';
 // import CircleSpokesLoader from '../../Components/Loaders/CircleSpokesLoader/CircleSpokesLoader';
-import ShiftingVerticalBarsLoader from '../../Components/Loaders/ShiftingVerticalBarsLoader/ShiftingVerticalBarsLoader';
+// import ShiftingVerticalBarsLoader from '../../Components/Loaders/ShiftingVerticalBarsLoader/ShiftingVerticalBarsLoader';
 // import CircleLoader from '../../Components/Loaders/CircleLoader/CircleLoader';
 // import QuarterCircleLoader from '../../Components/Loaders/QuarterCircleLoader/QuarterCircleLoader';
 
@@ -56,7 +56,6 @@ class App extends React.Component {
             // data.theme = 'light'
             const themeClass = (currTheme.data.theme === 'dark') ? styles.darkTheme : styles.lightTheme;
             const appClasses = ClassNames(styles.app, themeClass);
-            console.log(backdropOpen.data);
             return (
               <ThemeContext.Provider value={ currTheme.data.theme }>
                 <div className={ appClasses }>
@@ -82,7 +81,7 @@ class App extends React.Component {
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle>
-                          <ShiftingVerticalBarsLoader/>
+                          <CircleBubblesLoader/>
                         </CenteringCradle>
                       )}
                     />
