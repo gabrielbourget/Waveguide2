@@ -24,6 +24,16 @@ export const SETTINGS_PANEL_OPEN_QUERY = gql`
 `;
 
 /**
+ * BACKDROP_OPEN_QUERY
+ * Description: Checks to see if backdrop is applied or not.
+ */
+export const BACKDROP_OPEN_QUERY = gql`
+	query {
+		backdropOpen @client
+	}
+`;
+
+/**
  * CURRENT_THEME_QUERY
  * Description: Checks to see which color theme is 
  * currently set for the application.

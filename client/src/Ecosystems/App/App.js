@@ -4,11 +4,14 @@ import { withRouter } from 'react-router';
 import ClassNames from 'classnames';
 import { ThemeContext } from '../../ThemeContext';
 import { Query } from 'react-apollo';
+import { adopt } from 'react-adopt';
 
 import { CURRENT_THEME_QUERY } from '../../GraphQL/Queries';
+import { BACKDROP_OPEN_QUERY } from '../../GraphQL/Queries';
 import Nav from '../../Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import SideDrawer from '../../Components/SideDrawer/SideDrawer';
+import Backdrop from '../../Components/Backdrop/Backdrop';
 import NotFoundPageComponent from '../../Components/NotFoundPageComponent/NotFoundPageComponent';
 import HomePage from '../HomePage/HomePage';
 import Search from '../Search/Search';
@@ -29,6 +32,11 @@ import ShiftingVerticalBarsLoader from '../../Components/Loaders/ShiftingVertica
 
 import styles from './App.module.css';
 
+const Composed = adopt ({
+  currTheme: ({ render }) => <Query query={ CURRENT_THEME_QUERY }>{ render }</Query>,
+  backdropOpen: ({ render }) => <Query query={ BACKDROP_OPEN_QUERY }>{ render }</Query>
+})
+
 class App extends React.Component {
 
   componentDidMount() {
@@ -42,15 +50,15 @@ class App extends React.Component {
     const matchedPath = this.props.match;
 
     return (
-      <Query query={ CURRENT_THEME_QUERY }>
+      <Composed>
         {
-          ({ data }) => {
+          ({ currTheme, backdropOpen }) => {
             // data.theme = 'light'
-            const themeClass = (data.theme === 'dark') ? styles.darkTheme : styles.lightTheme;
+            const themeClass = (currTheme.data.theme === 'dark') ? styles.darkTheme : styles.lightTheme;
             const appClasses = ClassNames(styles.app, themeClass);
-
+            console.log(backdropOpen.data);
             return (
-              <ThemeContext.Provider value={ data.theme }>
+              <ThemeContext.Provider value={ currTheme.data.theme }>
                 <div className={ appClasses }>
                   <Nav/>
                   <Switch>
@@ -83,12 +91,15 @@ class App extends React.Component {
                   </Switch>
                   <Footer/>
                   <SideDrawer/>
+                  {
+                    (backdropOpen.data.backdropOpen) && <Backdrop/>
+                  }
                 </div>
               </ThemeContext.Provider> 
             );
           }
         }
-      </Query>
+      </Composed>
     );
   }
 }

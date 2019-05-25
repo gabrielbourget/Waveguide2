@@ -27,6 +27,9 @@ class Search extends React.Component {
 		artProjects: []
 	};	
 
+	// - Want to debounce onChange function, but runtime error claims
+	//   it's not a function when it's wrapped in the debounce. 
+
 	onChange = async (e, client) => {
 
 		const searchQuery = e.target.value;

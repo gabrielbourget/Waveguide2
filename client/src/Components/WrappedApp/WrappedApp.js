@@ -25,6 +25,7 @@ const apolloClient = new ApolloClient({
 		defaults: {
 			sideDrawerOpen: false,
 			settingsPanelOpen: false,
+			backdropOpen: false,
 			theme: 'light',
 			storedArtProjects: [],
 			storedEvents: [],

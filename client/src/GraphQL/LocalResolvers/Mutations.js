@@ -1,5 +1,6 @@
 import { SIDE_DRAWER_OPEN_QUERY } from '../Queries';
 import { SETTINGS_PANEL_OPEN_QUERY } from '../Queries';
+import { BACKDROP_OPEN_QUERY } from '../Queries';
 
 export const Mutation = {
 	// ---------------------- //
@@ -31,6 +32,20 @@ export const Mutation = {
 		cache.writeData(data);
 		return data;
 	},
+	//---------------------//
+	// - TOGGLE BACKDROP - //
+	//---------------------//
+	toggleBackdrop(_, variables, { cache }) {
+		const { backdropOpen } = cache.readQuery({
+			query: BACKDROP_OPEN_QUERY
+		});
+		// console.log(backDropOpen);
+		const data = {
+			data: { backdropOpen: !backdropOpen }
+		};
+		cache.writeData(data);
+		return data;
+	},
 	// ---------------- //
 	// - SWITCH THEME - //
 	// ---------------- //
@@ -58,4 +73,10 @@ export const Mutation = {
 		return data;
 	}
 };
+
+
+
+
+
+
 

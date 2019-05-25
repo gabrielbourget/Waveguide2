@@ -33,3 +33,13 @@ export const TOGGLE_SETTINGS_PANEL_MUTATION = gql`
 		toggleSettingsPanel @client
 	}
 `;
+
+/**
+ * TOGGLE_BACKDROP_MUTATION
+ * Description: Turn backdrop component on or off
+ */
+export const TOGGLE_BACKDROP_MUTATION = gql`
+	mutation {
+		toggleBackdrop @client
+	}
+`;
