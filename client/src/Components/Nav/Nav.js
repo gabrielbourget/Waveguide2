@@ -8,8 +8,10 @@ import { ThemeContext } from '../../ThemeContext';
 
 import styles from './Nav.module.scss';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
+import { TOGGLE_BACKDROP_MUTATION } from '../../GraphQL/Mutations';
 
 import IconButton from '../Buttons/IconButton/IconButton';
+import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
 
 // - Hamburger Menu Icon
 import { ReactComponent as HamburgerMenuDarkTheme } from './SVG/HamburgerMenu/HamburgerIconDarkTheme.svg';
@@ -80,7 +82,7 @@ class Nav extends React.Component {
 						/>
 					</Link>
 
-					<Link to ='/'>
+					<Link to='/'>
 						<IconButton
 							size='25px'
 							darkTheme={ <HomeIconDarkTheme/> }
@@ -89,6 +91,22 @@ class Nav extends React.Component {
 							onClick={ () => {} } 
 						/>
 					</Link>
+					
+					<Mutation mutation={ TOGGLE_BACKDROP_MUTATION }>
+						{
+							(toggleBackdrop) => (
+								<Link to='/signin'>
+									<OutlineButton 
+										text='Sign In'
+										shape='rounded'
+										onClick={() => {
+											toggleBackdrop();
+										}}
+									/>
+								</Link>
+							)
+						}
+					</Mutation>
 				</div>
 			</div>
 		);
