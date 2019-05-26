@@ -4,7 +4,7 @@
 	justify-items: start;
 
 	&.darkTheme{ background: var(--c_dark); }
-	&.lightTheme{ background: var(--c_light); }
+	&.lightTheme{ background: var(--c_lowContrastLightTheme); }
 
 	height: 100%;
 	width: 100%;

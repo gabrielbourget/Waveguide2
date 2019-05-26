@@ -1,5 +1,9 @@
 .signIn {
 
+	height: auto;
+	width: 300px;
+	padding: 10px 30px;
+
 	z-index: var(--modalZIndex);	
 
 	&.darkTheme {
@@ -9,4 +13,30 @@
 	&.lightTheme {
 		background: var(--c_light);
 	}
+}
+
+.fieldset {
+	height: 100%;
+	width: 100%;
+	border: 0;
+  margin: 0;
+  min-width: 0;
+	padding: 10px 30px;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 0px;
+	padding-inline-end: 0px;
+	padding-block-start: 0px;
+	padding-block-end: 0px;
+	border-style: none;
+	border-width: 0;
+	min-iniline-size: unset;
+
+	display: grid;
+	grid-gap: 1.5rem;
+	align-content: space-around;
+}
+
+.title {
+
 }

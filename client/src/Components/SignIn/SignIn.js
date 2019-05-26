@@ -56,7 +56,11 @@ class SignIn extends React.Component {
 									this.setState({ email: '', password: ''});
 								}}
 							>
-								<fieldset disabled={ loading } aria-busy={ loading }>
+								<fieldset 
+									className={ styles.fieldset }
+									disabled={ loading } 
+									aria-busy={ loading }
+								>
 									<h2>Sign In</h2>
 									<label htmlFor="email">
 										Email 
