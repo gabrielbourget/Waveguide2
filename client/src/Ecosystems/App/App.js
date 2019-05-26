@@ -80,7 +80,7 @@ class App extends React.Component {
                     />
 
                     <Route
-                      path='/signin'
+                      path='/login'
                       render={ () => (
                         <CenteringCradle>
                           <Login shape='rounded'/>

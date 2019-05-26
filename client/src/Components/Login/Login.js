@@ -2,6 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { ThemeContext } from '../../ThemeContext';
 
@@ -63,7 +64,7 @@ class Login extends React.Component {
 								}}
 							>
 								<div className={ initObject.titleBarClasses }>
-									<h1>Log In</h1>
+									<h2>Log In</h2>
 								</div>
 								<div className={ styles.formBody }>								
 									<label 
@@ -72,6 +73,7 @@ class Login extends React.Component {
 									>
 										Email 
 										<input 
+											className={ initObject.inputClasses }
 											type='email'
 											name='email'
 											placeholder='Email'
@@ -85,6 +87,7 @@ class Login extends React.Component {
 									>
 										Password 
 										<input 
+											className={ initObject.inputClasses }
 											type='password'
 											name='password'
 											placeholder='Password'
@@ -92,11 +95,22 @@ class Login extends React.Component {
 											onChange={ this.saveToState }
 										/>
 									</label>
-									<FilledButton
-										text='Log In &rarr;'
-										type='submit'
-										onClick={() => {}}
-									/>
+									<div className={ styles.bottom }>									
+										<FilledButton
+											text='Log In &rarr;'
+											type='submit'
+											onClick={() => {}}
+										/>
+
+										<div className={ styles.right }>
+											<Link to='/register'>
+												<h5>Register</h5>
+											</Link>
+											<Link to='/forgotPassword'>
+												<h5>Forgot Password</h5>
+											</Link>
+										</div>
+									</div>
 								</div>
 							</form>
 						);
@@ -112,13 +126,15 @@ const prepareComponent = (context, props) => {
 	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
 
 	const loginClasses = ClassNames(styles.login, themeClass, shapeClass)
-	const titleBarClasses = ClassNames(styles.titleBar, themeClass);
+	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 	const labelClasses = ClassNames(styles.label, themeClass);
+	const inputClasses = ClassNames(styles.input, themeClass);
 	
 	return { 
 		loginClasses,
 		titleBarClasses,
-		labelClasses
+		labelClasses,
+		inputClasses
 	};
 }
 

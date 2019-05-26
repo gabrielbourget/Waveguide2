@@ -92,9 +92,9 @@ class Nav extends React.Component {
 						/>
 					</Link>
 
-					<Link to='/signin'>
+					<Link to='/login'>
 						<OutlineButton 
-							text='Sign In'
+							text='Log In'
 							shape='rounded'
 							onClick={() => {}}
 						/>
