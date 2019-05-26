@@ -13,12 +13,13 @@ type User {
 	lastName: String 
 	email: String!
 	password: String!
+	resetToken: String
 	imageURL: String
 	biography: String
 	city: City
 	createdAt: DateTime
 	updatedAt: DateTime 	
-	permissions: [Permission!]!
+	# permissions: [Permission!]!
 	artProjects: [ArtProject] @relation(name: "ALIAS_OF", direction: "IN")
 	musicLabels: [MusicLabel] @relation(name: "OWNER_OF", direction: "OUT")
 	artCollectives: [ArtCollective] @relation(name: "MEMBER_OF", direction: "OUT")
