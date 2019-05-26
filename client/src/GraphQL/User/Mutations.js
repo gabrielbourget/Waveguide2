@@ -1,3 +1,5 @@
+import gql from 'graphql-tag';
+
 /**
  * SIGNIN_MUTATION
  * Description: Attempts to sign a user in, and returns some of their info

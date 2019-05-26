@@ -8,6 +8,7 @@ import { adopt } from 'react-adopt';
 
 import { CURRENT_THEME_QUERY } from '../../GraphQL/Queries';
 import { BACKDROP_OPEN_QUERY } from '../../GraphQL/Queries';
+
 import Nav from '../../Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import SideDrawer from '../../Components/SideDrawer/SideDrawer';
@@ -17,6 +18,7 @@ import HomePage from '../HomePage/HomePage';
 import Search from '../Search/Search';
 import SingleArtProject from '../SingleArtProject/SingleArtProject';
 import Settings from '../Settings/Settings';
+import SignIn from '../../Components/SignIn/SignIn';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
@@ -75,6 +77,15 @@ class App extends React.Component {
                           <SingleArtProject id={ id } />
                         );
                       }}
+                    />
+
+                    <Route
+                      path='/signin'
+                      render={ () => (
+                        <CenteringCradle>
+                          <SignIn/>
+                        </CenteringCradle>
+                      )}
                     />
 
                     <Route 
