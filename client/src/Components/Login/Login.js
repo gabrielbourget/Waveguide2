@@ -1,23 +1,29 @@
 import React from 'react';
 import ClassNames from 'classnames';
+import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ThemeContext } from '../../ThemeContext';
 
 import CenteringCradle from '../Cradles/CenteringCradle/CenteringCradle';
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import FilledButton from '../Buttons/FilledButton/FilledButton';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
-import { SIGNIN_MUTATION } from '../../GraphQL/User/Mutations';
+import { LOGIN_MUTATION } from '../../GraphQL/User/Mutations';
 
-import styles from './SignIn.module.scss';
+import styles from './Login.module.scss';
 
-class SignIn extends React.Component {
+class Login extends React.Component {
 
 	state = {
 		email: '',
 		password: ''
 	};
+
+	static propTypes = {
+		shape: PropTypes.string
+	}
 
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
@@ -25,14 +31,14 @@ class SignIn extends React.Component {
 
 	render() {
 
-		const initObject = prepareComponent(this.context);
+		const initObject = prepareComponent(this.context, this.props);
 
 		console.log('Init Object');
 		console.table(initObject);
 
 		return (
 			<Mutation 
-				mutation={ SIGNIN_MUTATION }
+				mutation={ LOGIN_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
@@ -48,7 +54,7 @@ class SignIn extends React.Component {
 						if (error) return <p>Error...</p>
 						return (
 							<form 
-								className={ initObject.signInClasses }							
+								className={ initObject.loginClasses }							
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
@@ -56,34 +62,42 @@ class SignIn extends React.Component {
 									this.setState({ email: '', password: ''});
 								}}
 							>
-								<fieldset 
-									className={ styles.fieldset }
-									disabled={ loading } 
-									aria-busy={ loading }
-								>
-									<h2>Sign In</h2>
-									<label htmlFor="email">
+								<div className={ initObject.titleBarClasses }>
+									<h1>Log In</h1>
+								</div>
+								<div className={ styles.formBody }>								
+									<label 
+										className={ initObject.labelClasses }
+										htmlFor="email"
+									>
 										Email 
 										<input 
 											type='email'
 											name='email'
-											placeholder='email'
+											placeholder='Email'
 											value={ this.state.email }
 											onChange={ this.saveToState }
 										/>
 									</label>
-									<label htmlFor='password'>
+									<label 
+										className={ initObject.labelClasses }
+										htmlFor='password'
+									>
 										Password 
 										<input 
 											type='password'
 											name='password'
-											placeholder='password'
+											placeholder='Password'
 											value={ this.state.password }
 											onChange={ this.saveToState }
 										/>
 									</label>
-									<button type='submit'>Sign In</button>
-								</fieldset>
+									<FilledButton
+										text='Log In &rarr;'
+										type='submit'
+										onClick={() => {}}
+									/>
+								</div>
 							</form>
 						);
 					}
@@ -93,12 +107,20 @@ class SignIn extends React.Component {
 	}
 }
 
-const prepareComponent = (context) => {
+const prepareComponent = (context, props) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
-	const signInClasses = ClassNames(styles.signIn, themeClass)
+	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
+
+	const loginClasses = ClassNames(styles.login, themeClass, shapeClass)
+	const titleBarClasses = ClassNames(styles.titleBar, themeClass);
+	const labelClasses = ClassNames(styles.label, themeClass);
 	
-	return { signInClasses };
+	return { 
+		loginClasses,
+		titleBarClasses,
+		labelClasses
+	};
 }
 
-SignIn.contextType = ThemeContext;
-export default SignIn;
+Login.contextType = ThemeContext;
+export default Login;

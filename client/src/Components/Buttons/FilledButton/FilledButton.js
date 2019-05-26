@@ -13,7 +13,8 @@ class FilledButton extends React.Component {
 	
 	static propTypes = {
 		text: PropTypes.string.isRequired,
-		onClick: PropTypes.func.isRequired
+		onClick: PropTypes.func.isRequired,
+		type: PropTypes.string
 	};
 
 	render() {
@@ -23,6 +24,7 @@ class FilledButton extends React.Component {
 			<button
 				className={ initObject.buttonClasses }
 				onClick={ this.handleClick }
+				type={ this.props.type }
 			>
 				<p className={ initObject.buttonTextClasses }>
 					{ this.props.text }

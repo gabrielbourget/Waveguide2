@@ -91,22 +91,14 @@ class Nav extends React.Component {
 							onClick={ () => {} } 
 						/>
 					</Link>
-					<Mutation mutation={ TOGGLE_BACKDROP_MUTATION }>
-						{
-							(toggleBackDrop) => (
-								<Link to='/signin'>
-									<OutlineButton 
-										text='Sign In'
-										shape='rounded'
-										onClick={() => (
-											toggleBackDrop()
-										)}
-									/>
-								</Link>
-							)
-						}
-					</Mutation>
 
+					<Link to='/signin'>
+						<OutlineButton 
+							text='Sign In'
+							shape='rounded'
+							onClick={() => {}}
+						/>
+					</Link>
 				</div>
 			</div>
 		);

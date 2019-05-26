@@ -11,8 +11,10 @@ class OutlineButton extends React.Component {
 	};
 
 	static propTypes = {
-		text: PropTypes.string.isRequired
-	}
+		text: PropTypes.string.isRequired,
+		onClick: PropTypes.func.isRequired,
+		type: PropTypes.string
+	};
 
 	render() {
 		const initObject = prepareComponent(this.props, this.context);
@@ -21,6 +23,7 @@ class OutlineButton extends React.Component {
 			<button
 				className={ initObject.buttonClassNames }
 				onClick={ this.handleClick }
+				type={ this.props.type }
 			>
 				<span className={ initObject.buttonTextClassNames }>
 					{ this.props.text }

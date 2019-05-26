@@ -18,7 +18,7 @@ import HomePage from '../HomePage/HomePage';
 import Search from '../Search/Search';
 import SingleArtProject from '../SingleArtProject/SingleArtProject';
 import Settings from '../Settings/Settings';
-import SignIn from '../../Components/SignIn/SignIn';
+import Login from '../../Components/Login/Login';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
@@ -83,7 +83,7 @@ class App extends React.Component {
                       path='/signin'
                       render={ () => (
                         <CenteringCradle>
-                          <SignIn/>
+                          <Login shape='rounded'/>
                         </CenteringCradle>
                       )}
                     />
