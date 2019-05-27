@@ -55,6 +55,7 @@ class Register extends React.Component {
 										username: '',
 										email: '',
 										password: '',
+										passwordConfirmation: ''
 									})
 								}}
 							>
@@ -101,6 +102,20 @@ class Register extends React.Component {
 											name='password'
 											placeholder='Password'
 											value={ this.state.password }
+											onChange={ this.saveToState }
+										/>
+									</label>
+									<label 
+										className={ initObject.labelClasses }
+										htmlFor='passwordConfirmation'
+									>
+										Confirm Password
+										<input 
+											className={ initObject.inputClasses }
+											type='password'
+											name='passwordConfirmation'
+											placeholder='Confirm Password'
+											value={ this.state.passwordConfirmation }
 											onChange={ this.saveToState }
 										/>
 									</label>

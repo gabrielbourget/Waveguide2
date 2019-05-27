@@ -7,7 +7,7 @@ enum Permission {
 
 type User {
 	id: ID!
-	username: String
+	username: String! # TODO -> Make this unique with a constraint on the field in the database. 
 	name: String
 	firstName: String
 	middleNames: [String]

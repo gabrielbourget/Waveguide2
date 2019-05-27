@@ -109,6 +109,11 @@ class App extends React.Component {
                     />
 
                     <Route 
+                      path='/resetpassword'
+                      render={ () => {} }
+                    />
+
+                    <Route 
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle>
