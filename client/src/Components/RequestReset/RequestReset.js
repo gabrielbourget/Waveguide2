@@ -7,6 +7,7 @@ import { ThemeContext } from '../../ThemeContext';
 
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
+import LabelAndInput from '../LabelAndInput/LabelAndInput';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
 import { REQUEST_RESET_MUTATION } from '../../GraphQL/User/Mutations';
@@ -58,20 +59,14 @@ class RequestReset extends React.Component {
 										Enter your email, and you'll receive a link
 										to reset your password.
 									</p>
-									<label 
-										className={ initObject.labelClasses }
+									<LabelAndInput 
 										htmlFor='email'
-									>
-										Email
-										<input 
-											className={ initObject.inputClasses }
-											type='email'
-											name='email'
-											placeholder='Email'
-											value={ this.state.email }
-											onChange={ this.saveToState }
-										/>
-									</label>
+										type='email'
+										name='email'
+										placeholder='Email'
+										value={ this.state.email }
+										onChange={ this.saveToState }
+									/>
 									<div className={ styles.bottom }>
 										<FilledButton
 											text='Request Reset'

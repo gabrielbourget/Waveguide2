@@ -8,6 +8,7 @@ import { ThemeContext } from '../../ThemeContext';
 
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
+import LabelAndInput from '../LabelAndInput/LabelAndInput';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
 import { REGISTER_MUTATION } from '../../GraphQL/User/Mutations';
@@ -19,7 +20,8 @@ class Register extends React.Component {
 	state = {
 		username: '',
 		email: '',
-		password: ''
+		password: '',
+		passwordConfirmation: ''
 	};
 
 	static propTypes = {
@@ -63,62 +65,38 @@ class Register extends React.Component {
 									<h2>Register</h2>
 								</div>
 								<div className={ styles.formBody }>
-									<label 
-										className={ initObject.labelClasses }
+									<LabelAndInput 
 										htmlFor='username'
-									>
-										Username
-										<input 
-											className={ initObject.inputClasses }
-											type='text'
-											name='username'
-											placeholder='Username'
-											value={ this.state.username }
-											onChange={ this.saveToState }
-										/>
-									</label>
-									<label 
-										className={ initObject.labelClasses }
+										type='text'
+										name='username'
+										placeholder='Username'
+										value={ this.state.username }
+										onChange={ this.saveToState }
+									/>
+									<LabelAndInput 
 										htmlFor='email'
-									>
-										Email
-										<input 
-											className={ initObject.inputClasses }
-											type='email'
-											name='email'
-											placeholder='Email'
-											value={ this.state.email }
-											onChange={ this.saveToState }
-										/>
-									</label>
-									<label
-										className={ initObject.labelClasses }
+										type='email'
+										name='email'
+										placeholder='Email'
+										value={ this.state.email }
+										onChange={ this.saveToState }
+									/>
+									<LabelAndInput 
 										htmlFor='password'
-									>
-										Password
-										<input 
-											className={ initObject.inputClasses }
-											type='password'
-											name='password'
-											placeholder='Password'
-											value={ this.state.password }
-											onChange={ this.saveToState }
-										/>
-									</label>
-									<label 
-										className={ initObject.labelClasses }
+										type='password'
+										name='password'
+										placeholder='Password'
+										value={ this.state.password }
+										onChange={ this.saveToState }
+									/>
+									<LabelAndInput 
 										htmlFor='passwordConfirmation'
-									>
-										Confirm Password
-										<input 
-											className={ initObject.inputClasses }
-											type='password'
-											name='passwordConfirmation'
-											placeholder='Confirm Password'
-											value={ this.state.passwordConfirmation }
-											onChange={ this.saveToState }
-										/>
-									</label>
+										type='password'
+										name='passwordConfirmation'
+										placeholder='Confirm Password'
+										value={ this.state.passwordConfirmation }
+										onChange={ this.saveToState }
+									/>
 									<div className={ styles.bottom }>
 										<FilledButton
 											text='Register &rarr;'

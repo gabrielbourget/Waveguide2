@@ -7,6 +7,7 @@ import { ThemeContext } from '../../ThemeContext';
 
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
+import LabelAndInput from '../LabelAndInput/LabelAndInput';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
 import { LOGIN_MUTATION } from '../../GraphQL/User/Mutations';
@@ -32,9 +33,6 @@ class Login extends React.Component {
 
 		const initObject = prepareComponent(this.context, this.props);
 
-		console.log('Init Object');
-		console.table(initObject);
-
 		return (
 			<Mutation 
 				mutation={ LOGIN_MUTATION }
@@ -59,34 +57,22 @@ class Login extends React.Component {
 									<h2>Log In</h2>
 								</div>
 								<div className={ styles.formBody }>								
-									<label 
-										className={ initObject.labelClasses }
-										htmlFor="email"
-									>
-										Email 
-										<input 
-											className={ initObject.inputClasses }
-											type='email'
-											name='email'
-											placeholder='Email'
-											value={ this.state.email }
-											onChange={ this.saveToState }
-										/>
-									</label>
-									<label 
-										className={ initObject.labelClasses }
+									<LabelAndInput 
+										htmlFor='email'
+										type='email'
+										name='email'
+										placeholder='Email'
+										value={ this.state.email }
+										onChange={ this.saveToState }
+									/>
+									<LabelAndInput 
 										htmlFor='password'
-									>
-										Password 
-										<input 
-											className={ initObject.inputClasses }
-											type='password'
-											name='password'
-											placeholder='Password'
-											value={ this.state.password }
-											onChange={ this.saveToState }
-										/>
-									</label>
+										type='password'
+										name='password'
+										placeholder='Password'
+										value={ this.state.password }
+										onChange={ this.saveToState }
+									/>
 									<div className={ styles.bottom }>									
 										<FilledButton
 											text='Log In &rarr;'

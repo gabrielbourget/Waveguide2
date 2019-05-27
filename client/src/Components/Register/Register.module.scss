@@ -53,36 +53,6 @@
 	align-content: space-around;
 }
 
-.label {
-	display: grid;
-	grid-gap: 0.5rem;
-	font-size: 1rem;
-	&.darkTheme { color: var(--c_light); }
-	&.lightTheme { color: var(--black); }
-
-	input {
-		background-image: none !important;
-		border: none;
-	}
-
-	.input {
-		padding: 3px 2.5px 7.5px 2.5px;
-		font-size: 1.5rem;
-
-		&.darkTheme { 
-			background: var(--black);
-			color: var(--c_light);
-			border-bottom: 1.5px solid var(--c_light);
-		}
-
-		&.lightTheme {
-			background: var(--c_light);
-			color: var(--black);
-			border-bottom: 1.5px solid var(--black);
-		}
-	}
-}
-
 .bottom {
 	height: auto;
 	width: 100%;
