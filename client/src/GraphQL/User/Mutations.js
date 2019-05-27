@@ -5,7 +5,10 @@ import gql from 'graphql-tag';
  * Description: Creates a new user in the system.
  */
 export const REGISTER_MUTATION = gql`
-	mutation REGISTER_MUTATION($username: String!, $email: String!, $password: String!) {
+	mutation REGISTER_MUTATION($username: String!, 
+														 $email: String!, 
+														 $password: String!,
+														 $passwordConfirmation: String!) {
 		CreateUser(username: $username, email: $email, password: $password) {
 			id
 			username 
@@ -37,7 +40,30 @@ export const LOGIN_MUTATION = gql`
  */
 export const REQUEST_RESET_MUTATION = gql`
 	mutation REQUEST_RESET_MUTATION($email: String!) {
-		message
+		requestReset(email: $email) {
+			message
+		}
 	}
 `;
+
+/**
+ * RESET_PASSWORD_MUTATION
+ * Description: Resets the user's password in the database.
+ */
+export const RESET_PASSWORD_MUTATION = gql`
+	mutation RESET_PASSWORD_MUTATION($password: String!, $passwordConfirmation: String!) {
+		resetPassword(password: $password, passwordConfimation: $passwordConfimation) {
+			message
+		}
+	}
+`;
+
+
+
+
+
+
+
+
+
 

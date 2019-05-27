@@ -1,23 +1,23 @@
 import React from 'react';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
-import { Mutation } from 'react-apollo';
-import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../ThemeContext';
+import { Mutation } from 'react-apollo';
 
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
 import LabelAndInput from '../LabelAndInput/LabelAndInput';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
-import { REQUEST_RESET_MUTATION } from '../../GraphQL/User/Mutations';
+import { RESET_PASSWORD_MUTATION } from '../../GraphQL/User/Mutations';
 
-import styles from './RequestReset.module.scss';
+import styles from './ResetPassword.module.scss';
 
-class RequestReset extends React.Component {
+class ResetPassword extends React.Component {
 
 	state = {
-		email: ''
+		password: '',
+		passwordConfirmation: ''
 	};
 
 	static propTypes = {
@@ -28,48 +28,55 @@ class RequestReset extends React.Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	render () {
+	render() {
 		const initObject = prepareComponent(this.context, this.props);
 
 		return (
-				<Mutation 
-				mutation={ REQUEST_RESET_MUTATION }
+			<Mutation 
+				mutation={ RESET_PASSWORD_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(requestReset, { error, loading }) => {
-						if (loading) return <LaggingLinesLoader/>;
+					(resetPassword, { error, loading }) => {
+						if (loading) return <LaggingLinesLoader />;
 						if (error) return <p>Error...</p>;
 						return (
 							<form 
-								className={ initObject.requestResetClasses }
+								className={ initObject.resetPasswordClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await requestReset();
-									this.setState({ email: '' });
+									await resetPassword();
+									this.setState({ password: '', passwordConfirmation: ''})
 								}}
 							>
 								<div className={ initObject.titleBarClasses }>
-									<h2>Request Reset</h2>
+									<h2>Reset Password</h2>
 								</div>
 								<div className={ styles.formBody }>
 									<p className={ styles.prompt }>
-										Enter your email, and you'll receive a link
-										to reset your password.
+										Please enter your new password. 
 									</p>
-									<LabelAndInput 
-										htmlFor='email'
-										type='email'
-										name='email'
-										placeholder='Email'
-										value={ this.state.email }
+									<LabelAndInput
+										htmlFor='password'
+										type='password'
+										name='password'
+										placeholder='Password'
+										value={ this.state.password }
+										onChange={ this.saveToState }
+									/>
+									<LabelAndInput
+										htmlFor='passwordConfimation'
+										type='password'
+										name='passwordConfimation'
+										placeholder='Confirm Password'
+										value={ this.state.password }
 										onChange={ this.saveToState }
 									/>
 									<div className={ styles.bottom }>
-										<FilledButton
-											text='Request Reset'
+										<FilledButton 
+											text='Reset Password'
 											type='submit'
 											onClick={ () => {} }
 										/>
@@ -88,14 +95,14 @@ const prepareComponent = (context, props) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
 
-	const requestResetClasses = ClassNames(styles.requestReset, themeClass, shapeClass);
+	const resetPasswordClasses = ClassNames(styles.resetPassword, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		requestResetClasses,
+		resetPasswordClasses,
 		titleBarClasses
-	}
-}
+	};
+};
 
-RequestReset.contextType = ThemeContext;
-export default RequestReset;
+ResetPassword.contextType = ThemeContext;
+export default ResetPassword;

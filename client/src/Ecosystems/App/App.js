@@ -21,6 +21,7 @@ import Settings from '../Settings/Settings';
 import Login from '../../Components/Login/Login';
 import Register from '../../Components/Register/Register';
 import RequestReset from '../../Components/RequestReset/RequestReset';
+import ResetPassword from '../../Components/ResetPassword/ResetPassword';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
@@ -110,7 +111,11 @@ class App extends React.Component {
 
                     <Route 
                       path='/resetpassword'
-                      render={ () => {} }
+                      render={ () => (
+                        <CenteringCradle>
+                          <ResetPassword shape='rounded' />
+                        </CenteringCradle>
+                      )}
                     />
 
                     <Route 
