@@ -1,4 +1,4 @@
-.login {
+.register {
 	height: auto;
 	min-height: 250px;
 	width: 300px;
@@ -87,8 +87,6 @@
 	height: auto;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 2fr;
-	grid-auto-flow: column;
 
 	.right {
 		display: grid;

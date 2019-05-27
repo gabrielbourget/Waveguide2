@@ -3,67 +3,84 @@ import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import gql from 'graphql-tag';
 import { ThemeContext } from '../../ThemeContext';
 
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
-import { LOGIN_MUTATION } from '../../GraphQL/User/Mutations';
+import { REGISTER_MUTATION } from '../../GraphQL/User/Mutations';
 
-import styles from './Login.module.scss';
+import styles from './Register.module.scss';
 
-class Login extends React.Component {
+class Register extends React.Component {
 
 	state = {
+		username: '',
 		email: '',
 		password: ''
 	};
 
 	static propTypes = {
 		shape: PropTypes.string
-	};
+	}
 
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	render() {
+	render () {
 
 		const initObject = prepareComponent(this.context, this.props);
 
-		console.log('Init Object');
-		console.table(initObject);
-
 		return (
 			<Mutation 
-				mutation={ LOGIN_MUTATION }
+				mutation={ REGISTER_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(login, { error, loading }) => {
+					(register, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form 
-								className={ initObject.loginClasses }							
+								className={ initObject.registerClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await login();
-									this.setState({ email: '', password: ''});
+									await register();
+									this.setState({
+										username: '',
+										email: '',
+										password: '',
+									})
 								}}
 							>
 								<div className={ initObject.titleBarClasses }>
-									<h2>Log In</h2>
+									<h2>Register</h2>
 								</div>
-								<div className={ styles.formBody }>								
+								<div className={ styles.formBody }>
 									<label 
 										className={ initObject.labelClasses }
-										htmlFor="email"
+										htmlFor='username'
 									>
-										Email 
+										Username
+										<input 
+											className={ initObject.inputClasses }
+											type='text'
+											name='username'
+											placeholder='Username'
+											value={ this.state.username }
+											onChange={ this.saveToState }
+										/>
+									</label>
+									<label 
+										className={ initObject.labelClasses }
+										htmlFor='email'
+									>
+										Email
 										<input 
 											className={ initObject.inputClasses }
 											type='email'
@@ -73,11 +90,11 @@ class Login extends React.Component {
 											onChange={ this.saveToState }
 										/>
 									</label>
-									<label 
+									<label
 										className={ initObject.labelClasses }
 										htmlFor='password'
 									>
-										Password 
+										Password
 										<input 
 											className={ initObject.inputClasses }
 											type='password'
@@ -87,21 +104,12 @@ class Login extends React.Component {
 											onChange={ this.saveToState }
 										/>
 									</label>
-									<div className={ styles.bottom }>									
+									<div className={ styles.bottom }>
 										<FilledButton
-											text='Log In &rarr;'
+											text='Register &rarr;'
 											type='submit'
-											onClick={() => {}}
+											onClick={ () => {} }
 										/>
-
-										<div className={ styles.right }>
-											<Link to='/register'>
-												<h5>Register</h5>
-											</Link>
-											<Link to='/forgotpassword'>
-												<h5>Forgot Password</h5>
-											</Link>
-										</div>
 									</div>
 								</div>
 							</form>
@@ -117,18 +125,27 @@ const prepareComponent = (context, props) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
 
-	const loginClasses = ClassNames(styles.login, themeClass, shapeClass)
+	const registerClasses = ClassNames(styles.register, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 	const labelClasses = ClassNames(styles.label, themeClass);
 	const inputClasses = ClassNames(styles.input, themeClass);
-	
-	return { 
-		loginClasses,
+
+	return {
+		registerClasses,
 		titleBarClasses,
 		labelClasses,
 		inputClasses
-	};
+	}
 }
 
-Login.contextType = ThemeContext;
-export default Login;
+Register.contextType = ThemeContext;
+export default Register;
+
+
+
+
+
+
+
+
+

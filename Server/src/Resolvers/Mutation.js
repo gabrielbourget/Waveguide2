@@ -39,7 +39,7 @@ const Mutations = {
 	/***************/
 	/* - SIGN IN - */
 	/***************/
-	async signIn(parent, args, ctx, info) {
+	async login(parent, args, ctx, info) {
 
 		const { email, password } = args; 
 

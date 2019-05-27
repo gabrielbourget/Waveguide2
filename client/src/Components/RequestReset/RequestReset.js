@@ -9,15 +9,14 @@ import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader
 import FilledButton from '../Buttons/FilledButton/FilledButton';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
-import { LOGIN_MUTATION } from '../../GraphQL/User/Mutations';
+import { REQUEST_RESET_MUTATION } from '../../GraphQL/User/Mutations';
 
-import styles from './Login.module.scss';
+import styles from './RequestReset.module.scss';
 
-class Login extends React.Component {
+class RequestReset extends React.Component {
 
 	state = {
-		email: '',
-		password: ''
+		email: ''
 	};
 
 	static propTypes = {
@@ -28,42 +27,42 @@ class Login extends React.Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	render() {
-
+	render () {
 		const initObject = prepareComponent(this.context, this.props);
 
-		console.log('Init Object');
-		console.table(initObject);
-
 		return (
-			<Mutation 
-				mutation={ LOGIN_MUTATION }
+				<Mutation 
+				mutation={ REQUEST_RESET_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(login, { error, loading }) => {
+					(resetPassword, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
-						if (error) return <p>Error...</p>;
+						if (error) return <p>Error...</p>
 						return (
 							<form 
-								className={ initObject.loginClasses }							
+								className={ initObject.requestResetClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await login();
-									this.setState({ email: '', password: ''});
+									await resetPassword();
+									this.setState({ email: '' });
 								}}
 							>
 								<div className={ initObject.titleBarClasses }>
-									<h2>Log In</h2>
+									<h2>Password Reset</h2>
 								</div>
-								<div className={ styles.formBody }>								
+								<div className={ styles.formBody }>
+									<p className={ styles.prompt }>
+										Enter your email, and you'll receive a link
+										to reset your password.
+									</p>
 									<label 
 										className={ initObject.labelClasses }
-										htmlFor="email"
+										htmlFor='email'
 									>
-										Email 
+										Email
 										<input 
 											className={ initObject.inputClasses }
 											type='email'
@@ -73,35 +72,12 @@ class Login extends React.Component {
 											onChange={ this.saveToState }
 										/>
 									</label>
-									<label 
-										className={ initObject.labelClasses }
-										htmlFor='password'
-									>
-										Password 
-										<input 
-											className={ initObject.inputClasses }
-											type='password'
-											name='password'
-											placeholder='Password'
-											value={ this.state.password }
-											onChange={ this.saveToState }
-										/>
-									</label>
-									<div className={ styles.bottom }>									
+									<div className={ styles.bottom }>
 										<FilledButton
-											text='Log In &rarr;'
+											text='Request Reset'
 											type='submit'
-											onClick={() => {}}
+											onClick={ () => {} }
 										/>
-
-										<div className={ styles.right }>
-											<Link to='/register'>
-												<h5>Register</h5>
-											</Link>
-											<Link to='/forgotpassword'>
-												<h5>Forgot Password</h5>
-											</Link>
-										</div>
 									</div>
 								</div>
 							</form>
@@ -117,18 +93,18 @@ const prepareComponent = (context, props) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
 
-	const loginClasses = ClassNames(styles.login, themeClass, shapeClass)
+	const requestResetClasses = ClassNames(styles.requestReset, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 	const labelClasses = ClassNames(styles.label, themeClass);
 	const inputClasses = ClassNames(styles.input, themeClass);
-	
-	return { 
-		loginClasses,
+
+	return {
+		requestResetClasses,
 		titleBarClasses,
 		labelClasses,
 		inputClasses
-	};
+	}
 }
 
-Login.contextType = ThemeContext;
-export default Login;
+RequestReset.contextType = ThemeContext;
+export default RequestReset;

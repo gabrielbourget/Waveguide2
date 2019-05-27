@@ -1,4 +1,4 @@
-.login {
+.requestReset {
 	height: auto;
 	min-height: 250px;
 	width: 300px;
@@ -46,11 +46,17 @@
 .formBody {
 	height: 100%;
 	width: 100%;
-	padding: 10px 30px 20px 30px;
+	padding: 25px 30px 20px 30px;
 
 	display: grid;
 	grid-gap: 1.5rem;
 	align-content: space-around;
+}
+
+.prompt {
+	display: grid;
+	align-items: center;
+	align-content: center;
 }
 
 .label {
@@ -87,21 +93,7 @@
 	height: auto;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 2fr;
 	grid-auto-flow: column;
-
-	.right {
-		display: grid;
-		justify-content: end;
-		justify-items: end;
-		align-content: center;
-		grid-gap: 0.2rem;
-
-		a {
-			display: grid;
-			justify-items: end;
-		}
-	}
 }
 
 a {
