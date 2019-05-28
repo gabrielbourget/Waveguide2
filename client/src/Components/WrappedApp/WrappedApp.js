@@ -27,6 +27,7 @@ const apolloClient = new ApolloClient({
 			settingsPanelOpen: false,
 			backdropOpen: false,
 			theme: 'light',
+			currentUserId: '',
 			storedArtProjects: [],
 			storedEvents: [],
 			storedUsers: []

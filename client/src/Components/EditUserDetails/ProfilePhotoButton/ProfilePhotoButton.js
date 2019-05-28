@@ -1,52 +1,40 @@
 import React from 'react';
 import ClassNames from 'classnames';
-import { ThemeContext } from '../../../../ThemeContext';
+import { ThemeContext } from '../../../ThemeContext';
 
-import styles from './TreeToggleButton.module.scss';
+import styles from './ProfilePhotoButton.module.scss';
 
-// - Expand Icon
-import { ReactComponent as ExpandIconDarkTheme } from './SVG/CircleExpandIcon/CircleExpandIcon_DarkTheme.svg';
-import { ReactComponent as ExpandIconLightTheme } from './SVG/CircleExpandIcon/CircleExpandIcon_LightTheme.svg';
-// import { ReactComponent as ExpandIconHighlighted } from './SVG/CircleExpandIcon/CircleExpandIcon_Highlighted.svg';
+// - Add Person Icon
+import { ReactComponent as AddPersonIconDarkTheme } from './SVG/AddPersonIcon/AddPersonIconDarkTheme.svg';
+import { ReactComponent as AddPersonIconLightTheme } from './SVG/AddPersonIcon/AddPersonIconLightTheme.svg';
+// import { ReactComponent as AddPersionIconHighlighted } from './SVG/AddPersonIcon/AddPersonIconHighlighted.svg';
 
-// - Close Icon
-import { ReactComponent as CloseIconDarkTheme } from './SVG/CircleXIcon/CircleXIcon_DarkTheme.svg';
-import { ReactComponent as CloseIconLightTheme } from './SVG/CircleXIcon/CircleXIcon_LightTheme.svg';
-// import { ReactComponent as CloseIconHighlighted } from './SVG/CircleXIcon/CircleXIcon_Highlighted.svg';
+class ProfilePhotoButton extends React.Component {	
 
-class TreeToggleButton extends React.Component {	
-
-	handleButtonClick = () => {
-		this.props.onClick();
+	handleButtonClick = (e) => {
+		this.props.onClick(e);
 	}
 
 	render() {
 
-		let icon;
-
-		if (this.props.status === 'open') {
-			if (this.context === 'dark') icon = <CloseIconDarkTheme/>;
-			else icon = <CloseIconLightTheme/>;
-		}
-		else if (this.props.status === 'closed') {
-			if (this.context === 'dark') icon = <ExpandIconDarkTheme/>
-				else icon = <ExpandIconLightTheme/>
-		}
+		const icon = (this.context === 'dark') ? <AddPersonIconDarkTheme/> : <AddPersonIconLightTheme/>;
 
 		const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
-		const treeToggleButtonClasses = ClassNames(styles.treeToggleButton, ((this.context === 'dark') ? styles.darkTheme : styles.lightTheme));
+		const profilePhotoButtonClasses = ClassNames(styles.profilePhotoButton, themeClass);
 
 		return (
 			<button 
-				className={ treeToggleButtonClasses }
+				className={ profilePhotoButtonClasses }
 				onClick={ this.handleButtonClick }
 			>
-				{ icon }
+				<div style={{ height: '60px', width: '60px' }}>
+					{ icon }
+				</div>
 			</button>
 		);
 	}
 }
 
-TreeToggleButton.contextType = ThemeContext;
+ProfilePhotoButton.contextType = ThemeContext;
 
-export default TreeToggleButton;
+export default ProfilePhotoButton;

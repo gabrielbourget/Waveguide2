@@ -1,11 +1,7 @@
-@import '../../../../GlobalStyles/colors.css';
-@import '../../../../GlobalStyles/generalVars.scss';
-@import '../../../../GlobalStyles/zIndexes.scss';
+.profilePhotoButton {
 
-.treeToggleButton {
-
-	height: 40px;
-	width: 40px;
+	height: 75px;
+	width: 75px;
 	border-radius: 50px;
 	border: none;
 	transition: all 0.5s ease-in-out;
@@ -14,9 +10,9 @@
 	place-items: center;
 	place-content: center;
 
-	position: fixed;
-	bottom: 15px;
-	right: 15px;
+	// position: fixed;
+	// bottom: 15px;
+	// right: 15px;
 
 	z-index: var(--aboveFloatingElementZIndex);
 
@@ -35,6 +31,6 @@
 	}
 
 	&.lightTheme {
-		background: var(--white);
+		background: var(--c_light);
 	}
 }

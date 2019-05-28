@@ -2,8 +2,11 @@
 	display: grid;
 	place-items: center;
 	place-content: center;
-	height: 100%;
+	height: auto;
 	width: 100%;
+	//overflow-y: scroll;
+
+	padding: 20px 30px;
 
 	&.stretch { min-height: 100vh; }
 }
