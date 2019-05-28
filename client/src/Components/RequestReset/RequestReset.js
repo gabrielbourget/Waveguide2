@@ -61,6 +61,7 @@ class RequestReset extends React.Component {
 									</p>
 									<LabelAndInput 
 										htmlFor='email'
+										labelText='Email'
 										type='email'
 										name='email'
 										placeholder='Email'

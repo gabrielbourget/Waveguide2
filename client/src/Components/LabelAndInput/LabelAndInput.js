@@ -23,7 +23,7 @@ class LabelAndInput extends React.Component {
 				className={ initObject.labelClasses }
 				htmlFor={ this.props.htmlFor }
 			>
-				Email
+				{ this.props.labelText }
 				<input 
 					className={ initObject.inputClasses }
 					type={ this.props.type }

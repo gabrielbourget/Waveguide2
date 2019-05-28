@@ -67,6 +67,7 @@ class Register extends React.Component {
 								<div className={ styles.formBody }>
 									<LabelAndInput 
 										htmlFor='username'
+										labelText='Username'
 										type='text'
 										name='username'
 										placeholder='Username'
@@ -75,6 +76,7 @@ class Register extends React.Component {
 									/>
 									<LabelAndInput 
 										htmlFor='email'
+										labelText='Email'
 										type='email'
 										name='email'
 										placeholder='Email'
@@ -83,6 +85,7 @@ class Register extends React.Component {
 									/>
 									<LabelAndInput 
 										htmlFor='password'
+										labelText='Password'
 										type='password'
 										name='password'
 										placeholder='Password'
@@ -91,6 +94,7 @@ class Register extends React.Component {
 									/>
 									<LabelAndInput 
 										htmlFor='passwordConfirmation'
+										labelText='Confirm Password'
 										type='password'
 										name='passwordConfirmation'
 										placeholder='Confirm Password'

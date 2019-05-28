@@ -60,17 +60,19 @@ class ResetPassword extends React.Component {
 									</p>
 									<LabelAndInput
 										htmlFor='password'
+										labelText='New Password'
 										type='password'
 										name='password'
-										placeholder='Password'
+										placeholder='New Password'
 										value={ this.state.password }
 										onChange={ this.saveToState }
 									/>
 									<LabelAndInput
 										htmlFor='passwordConfimation'
+										labelText='Confirm New Password'
 										type='password'
 										name='passwordConfimation'
-										placeholder='Confirm Password'
+										placeholder='Confirm New Password'
 										value={ this.state.password }
 										onChange={ this.saveToState }
 									/>

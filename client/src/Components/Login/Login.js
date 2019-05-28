@@ -60,6 +60,7 @@ class Login extends React.Component {
 								<div className={ styles.formBody }>								
 									<LabelAndInput 
 										htmlFor='email'
+										labelText='Email'
 										type='email'
 										name='email'
 										placeholder='Email'
@@ -68,6 +69,7 @@ class Login extends React.Component {
 									/>
 									<LabelAndInput 
 										htmlFor='password'
+										labelText='Password'
 										type='password'
 										name='password'
 										placeholder='Password'
@@ -90,11 +92,11 @@ class Login extends React.Component {
 										</div>
 									</div>
 
-									<StatusOutlineInner 
+{/*									<StatusOutlineInner 
 										status='problem'
 										top='5px'
 										left='5px'
-									/>
+									/>*/}
 								</div>
 							</form>
 						);
