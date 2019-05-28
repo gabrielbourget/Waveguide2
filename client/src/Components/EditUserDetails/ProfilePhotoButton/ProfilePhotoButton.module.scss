@@ -1,0 +1,40 @@
+@import '../../../../GlobalStyles/colors.css';
+@import '../../../../GlobalStyles/generalVars.scss';
+@import '../../../../GlobalStyles/zIndexes.scss';
+
+.treeToggleButton {
+
+	height: 40px;
+	width: 40px;
+	border-radius: 50px;
+	border: none;
+	transition: all 0.5s ease-in-out;
+	
+	display: grid;
+	place-items: center;
+	place-content: center;
+
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+
+	z-index: var(--aboveFloatingElementZIndex);
+
+	&:hover {
+		cursor: pointer;
+		&.darkTheme { box-shadow: var(--boxShadowDarkTheme); }
+		&.lightTheme { box-shadow: var(--boxShadowLightTheme); }
+	}
+
+	&:focus { outline: none; }
+
+	background: transparent;
+
+	&.darkTheme {
+		background: var(--black);
+	}
+
+	&.lightTheme {
+		background: var(--white);
+	}
+}

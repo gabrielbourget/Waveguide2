@@ -2,5 +2,7 @@
 	border: none;
 	&.darkTheme { background: var(--c_light); }
 	&.lightTheme { background: var(--black); }
+	&.darkThemeSubtle { background: var(--c_lowContrastDarkTheme); }
+	&.lightThemeSubtle { background: var(--c_lowContrastLightTheme); }	
 }
 

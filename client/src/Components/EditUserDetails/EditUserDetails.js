@@ -54,7 +54,7 @@ class EditUserDetails extends React.Component {
 											alignItems: 'center'
 										}}
 									>
-										<HorizontalDivider height='3px'/>
+										<HorizontalDivider height='1px' subtle/>
 									</div>
 								}
 								<div className={ styles.formBody }>
