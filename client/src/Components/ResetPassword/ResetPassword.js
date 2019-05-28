@@ -7,6 +7,7 @@ import { Mutation } from 'react-apollo';
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
 import LabelAndInput from '../LabelAndInput/LabelAndInput';
+import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
 import { RESET_PASSWORD_MUTATION } from '../../GraphQL/User/Mutations';
@@ -54,6 +55,18 @@ class ResetPassword extends React.Component {
 								<div className={ initObject.titleBarClasses }>
 									<h2>Reset Password</h2>
 								</div>
+								{
+									(this.context === 'dark') &&									
+									<div 
+										style={{ 
+											padding: '0px 30px', 
+											display: 'grid',
+											alignItems: 'center'
+										}}
+									>
+										<HorizontalDivider height='3px'/>
+									</div>
+								}										
 								<div className={ styles.formBody }>
 									<p className={ styles.prompt }>
 										Please enter your new password. 

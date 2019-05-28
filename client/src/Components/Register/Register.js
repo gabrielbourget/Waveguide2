@@ -9,6 +9,7 @@ import { ThemeContext } from '../../ThemeContext';
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
 import LabelAndInput from '../LabelAndInput/LabelAndInput';
+import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
 import { REGISTER_MUTATION } from '../../GraphQL/User/Mutations';
@@ -64,6 +65,18 @@ class Register extends React.Component {
 								<div className={ initObject.titleBarClasses }>
 									<h2>Register</h2>
 								</div>
+								{
+									(this.context === 'dark') &&									
+									<div 
+										style={{ 
+											padding: '0px 30px', 
+											display: 'grid',
+											alignItems: 'center'
+										}}
+									>
+										<HorizontalDivider height='3px'/>
+									</div>
+								}								
 								<div className={ styles.formBody }>
 									<LabelAndInput 
 										htmlFor='username'
