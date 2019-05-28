@@ -13,7 +13,7 @@ export const REGISTER_MUTATION = gql`
 			id
 			username 
 			email 
-			imageURL
+			image
 		}
 	}
 `;
@@ -28,7 +28,7 @@ export const LOGIN_MUTATION = gql`
 			id 
 			username 
 			email
-			imageURL
+			image
 		}
 	}
 `;
@@ -58,9 +58,38 @@ export const RESET_PASSWORD_MUTATION = gql`
 	}
 `;
 
-
-
-
+/**
+ * EDIT_USER_MUTATION
+ * Description: Modifies user profile data.
+ */
+export const EDIT_USER_MUTATION = gql`
+	mutation EDIT_USER_MUTATION($username: String,
+															$name: String,
+															$firstName: String,
+															$lastName: String
+															$email: String,
+															$password: String,
+															$passwordConfirmation: String,
+															$image: String,
+															$biography: String,
+															$city: String) {
+		UpdateUser(username: $username,
+							 name: $name,
+							 firstName: $firstName,
+							 lastName: $lastName,
+							 email: $email,
+							 password: $password,
+							 passwordConfimation: $passwordConfimation,
+							 image: $image,
+							 biography: $biogrpahy,
+							 city: $city) {
+			id 
+			username 
+			email 
+			image
+		}
+	}
+`;
 
 
 

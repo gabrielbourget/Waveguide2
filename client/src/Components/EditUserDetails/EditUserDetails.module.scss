@@ -1,0 +1,93 @@
+.editUserDetails {
+	height: auto;
+	min-height: 250px;
+	width: 300px;
+	position: relative;
+
+	z-index: var(--modalZIndex);	
+	
+	display: grid;
+	grid-template-rows: 50px 1fr;
+
+	&.darkTheme {
+		background: var(--black);
+		box-shadow: var(--boxShadowDarkTheme);
+		grid-template-rows: 50px 20px 1fr;	
+	}
+
+	&.lightTheme {
+		background: var(--c_light);
+		box-shadow: var(--boxShadowLightTheme);
+	}
+
+	&.rounded { border-radius: 5px; }
+}
+
+
+.titleBar {
+	height: 100%;
+	width: 100%;
+	padding: 10px 30px;
+	text-decoration: underline;
+
+	display: grid;
+	align-items: center;
+
+	&.darkTheme { 
+		background: var(--black);
+		color: var(--c_light); 
+	}
+
+	&.lightTheme { 
+		background: var(--black);
+		color: var(--c_light); 
+	}
+
+	&.rounded { border-radius: 5px 5px 0px 0px; }
+}
+
+.formBody {
+	height: 100%;
+	width: 100%;
+	padding: 10px 30px 20px 30px;
+	position: relative;
+
+	display: grid;
+	grid-gap: 1.5rem;
+	align-content: space-around;
+}
+
+.bottom {
+	height: auto;
+	width: 100%;
+	display: grid;
+}
+
+a {
+
+	// width: auto;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+
+	color: inherit;
+
+	display: grid;
+	place-items: center;
+
+	&:link {
+		text-decoration: none;
+
+		&:active { color: none; }
+	}
+
+	&:visited {
+		text-decoration: none;
+
+		&:active { color: none; }
+	}
+}
+
+
+
+

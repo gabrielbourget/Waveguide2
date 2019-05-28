@@ -126,14 +126,10 @@ const prepareComponent = (context, props) => {
 
 	const loginClasses = ClassNames(styles.login, themeClass, shapeClass)
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
-	const labelClasses = ClassNames(styles.label, themeClass);
-	const inputClasses = ClassNames(styles.input, themeClass);
 	
 	return { 
 		loginClasses,
-		titleBarClasses,
-		labelClasses,
-		inputClasses
+		titleBarClasses
 	};
 }
 

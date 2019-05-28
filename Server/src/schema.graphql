@@ -15,7 +15,7 @@ type User {
 	email: String!
 	password: String!
 	resetToken: String
-	imageURL: String
+	image: String
 	biography: String
 	city: City
 	createdAt: DateTime
