@@ -5,10 +5,14 @@
 	position: relative;
 
 	z-index: var(--modalZIndex);	
+	
+	display: grid;
+	grid-template-rows: 50px 1fr;
 
 	&.darkTheme {
 		background: var(--black);
 		box-shadow: var(--boxShadowDarkTheme);
+		grid-template-rows: 50px 20px 1fr;	
 	}
 
 	&.lightTheme {
@@ -17,9 +21,6 @@
 	}
 
 	&.rounded { border-radius: 5px; }
-
-	display: grid;
-	grid-template-rows: 50px 1fr;	
 }
 
 
@@ -32,8 +33,8 @@
 	align-items: center;
 
 	&.darkTheme { 
-		background: var(--c_light);
-		color: var(--black); 
+		background: var(--black);
+		color: var(--c_light); 
 	}
 
 	&.lightTheme { 

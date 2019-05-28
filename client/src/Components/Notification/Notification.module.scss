@@ -1,0 +1,25 @@
+.notification {
+	height: auto;
+	min-height: 100px;
+	width: 300px;
+	padding: 10px 20px;
+	z-index: var(--floatingElementZIndex);
+
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 50px 1fr;
+
+	&.darkTheme {
+		background: var(--black);
+		color: var(--c_light);
+		box-shadow: var(--boxShadowDarkTheme);
+	}
+
+	&.lightTheme {
+		background: var(--c_light);
+		color: var(--black);
+		box-shadow: var(--boxShadowLightTheme);
+	}
+
+	&.rounded { border-radius: 5px; }
+}

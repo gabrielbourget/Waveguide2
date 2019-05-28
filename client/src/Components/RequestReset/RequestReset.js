@@ -56,7 +56,7 @@ class RequestReset extends React.Component {
 								</div>
 								<div className={ styles.formBody }>
 									<p className={ styles.prompt }>
-										Enter your email, and you'll receive a link
+										Enter your email, and we'll send you a link
 										to reset your password.
 									</p>
 									<LabelAndInput 

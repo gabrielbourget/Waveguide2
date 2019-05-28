@@ -52,15 +52,15 @@ class App extends React.Component {
 
   render() {
 
-    const matchedPath = this.props.match;
+    // const matchedPath = this.props.match;
 
     return (
       <Composed>
         {
           ({ currTheme, backdropOpen }) => {
-            // data.theme = 'light'
             const themeClass = (currTheme.data.theme === 'dark') ? styles.darkTheme : styles.lightTheme;
             const appClasses = ClassNames(styles.app, themeClass);
+            
             return (
               <ThemeContext.Provider value={ currTheme.data.theme }>
                 <div className={ appClasses }>
