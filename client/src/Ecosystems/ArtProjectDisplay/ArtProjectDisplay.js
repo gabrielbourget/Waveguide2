@@ -1,6 +1,6 @@
 import React from 'react';
 import ClassNames from 'classnames';
-import { Query } from 'react-apollo';
+// import { Query } from 'react-apollo';
 import { ThemeContext } from '../../ThemeContext';
 
 import TopBar from './TopBar/TopBar';

@@ -8,6 +8,7 @@ import { ThemeContext } from '../../ThemeContext';
 import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
 import FilledButton from '../Buttons/FilledButton/FilledButton';
 import LabelAndInput from '../LabelAndInput/LabelAndInput';
+import { StatusOutlineInner } from '../StatusOutlineInner/StatusOutlineInner';
 
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
 import { LOGIN_MUTATION } from '../../GraphQL/User/Mutations';
@@ -79,7 +80,6 @@ class Login extends React.Component {
 											type='submit'
 											onClick={() => {}}
 										/>
-
 										<div className={ styles.right }>
 											<Link to='/register'>
 												<h5>Register</h5>
@@ -89,6 +89,12 @@ class Login extends React.Component {
 											</Link>
 										</div>
 									</div>
+
+									<StatusOutlineInner 
+										status='problem'
+										top='5px'
+										left='5px'
+									/>
 								</div>
 							</form>
 						);

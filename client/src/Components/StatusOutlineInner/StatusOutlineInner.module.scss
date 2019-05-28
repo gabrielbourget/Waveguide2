@@ -1,0 +1,10 @@
+.statusOutline {
+	height: 95%;
+	width: 95%;
+	background: transparent;
+
+	position: absolute;
+
+	&.success{ border: 2px solid var(--c_success); }
+	&.problem{ border: 2px solid var(--c_error); }
+}

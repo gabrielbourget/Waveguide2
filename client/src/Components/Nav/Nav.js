@@ -8,7 +8,7 @@ import { ThemeContext } from '../../ThemeContext';
 
 import styles from './Nav.module.scss';
 import { TOGGLE_SIDE_DRAWER_MUTATION } from '../../GraphQL/Mutations';
-import { TOGGLE_BACKDROP_MUTATION } from '../../GraphQL/Mutations';
+// import { TOGGLE_BACKDROP_MUTATION } from '../../GraphQL/Mutations';
 
 import IconButton from '../Buttons/IconButton/IconButton';
 import OutlineButton from '../Buttons/OutlineButton/OutlineButton';

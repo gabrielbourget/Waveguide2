@@ -13,28 +13,19 @@
 	align-items: center;
 	justify-content: end;
 	grid-gap: 0.5rem;
+
 }
+
 
 .searchField {
 	height: 100%;
 	width: 100%;
 	display: grid;
 
-	&.active {
-		&.darkTheme { 
-			border: 2px solid var(--c_light); 
-			border-radius: 5px;
-		}
-		&.lightTheme { 
-			border: 2px solid var(--black); 
-			border-radius: 5px;
-		}
-	}
 }
 
 .searchInput {
-	background: none;
-	border: none;
+	// border: none;
 
 	&.darkTheme { 
 		color: var(--c_light); 
@@ -50,6 +41,17 @@
 
 	&:focus {
 		outline: none;
+	}
+
+	&.darkTheme { 
+		border: 2px solid var(--c_light); 
+		border-radius: 5px;
+		background: var(--c_dark);
+	}
+	&.lightTheme { 
+		border: 2px solid var(--black); 
+		border-radius: 5px;
+		background: var(--c_light);
 	}
 }
 

@@ -82,9 +82,8 @@ class SearchBar extends React.Component {
 
 const prepareComponent = (context, state) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
-	const activeClass = (state.active) ? styles.active : null;
 
-	const searchBarClasses = ClassNames(styles.searchBar, themeClass, activeClass);
+	const searchBarClasses = ClassNames(styles.searchBar, themeClass);
 	const searchInputClasses = ClassNames(styles.searchInput, themeClass);
 
 	return {
