@@ -29,19 +29,27 @@ import styles from './EditUserDetails.module.scss';
 class EditUserDetails extends React.Component {
 
 	state = {
-		username: '',
-		name: '',
-		firstName: '',
-		middleNames: [],
-		lastName: '',
-		email: '',
-		image: '',
-		biography: '',
-		city: '',
-		artProjects: [],
-		musicLabels: [],
-		socialMediaLinks: []
-	}
+		UI: {
+			basicInfoOpen: true,
+			biographyOpen: true,
+			socialMediaLinksOpen: true, 
+			artProjectsOpen: true,
+		},
+		userInfo: {
+			username: '',
+			name: '',
+			firstName: '',
+			middleNames: [],
+			lastName: '',
+			email: '',
+			image: '',
+			biography: '',
+			city: '',
+			artProjects: [],
+			musicLabels: [],
+			socialMediaLinks: []
+		}
+	};
 
 	photoUpload = (e) => {
 		e.preventDefault();
@@ -106,60 +114,16 @@ class EditUserDetails extends React.Component {
 									}}>
 										<ProfilePhotoButton onClick={ this.photoUpload }/>
 									</div>
-									<h4>Basic Info</h4>
-									<LabelAndInput 
-										htmlFor='username'
-										labelText='Username'
-										type='text'
-										name='username'
-										placeholder='Username'
-										value={ this.state.username }
-										onChange={ this.saveToState }
-									/>
-									<LabelAndInput 
-										htmlFor='email'
-										labelText='Email'
-										type='email'
-										name='email'
-										placeholder='Email'
-										value={ this.state.email }
-										onChange={ this.saveToState }
-									/>
-									<LabelAndInput 
-										htmlFor='name'
-										labelText='Name'
-										type='text'
-										name='name'
-										placeholder='Name'
-										value={ this.state.name }
-										onChange={ this.saveToState }
-									/>
-									<LabelAndInput 
-										htmlFor='firstName'
-										labelText='First Name'
-										type='text'
-										name='firstName'
-										placeholder='First Name'
-										value={ this.state.firstName }
-										onChange={ this.saveToState }
-									/>
-									<LabelAndInput 
-										htmlFor='lastName'
-										labelText='Last Name'
-										type='text'
-										name='lastName'
-										placeholder='Last Name'
-										value={ this.state.lastName }
-										onChange={ this.saveToState }
-									/>
-									<LabelAndInput 
-										htmlFor='city'
-										labelText='City'
-										type='text'
-										name='city'
-										placeholder='City'
-										value={ this.state.city }
-										onChange={ this.saveToState }
+									<BasicInfo 
+										info={{
+											username: this.state.username,
+											email: this.state.email,
+											name: this.state.name,
+											firstName: this.state.firstName,
+											lastName: this.state.lastName,
+											city: this.state.city
+										}}
+										saveToState={ this.saveToState }
 									/>	
 									<div className={ styles.bottom }>									
 										<FilledButton
