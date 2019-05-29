@@ -258,6 +258,7 @@ class EditUserDetails extends React.Component {
 										<SocialMediaLinks 
 											newLinkEntries={ this.state.newLinkEntries }
 											socialMediaLinks={ this.state.socialMediaLinks }
+											onChange={ this.saveToState }
 										/>
 									}
 									

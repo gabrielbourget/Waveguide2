@@ -39,12 +39,13 @@ class SocialMediaLinks extends React.Component {
 		// - Return number of links they have + number of new fields 
 		//   they've popped down but haven't committed yet.
 		return (
-			<div className={ styles.socialMeidaLinks }>			
+			<div className={ styles.socialMediaLinks }>			
 				{
 					(socialMediaLinks).map((linkEntry, i) => (
 						<LinkEntry 
 							network={ linkEntry.network }
 							link={ linkEntry.link }
+							onChange={ props.onChange }
 						/>
 					))
 				}
