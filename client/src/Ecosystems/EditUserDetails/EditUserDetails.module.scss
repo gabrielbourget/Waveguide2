@@ -98,6 +98,14 @@ a {
 	justify-content: space-between;
 	align-content: center;
 
+	& .right {
+		display: grid;
+		align-content: center;
+		justify-content: end;
+		grid-gap: 1rem;
+		grid-auto-flow: column;
+	}
+
 }
 
 

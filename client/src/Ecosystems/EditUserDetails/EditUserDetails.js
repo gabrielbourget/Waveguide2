@@ -32,6 +32,10 @@ import CircleDownIconHighlighted from './SVG/CircleDownIcon/CircleDownIcon_Highl
 import CircleUpIconDarkTheme from './SVG/CircleUpIcon/CircleUpIcon_DarkTheme';
 import CircleUpIconLightTheme from './SVG/CircleUpIcon/CircleUpIcon_LightTheme';
 import CircleUpIconHighlighted from './SVG/CircleUpIcon/CircleUpIcon_Highlighted';
+// - Plus Icon
+import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDarkTheme.svg';
+import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
+import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
 import styles from './EditUserDetails.module.scss';
 
@@ -240,23 +244,44 @@ class EditUserDetails extends React.Component {
 
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Social Media Links</h4>
-										{
-											(this.state.socialMediaLinksOpen) ? 
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleUpIconHighlighted/> }
-												darkTheme={ <CircleUpIconDarkTheme/> }
-												lightTheme={ <CircleUpIconLightTheme/> }
-												onClick={ this.toggleSocialMediaLinksSection }
-											/> :
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleDownIconHighlighted/> }
-												darkTheme={ <CircleDownIconDarkTheme/> }
-												lightTheme={ <CircleDownIconLightTheme/> }
-												onClick={ this.toggleSocialMediaLinksSection }
-											/>
-										}
+										<div className={ styles.right }>
+											{
+												(this.state.socialMediaLinksOpen) ? 
+													<React.Fragment>
+														<IconButton 
+															size='25px'
+															highlighted={ <PlusIconHighlighted /> }
+															darkTheme={ <PlusIconDarkTheme /> }
+															lightTheme={ <PlusIconLightTheme /> }
+															onClick={ (e) => {
+																//e.preventDefault();
+																const socialMediaLinks = [...this.state.socialMediaLinks];// || [];
+																console.log('boop');
+																console.log(socialMediaLinks);
+																socialMediaLinks.push({
+																	network: 'Soundcloud',
+																	link: ''
+																})
+																console.log(socialMediaLinks);
+															}}
+														/>
+														<IconButton 
+															size='25px'
+															highlighted={ <CircleUpIconHighlighted/> }
+															darkTheme={ <CircleUpIconDarkTheme/> }
+															lightTheme={ <CircleUpIconLightTheme/> }
+															onClick={ this.toggleSocialMediaLinksSection }
+														/> 
+													</React.Fragment> :
+													<IconButton 
+														size='25px'
+														highlighted={ <CircleDownIconHighlighted/> }
+														darkTheme={ <CircleDownIconDarkTheme/> }
+														lightTheme={ <CircleDownIconLightTheme/> }
+														onClick={ this.toggleSocialMediaLinksSection }
+													/>
+											}
+										</div>
 									</div>
 									{
 										(this.state.socialMediaLinksOpen) &&
