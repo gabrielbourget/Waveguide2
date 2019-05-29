@@ -16,12 +16,13 @@ class Biography extends React.Component {
 	};	
 
 	componentWillUnmount = () => window.removeEventListener('resize', this.handleResize);
-
 	render() {
+		const prompt = `What's your story?`;
+		
 		return (
 			<TextArea
 				value={ this.props.value }
-				placeholder='Write a biography here'
+				placeholder={ prompt }
 				onChange={ this.props.onChange }
 				name={ this.props.name }
 			/>

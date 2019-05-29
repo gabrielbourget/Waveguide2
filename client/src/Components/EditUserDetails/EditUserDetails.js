@@ -16,6 +16,7 @@ import IconButton from '../Buttons/IconButton/IconButton';
 import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Biography from './Biography/Biography';
+import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
 
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
@@ -40,10 +41,11 @@ import styles from './EditUserDetails.module.scss';
 class EditUserDetails extends React.Component {
 
 	state = {
-		basicInfoOpen: false,
+		basicInfoOpen: true,
 		biographyOpen: false,
 		socialMediaLinksOpen: false, 
 		artProjectsOpen: false,
+		newLinkEntries: 0,
 		username: '',
 		name: '',
 		firstName: '',
@@ -125,6 +127,9 @@ class EditUserDetails extends React.Component {
 									})
 								}}
 							>
+
+								{/* - HEADER - */}
+
 								<div className={ initObject.titleBarClasses }>
 									<h2>User Profile Details</h2>
 								</div>
@@ -140,6 +145,9 @@ class EditUserDetails extends React.Component {
 										<HorizontalDivider height='3px'/>
 									</div>
 								}
+
+								{/* - BODY - */}
+
 								<div className={ styles.formBody }>
 									<div style={{
 										height: 'auto',
@@ -150,6 +158,9 @@ class EditUserDetails extends React.Component {
 									}}>
 										<ProfilePhotoButton onClick={ this.photoUpload }/>
 									</div>
+
+									{/* - BASIC INFO - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Basic Info</h4>
 										{
@@ -171,7 +182,7 @@ class EditUserDetails extends React.Component {
 										}
 									</div>
 									{
-										this.state.basicInfoOpen &&									
+										(this.state.basicInfoOpen) &&									
 										<BasicInfo 
 											info={{
 												username: this.state.username,
@@ -184,6 +195,11 @@ class EditUserDetails extends React.Component {
 											onChange={ this.saveToState }
 										/>	
 									}
+
+									<HorizontalDivider height='1px' subtle />
+
+									{/* - BIOGRAPHY - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Biography</h4>
 										{
@@ -205,13 +221,18 @@ class EditUserDetails extends React.Component {
 										}
 									</div>
 									{
-										this.state.biographyOpen &&
+										(this.state.biographyOpen) &&
 										<Biography 
 											value={ this.state.biography }
 											onChange={ this.saveToState }
 											name='biography'
 										/>
 									}
+
+									<HorizontalDivider height='1px' subtle />
+
+									{/* - SOCIAL MEDIA LINKS - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Social Media Links</h4>
 										{
@@ -232,6 +253,18 @@ class EditUserDetails extends React.Component {
 											/>
 										}
 									</div>
+									{
+										(this.state.socialMediaLinksOpen) &&
+										<SocialMediaLinks 
+											newLinkEntries={ this.state.newLinkEntries }
+											socialMediaLinks={ this.state.socialMediaLinks }
+										/>
+									}
+									
+									<HorizontalDivider height='1px' subtle />
+
+									{/* - ART PROJECTS - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
 										{

@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import ClassNames from 'classnames';
 
 import LabelAndInput from '../../LabelAndInput/LabelAndInput';
+// import FilledButton from '../../Buttons/FilledButton/FilledButton';
+import OutlineButton from '../../Buttons/OutlineButton/OutlineButton';
 
 import styles from './BasicInfo.module.scss';
 
@@ -78,7 +81,13 @@ class BasicInfo extends React.Component {
 					placeholder='City'
 					value={ this.props.info.city }
 					onChange={ this.props.onChange }
-				/>				
+				/>
+				<Link to='/changepassword'>
+					<OutlineButton 
+						text='Change Password'
+						onClick={ () => {} }
+					/>			
+				</Link>
 			</div>
 		);
 	}
