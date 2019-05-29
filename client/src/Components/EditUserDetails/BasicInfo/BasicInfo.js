@@ -1,5 +1,5 @@
 import React from 'react';
-import ClassNames from 'classnames';
+// import ClassNames from 'classnames';
 
 import LabelAndInput from '../../LabelAndInput/LabelAndInput';
 
@@ -25,7 +25,6 @@ class BasicInfo extends React.Component {
 
 		return (
 			<div className={ styles.basicInfo }>
-				<h4>Basic Info</h4>
 				<LabelAndInput 
 					htmlFor='username'
 					labelText='Username'
@@ -33,7 +32,7 @@ class BasicInfo extends React.Component {
 					name='username'
 					placeholder='Username'
 					value={ this.props.username }
-					onChange={ this.props.saveToState }
+					onChange={ this.props.onChange }
 				/>
 				<LabelAndInput 
 					htmlFor='email'
@@ -42,7 +41,7 @@ class BasicInfo extends React.Component {
 					name='email'
 					placeholder='Email'
 					value={ this.props.info.email }
-					onChange={ this.props.saveToState }
+					onChange={ this.props.onChange }
 				/>
 				<LabelAndInput 
 					htmlFor='name'
@@ -51,7 +50,7 @@ class BasicInfo extends React.Component {
 					name='name'
 					placeholder='Name'
 					value={ this.props.info.name }
-					onChange={ this.props.saveToState }
+					onChange={ this.props.onChange }
 				/>
 				<LabelAndInput 
 					htmlFor='firstName'
@@ -60,7 +59,7 @@ class BasicInfo extends React.Component {
 					name='firstName'
 					placeholder='First Name'
 					value={ this.props.info.firstName }
-					onChange={ this.props.saveToState }
+					onChange={ this.props.onChange }
 				/>
 				<LabelAndInput 
 					htmlFor='lastName'
@@ -69,7 +68,7 @@ class BasicInfo extends React.Component {
 					name='lastName'
 					placeholder='Last Name'
 					value={ this.props.info.lastName }
-					onChange={ this.props.saveToState }
+					onChange={ this.props.onChange }
 				/>
 				<LabelAndInput 
 					htmlFor='city'
@@ -78,7 +77,7 @@ class BasicInfo extends React.Component {
 					name='city'
 					placeholder='City'
 					value={ this.props.info.city }
-					onChange={ this.props.saveToState }
+					onChange={ this.props.onChange }
 				/>				
 			</div>
 		);

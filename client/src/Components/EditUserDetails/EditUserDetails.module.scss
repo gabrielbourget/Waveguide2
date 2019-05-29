@@ -88,13 +88,28 @@ a {
 	}
 }
 
-.basicDetails {
+.sectionTitleBar {
+	width: 100%;
+	height: auto;
+	padding: 5px 0px;
+
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	align-content: center;
 
 }
 
-.biography {
-	
-}
+
+
+
+
+
+
+
+
+
+
 
 
 

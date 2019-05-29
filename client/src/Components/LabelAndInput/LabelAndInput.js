@@ -29,7 +29,7 @@ class LabelAndInput extends React.Component {
 					type={ this.props.type }
 					name={ this.props.name }
 					placeholder={ this.props.placeholder }
-					value={ this.props.email }
+					value={ this.props.value }
 					onChange={ this.props.onChange }
 				/>
 			</label>			
