@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TextArea from '../../TextArea/TextArea';
+import TextArea from '../../../Components/TextArea/TextArea';
 
 class Biography extends React.Component {
 

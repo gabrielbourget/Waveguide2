@@ -25,7 +25,7 @@ import ResetPassword from '../../Components/ResetPassword/ResetPassword';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-import EditUserDetails from '../../Components/EditUserDetails/EditUserDetails';
+import EditUserDetails from '../EditUserDetails/EditUserDetails';
 // import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
 // import { artProjects } from '../../Datasets/artProjects';
 // import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';

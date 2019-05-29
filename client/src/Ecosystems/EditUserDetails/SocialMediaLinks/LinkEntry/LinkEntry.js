@@ -1,15 +1,24 @@
 import React from 'react';
 
-import LabelAndInput from '../../../LabelAndInput/LabelAndInput';
+import LabelAndInput from '../../../../Components/LabelAndInput/LabelAndInput';
 
 import { supportedNetworks } from './helpers';
 import styles from './LinkEntry.module.scss';
 
 class LinkEntry extends React.Component {
+
+	state = {
+		network: 'Soundcloud',
+		link: ''
+	}
+
 	render() {
 		return (
 			<div className={ styles.linkEntry }>
-				<select name="networkPicker">
+				<select 
+					name="networkPicker"
+					onChange={ this.props.onChange }
+				>
 					{
 						Object.keys(supportedNetworks).map((key, i) => {
 							//const selected = (key === this.props.network) ? 'selected' : null;

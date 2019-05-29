@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import ClassNames from 'classnames';
 
-import LabelAndInput from '../../LabelAndInput/LabelAndInput';
+import LabelAndInput from '../../../Components/LabelAndInput/LabelAndInput';
 // import FilledButton from '../../Buttons/FilledButton/FilledButton';
-import OutlineButton from '../../Buttons/OutlineButton/OutlineButton';
+import OutlineButton from '../../../Components/Buttons/OutlineButton/OutlineButton';
 
 import styles from './BasicInfo.module.scss';
 

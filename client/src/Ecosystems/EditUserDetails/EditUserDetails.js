@@ -5,18 +5,19 @@ import { Mutation } from 'react-apollo';
 import { ThemeContext } from '../../ThemeContext';
 
 // - External Components
-import LaggingLinesLoader from '../Loaders/LaggingLinesLoader/LaggingLinesLoader';
-import FilledButton from '../Buttons/FilledButton/FilledButton';
-import LabelAndInput from '../LabelAndInput/LabelAndInput';
-import HorizontalDivider from '../Dividers/HorizontalDivider/HorizontalDivider';
+import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import FilledButton from '../../Components/Buttons/FilledButton/FilledButton';
+import LabelAndInput from '../../Components/LabelAndInput/LabelAndInput';
+import HorizontalDivider from '../../Components/Dividers/HorizontalDivider/HorizontalDivider';
 // import { StatusOutlineInner } from '../StatusOutlineInner/StatusOutlineInner';
-import IconButton from '../Buttons/IconButton/IconButton';
+import IconButton from '../../Components/Buttons/IconButton/IconButton';
 
 // - Internal Components
 import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Biography from './Biography/Biography';
 import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
+import ArtProjects from './ArtProjects/ArtProjects';
 
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
@@ -55,9 +56,9 @@ class EditUserDetails extends React.Component {
 		image: '',
 		biography: '',
 		city: '',
+		socialMediaLinks: [],
 		artProjects: [],
 		musicLabels: [],
-		socialMediaLinks: []
 	};
 
 	// - TODO -> Find a way to fire off native file browser by 
@@ -76,6 +77,10 @@ class EditUserDetails extends React.Component {
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
 	};	
+
+	// saveSocialLinkToState = (e) => {
+	// 	this.setState([e.target.name]:)
+	// }
 
 	// - TODO -> Find a way to refactor these into one 
 	// 					 without having to make a seperate version 
@@ -286,6 +291,13 @@ class EditUserDetails extends React.Component {
 											/>
 										}
 									</div>
+									
+									{
+										(this.state.artProjectsOpen) &&
+										<ArtProjects 
+											artProjects={ this.state.artProjects }
+										/>
+									}
 									<div className={ styles.bottom }>									
 										<FilledButton
 											text='Save Changes'
