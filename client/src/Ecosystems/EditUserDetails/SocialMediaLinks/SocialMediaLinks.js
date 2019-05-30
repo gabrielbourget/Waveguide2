@@ -25,6 +25,8 @@ class SocialMediaLinks extends React.Component {
 		const numLinks = props.socialMediaLinks.length;
 		const { socialMediaLinks, newLinkEntries } = props;
 
+		// console.log(this.props.onChange);
+
 		// - If user has no social media links, pop in one field to 
 		//   prompt them to start adding them.
 		if (numLinks === 0) return (
@@ -32,6 +34,7 @@ class SocialMediaLinks extends React.Component {
 				<LinkEntry 
 					network='soundCloud'
 					link=''
+					onChange={ this.props.onChange }
 				/>
 			</div>
 		);
@@ -45,7 +48,7 @@ class SocialMediaLinks extends React.Component {
 						<LinkEntry 
 							network={ linkEntry.network }
 							link={ linkEntry.link }
-							onChange={ props.onChange }
+							onChange={ this.props.onChange }
 						/>
 					))
 				}

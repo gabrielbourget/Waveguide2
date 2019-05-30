@@ -13,6 +13,9 @@ class LinkEntry extends React.Component {
 	}
 
 	render() {
+
+		// console.log(this.props.onChange);
+
 		return (
 			<div className={ styles.linkEntry }>
 				<select 
@@ -42,6 +45,7 @@ class LinkEntry extends React.Component {
 					name='link'
 					placeholder='Link'
 					value={ this.props.link }
+					onChange={ this.props.onChange }
 				/>			
 			</div>
 		);

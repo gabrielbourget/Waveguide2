@@ -1,7 +1,7 @@
 .profilePhotoButton {
 
-	height: 75px;
-	width: 75px;
+	height: 100px;
+	width: 100px;
 	border-radius: 50px;
 	border: none;
 	transition: all 0.5s ease-in-out;
@@ -9,6 +9,7 @@
 	display: grid;
 	place-items: center;
 	place-content: center;
+	position:relative;
 
 	// position: fixed;
 	// bottom: 15px;
@@ -18,7 +19,7 @@
 
 	&:hover {
 		cursor: pointer;
-		&.darkTheme { box-shadow: var(--boxShadowDarkTheme); }
+		&.darkTheme { box-shadow: 0 8px 12px rgba(255,255,255,0.1); }
 		&.lightTheme { box-shadow: var(--boxShadowLightTheme); }
 	}
 

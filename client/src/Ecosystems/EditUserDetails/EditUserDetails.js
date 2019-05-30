@@ -1,7 +1,9 @@
+// - External Modules
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../ThemeContext';
 
 // - External Components
@@ -130,10 +132,6 @@ class EditUserDetails extends React.Component {
 								onSubmit={ async (e) => {
 									e.preventDefault();
 									await editUser();
-									this.setState({ 
-										email: '', 
-										password: '' 
-									})
 								}}
 							>
 
@@ -254,6 +252,7 @@ class EditUserDetails extends React.Component {
 															darkTheme={ <PlusIconDarkTheme /> }
 															lightTheme={ <PlusIconLightTheme /> }
 															onClick={ (e) => {
+																// - TO_FIX -> Mutation fires off here, and I don't want that. 
 																//e.preventDefault();
 																const socialMediaLinks = [...this.state.socialMediaLinks];// || [];
 																console.log('boop');
@@ -262,6 +261,7 @@ class EditUserDetails extends React.Component {
 																	network: 'Soundcloud',
 																	link: ''
 																})
+
 																console.log(socialMediaLinks);
 															}}
 														/>
@@ -298,23 +298,36 @@ class EditUserDetails extends React.Component {
 
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
-										{
-											(this.state.artProjectsOpen) ? 
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleUpIconHighlighted/> }
-												darkTheme={ <CircleUpIconDarkTheme/> }
-												lightTheme={ <CircleUpIconLightTheme/> }
-												onClick={ this.toggleArtProjectsSection }
-											/> :
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleDownIconHighlighted/> }
-												darkTheme={ <CircleDownIconDarkTheme/> }
-												lightTheme={ <CircleDownIconLightTheme/> }
-												onClick={ this.toggleArtProjectsSection }
-											/>
-										}
+										<div className={ styles.right }>
+											{
+												(this.state.artProjectsOpen) ? 
+													<React.Fragment>
+														<Link to='/createartproject'>
+															<IconButton 
+																size='25px'
+																highlighted={ <PlusIconHighlighted /> }
+																darkTheme={ <PlusIconDarkTheme /> }
+																lightTheme={ <PlusIconLightTheme /> }
+																onClick={ () => {} }
+															/>
+														</Link>
+														<IconButton 
+															size='25px'
+															highlighted={ <CircleUpIconHighlighted/> }
+															darkTheme={ <CircleUpIconDarkTheme/> }
+															lightTheme={ <CircleUpIconLightTheme/> }
+															onClick={ this.toggleArtProjectsSection }
+														/> 
+													</React.Fragment> :
+													<IconButton 
+														size='25px'
+														highlighted={ <CircleDownIconHighlighted/> }
+														darkTheme={ <CircleDownIconDarkTheme/> }
+														lightTheme={ <CircleDownIconLightTheme/> }
+														onClick={ this.toggleArtProjectsSection }
+													/>
+											}
+										</div>
 									</div>
 									
 									{
@@ -327,7 +340,11 @@ class EditUserDetails extends React.Component {
 										<FilledButton
 											text='Save Changes'
 											type='submit'
-											onClick={() => {}}
+											onClick={ () => {} }
+											// onClick={ async (e) => {
+											// 	e.preventDefault();
+											// 	await editUser();
+											// }}
 										/>
 									</div>								
 								</div>							
