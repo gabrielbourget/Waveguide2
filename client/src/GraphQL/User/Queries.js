@@ -65,3 +65,19 @@ export const USER_SETTINGS_QUERY = gql`
 		}
 	}
 `;
+
+/**
+ * PASSWORD_MATCH_QUERY
+ * Description: Validates whether a password the user has 
+ * entered matches the one on record in the database.
+ */
+export const PASSWORD_MATCH_QUERY = gql`
+	query PASSWORD_MATCH_QUERY($oldPassword: String!) {
+		passwordMatch(oldPassword: $oldPassword) {
+			message
+		}
+	}
+`;
+
+
+

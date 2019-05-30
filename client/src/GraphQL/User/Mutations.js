@@ -91,6 +91,21 @@ export const EDIT_USER_MUTATION = gql`
 	}
 `;
 
+/**
+ * CHANGE_PASSWORD_MUTATION
+ * Description: Fulfills a user's wish to change their password.
+ */
+export const CHANGE_PASSWORD_MUTATION = gql`
+	mutation CHANGE_PASSWORD_MUTATION($newPassword: String!,
+																		$newPasswordConfirmation: String!) {
+		changePassword(newPassword: $newPassword,
+									 newPasswordConfirmation: $newPasswordConfirmation) {
+			message
+		}
+	}
+
+`;
+
 
 
 
