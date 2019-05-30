@@ -82,12 +82,14 @@ class BasicInfo extends React.Component {
 					value={ this.props.info.city }
 					onChange={ this.props.onChange }
 				/>
-				<Link to='/changepassword'>
-					<OutlineButton 
-						text='Change Password'
-						onClick={ () => {} }
-					/>			
-				</Link>
+				<div className={ styles.bottom }>
+					<Link to='/changepassword'>
+						<OutlineButton 
+							text='Change Password'
+							onClick={ () => {} }
+						/>			
+					</Link>
+				</div>
 			</div>
 		);
 	}

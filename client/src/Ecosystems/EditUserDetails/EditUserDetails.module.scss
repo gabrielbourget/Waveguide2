@@ -1,13 +1,14 @@
 .editUserDetails {
 	height: auto;
 	min-height: 250px;
-	width: 300px;
+	width: 600px;
 	position: relative;
 
 	z-index: var(--modalZIndex);	
 	
 	display: grid;
 	grid-template-rows: 50px 1fr;
+	// justify-items: center;
 
 	&.darkTheme {
 		background: var(--black);
@@ -21,6 +22,10 @@
 	}
 
 	&.rounded { border-radius: 5px; }
+
+	@media(max-width: 800px) {
+		width: 300px;
+	}
 }
 
 
