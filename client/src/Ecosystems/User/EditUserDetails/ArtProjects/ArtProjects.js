@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SmallArtProjectCard from '../../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
+import SmallArtProjectCard from '../../../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
 
 import styles from './ArtProjects.module.scss';
 
 // - Temp test data 
-import { artProjects } from '../../../Datasets/artProjects';
+import { artProjects } from '../../../../Datasets/artProjects';
 
 class ArtProjects extends React.Component {
 
@@ -19,7 +19,7 @@ class ArtProjects extends React.Component {
 		return (
 			<div className={ styles.artProjects }>
 				<SmallArtProjectCard 
-					artProject={ artProjects[0] }
+					artProject={ artProjects[3] }
 					shape='rounded'
 				/>
 			</div>			

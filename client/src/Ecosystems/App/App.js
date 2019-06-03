@@ -17,7 +17,7 @@ import NotFoundPageComponent from '../../Components/NotFoundPageComponent/NotFou
 import HomePage from '../HomePage/HomePage';
 import Search from '../Search/Search';
 import SingleArtProject from '../SingleArtProject/SingleArtProject';
-import Settings from '../Settings/Settings';
+import Settings from '../User/Settings/Settings';
 import Login from '../../Components/Login/Login';
 import Register from '../../Components/Register/Register';
 import RequestReset from '../../Components/RequestReset/RequestReset';
@@ -26,10 +26,10 @@ import ChangePassword from '../../Components/ChangePassword/ChangePassword';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-import EditUserDetails from '../EditUserDetails/EditUserDetails';
+import EditUserDetails from '../User/EditUserDetails/EditUserDetails';
 // import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
 // import { artProjects } from '../../Datasets/artProjects';
-// import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 // import HorizontalBubblesLoader from '../../Components/Loaders/HorizontalBubblesLoader/HorizontalBubblesLoader';
 // import CircleBubblesLoader from '../../Components/Loaders/CircleBubblesLoader/CircleBubblesLoader';
 // import CircleSpokesLoader from '../../Components/Loaders/CircleSpokesLoader/CircleSpokesLoader';

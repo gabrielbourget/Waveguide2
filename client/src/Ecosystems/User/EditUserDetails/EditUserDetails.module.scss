@@ -7,8 +7,9 @@
 	z-index: var(--modalZIndex);	
 	
 	display: grid;
+	grid-template-columns: 1fr;
 	grid-template-rows: 50px 1fr;
-	// justify-items: center;
+	justify-content: center;
 
 	&.darkTheme {
 		background: var(--black);
@@ -60,11 +61,14 @@
 	display: grid;
 	grid-gap: 1.5rem;
 	align-content: space-around;
+	justify-content: center;
+	justify-items: center;
+	grid-template-columns: 1fr;
 }
 
 .bottom {
 	height: auto;
-	width: 100%;
+	width: 150px;
 	display: grid;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../../ThemeContext';
 
 import styles from './Settings.module.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ClassNames from 'classnames';
-import { ThemeContext } from '../../../ThemeContext';
+import { ThemeContext } from '../../../../ThemeContext';
 
 import styles from './ProfilePhotoButton.module.scss';
 

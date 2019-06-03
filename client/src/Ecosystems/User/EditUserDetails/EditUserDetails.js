@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../../ThemeContext';
 
 // - External Components
-import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
-import FilledButton from '../../Components/Buttons/FilledButton/FilledButton';
-import LabelAndInput from '../../Components/LabelAndInput/LabelAndInput';
-import HorizontalDivider from '../../Components/Dividers/HorizontalDivider/HorizontalDivider';
+import LaggingLinesLoader from '../../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import FilledButton from '../../../Components/Buttons/FilledButton/FilledButton';
+import LabelAndInput from '../../../Components/LabelAndInput/LabelAndInput';
+import HorizontalDivider from '../../../Components/Dividers/HorizontalDivider/HorizontalDivider';
 // import { StatusOutlineInner } from '../StatusOutlineInner/StatusOutlineInner';
-import IconButton from '../../Components/Buttons/IconButton/IconButton';
+import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
 // - Internal Components
 import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
@@ -22,9 +22,9 @@ import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
 import ArtProjects from './ArtProjects/ArtProjects';
 
 // - GraphQL
-import { CURRENT_USER_QUERY } from '../../GraphQL/User/Queries';
-import { USER_DETAILS_QUERY } from '../../GraphQL/User/Queries';
-import { EDIT_USER_MUTATION } from '../../GraphQL/User/Mutations';
+import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
+import { USER_DETAILS_QUERY } from '../../../GraphQL/User/Queries';
+import { EDIT_USER_MUTATION } from '../../../GraphQL/User/Mutations';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -48,7 +48,7 @@ import styles from './EditUserDetails.module.scss';
 class EditUserDetails extends React.Component {
 
 	state = {
-		basicInfoOpen: true,
+		basicInfoOpen: false,
 		biographyOpen: false,
 		socialMediaLinksOpen: false, 
 		artProjectsOpen: false,
@@ -336,6 +336,9 @@ class EditUserDetails extends React.Component {
 											artProjects={ this.state.artProjects }
 										/>
 									}
+
+									<HorizontalDivider height='1px' subtle />
+
 									<div className={ styles.bottom }>									
 										<FilledButton
 											text='Save Changes'

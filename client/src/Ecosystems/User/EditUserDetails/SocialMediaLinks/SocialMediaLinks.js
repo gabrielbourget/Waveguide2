@@ -30,14 +30,21 @@ class SocialMediaLinks extends React.Component {
 		// - If user has no social media links, pop in one field to 
 		//   prompt them to start adding them.
 		if (numLinks === 0) return (
-			<div className={ styles.socialMediaLinks }>			
+			<React.Fragment>
 				<LinkEntry 
 					network='soundCloud'
 					link=''
 					onChange={ this.props.onChange }
 				/>
-			</div>
+				<LinkEntry 
+					network='spotify'
+					link=''
+					onChange={ this.props.onChange }
+				/>				
+			</React.Fragment>
 		);
+
+		console.log('boop');
 
 		// - Return number of links they have + number of new fields 
 		//   they've popped down but haven't committed yet.

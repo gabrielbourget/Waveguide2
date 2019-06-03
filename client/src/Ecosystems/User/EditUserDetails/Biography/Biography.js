@@ -1,6 +1,8 @@
 import React from 'react';
 
-import TextArea from '../../../Components/TextArea/TextArea';
+import TextArea from '../../../../Components/TextArea/TextArea';
+
+import styles from './Biography.module.scss';
 
 class Biography extends React.Component {
 
@@ -20,12 +22,14 @@ class Biography extends React.Component {
 		const prompt = `What's your story?`;
 		
 		return (
-			<TextArea
-				value={ this.props.value }
-				placeholder={ prompt }
-				onChange={ this.props.onChange }
-				name={ this.props.name }
-			/>
+			<div className={ styles.biography }>			
+				<TextArea
+					value={ this.props.value }
+					placeholder={ prompt }
+					onChange={ this.props.onChange }
+					name={ this.props.name }
+				/>
+			</div>
 		);
 	}
 }
