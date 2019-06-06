@@ -135,7 +135,7 @@ class EditUserDetails extends React.Component {
 								}}
 							>
 
-								{/* - HEADER - */}
+								{/* - CARD HEADER - */}
 
 								<div className={ initObject.titleBarClasses }>
 									<h2>User Profile Details</h2>
@@ -153,7 +153,7 @@ class EditUserDetails extends React.Component {
 									</div>
 								}
 
-								{/* - BODY - */}
+								{/* - CARD BODY - */}
 
 								<div className={ styles.formBody }>
 									<div style={{
@@ -166,7 +166,7 @@ class EditUserDetails extends React.Component {
 										<ProfilePhotoButton onClick={ this.photoUpload }/>
 									</div>
 
-									{/* - BASIC INFO - */}
+									{/* - BASIC INFO SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Basic Info</h4>
@@ -205,7 +205,7 @@ class EditUserDetails extends React.Component {
 
 									<HorizontalDivider height='1px' subtle />
 
-									{/* - BIOGRAPHY - */}
+									{/* - BIOGRAPHY SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Biography</h4>
@@ -238,7 +238,7 @@ class EditUserDetails extends React.Component {
 
 									<HorizontalDivider height='1px' subtle />
 
-									{/* - SOCIAL MEDIA LINKS - */}
+									{/* - SOCIAL MEDIA LINKS SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Social Media Links</h4>
@@ -294,7 +294,7 @@ class EditUserDetails extends React.Component {
 									
 									<HorizontalDivider height='1px' subtle />
 
-									{/* - ART PROJECTS - */}
+									{/* - ART PROJECTS SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
