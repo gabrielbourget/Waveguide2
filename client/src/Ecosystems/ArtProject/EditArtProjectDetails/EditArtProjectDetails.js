@@ -1,9 +1,14 @@
+// -- WITHIN PROJECT BOUNDARY -- //
+
 // - External Modules
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
+
+// -- WITHIN /SRC -- //
+
 import { ThemeContext } from '../../../ThemeContext';
 
 // - External Components
@@ -14,17 +19,19 @@ import HorizontalDivider from '../../../Components/Dividers/HorizontalDivider/Ho
 // import { StatusOutlineInner } from '../StatusOutlineInner/StatusOutlineInner';
 import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
-// - Internal Components
+// - GraphQL
+import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
+import { ART_PROJECT_DETAILS_QUERY } from '../../../GraphQL/ArtProject/Queries';
+import { EDIT_ART_PROJECT_MUTATION } from '../../../GraphQL/ArtProject/Mutations';
+
+// -- WITHIN COMPONENT DIRECTORY -- //
+
+// - Internal Components 
 import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Biography from './Biography/Biography';
 import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
-import ArtProjects from './ArtProjects/ArtProjects';
-
-// - GraphQL
-import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
-import { USER_DETAILS_QUERY } from '../../../GraphQL/User/Queries';
-import { EDIT_USER_MUTATION } from '../../../GraphQL/User/Mutations';
+import Discography from './Discography/Discography';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -39,33 +46,23 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './EditUserDetails.module.scss';
+import styles from './EditArtProject.module.scss';
 
-// - TODO -> Once login is hooked up across the stack, grab detailed user 
+// - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
-
-class EditUserDetails extends React.Component {
+class EditArtProjectDetails extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
 		biographyOpen: false,
-		socialMediaLinksOpen: false, 
-		artProjectsOpen: false,
-		newLinkEntries: 0,
-		username: '',
-		name: '',
-		firstName: '',
-		middleNames: [],
-		lastName: '',
-		email: '',
-		image: '',
+		socialMediaLinksOpen: false,
+		discographyOpen: false,
+		artProjectName: '',
+		contactEmail: '',
 		biography: '',
-		city: '',
-		country: '',
 		socialMediaLinks: [],
-		artProjects: [],
-		musicLabels: [],
+		discography: [], // - Maybe draw this out of graph topology as a flat list of songs.
 	};
 
 	// - TODO -> Find a way to fire off native file browser by 
@@ -84,10 +81,6 @@ class EditUserDetails extends React.Component {
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
 	};	
-
-	// saveSocialLinkToState = (e) => {
-	// 	this.setState([e.target.name]:)
-	// }
 
 	// - TODO -> Find a way to refactor these into one 
 	// 					 without having to make a seperate version 
@@ -108,9 +101,9 @@ class EditUserDetails extends React.Component {
 		this.setState({ socialMediaLinksOpen: !current });
 	};	
 
-	toggleArtProjectsSection = () => {
-		const current = this.state.artProjectsOpen;
-		this.setState({ artProjectsOpen: !current });
+	toggleDiscographySection = () => {
+		const current = this.state.discographyOpen;
+		this.setState({ discographyOpen: !current });
 	};
 
 	render() {
@@ -118,34 +111,32 @@ class EditUserDetails extends React.Component {
 
 		return (
 			<Mutation
-				mutation={ EDIT_USER_MUTATION }
+				mutation={ EDIT_ART_PROJECT_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(editUser, { error, loading }) => {
+					(editArtProject, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.editUserDetailsClasses }
+								className={ initObject.editArtProjectDetailsClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await editUser();
+									await editArtProject();
 								}}
 							>
-
 								{/* - CARD HEADER - */}
-
 								<div className={ initObject.titleBarClasses }>
-									<h2>User Profile Details</h2>
+									<h2>Art Project Details</h2>
 								</div>
 								{
-									(this.context === 'dark') &&									
-									<div 
-										style={{ 
-											padding: '0px 30px', 
+									(this.context === 'dark') &&
+									<div
+										style={{
+											padding: '0px 30px',
 											display: 'grid',
 											alignItems: 'center'
 										}}
@@ -168,11 +159,10 @@ class EditUserDetails extends React.Component {
 									</div>
 
 									{/* - BASIC INFO SECTION - */}
-
 									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Basic Info</h4>
+										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Basic Info</h4>
 										{
-											(this.state.basicInfoOpen) ? 
+											(this.state.basicInfoOpen) ?
 											<IconButton 
 												size='25px'
 												highlighted={ <CircleUpIconHighlighted/> }
@@ -186,22 +176,18 @@ class EditUserDetails extends React.Component {
 												darkTheme={ <CircleDownIconDarkTheme/> }
 												lightTheme={ <CircleDownIconLightTheme/> }
 												onClick={ this.toggleBasicInfoSection }
-											/>
+											/>											
 										}
 									</div>
 									{
-										(this.state.basicInfoOpen) &&									
+										(this.state.basicInfoOpen) &&
 										<BasicInfo 
 											info={{
-												username: this.state.username,
-												email: this.state.email,
 												name: this.state.name,
-												firstName: this.state.firstName,
-												lastName: this.state.lastName,
-												city: this.state.city
+												contactEmail: this.state.contactEmail
 											}}
 											onChange={ this.saveToState }
-										/>	
+										/>
 									}
 
 									<HorizontalDivider height='1px' subtle />
@@ -229,7 +215,7 @@ class EditUserDetails extends React.Component {
 										}
 									</div>
 									{
-										(this.state.biographyOpen) &&
+										(this.state.biographyOpen) && 
 										<Biography 
 											value={ this.state.biography }
 											onChange={ this.saveToState }
@@ -240,7 +226,6 @@ class EditUserDetails extends React.Component {
 									<HorizontalDivider height='1px' subtle />
 
 									{/* - SOCIAL MEDIA LINKS SECTION - */}
-
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Social Media Links</h4>
 										<div className={ styles.right }>
@@ -287,21 +272,21 @@ class EditUserDetails extends React.Component {
 									{
 										(this.state.socialMediaLinksOpen) &&
 										<SocialMediaLinks 
-											newLinkEntries={ this.state.newLinkEntries }
+											//newLinkEntries={ this.state.newLinkEntries }
 											socialMediaLinks={ this.state.socialMediaLinks }
 											onChange={ this.saveToState }
 										/>
 									}
-									
+
 									<HorizontalDivider height='1px' subtle />
 
-									{/* - ART PROJECTS SECTION - */}
+									{/* - DISCOGRAPHY SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
+										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Discography</h4>
 										<div className={ styles.right }>
 											{
-												(this.state.artProjectsOpen) ? 
+												(this.state.discographyOpen) ? 
 													<React.Fragment>
 														<Link to='/createartproject'>
 															<IconButton 
@@ -317,7 +302,7 @@ class EditUserDetails extends React.Component {
 															highlighted={ <CircleUpIconHighlighted/> }
 															darkTheme={ <CircleUpIconDarkTheme/> }
 															lightTheme={ <CircleUpIconLightTheme/> }
-															onClick={ this.toggleArtProjectsSection }
+															onClick={ this.toggleDiscographySection }
 														/> 
 													</React.Fragment> :
 													<IconButton 
@@ -325,16 +310,14 @@ class EditUserDetails extends React.Component {
 														highlighted={ <CircleDownIconHighlighted/> }
 														darkTheme={ <CircleDownIconDarkTheme/> }
 														lightTheme={ <CircleDownIconLightTheme/> }
-														onClick={ this.toggleArtProjectsSection }
+														onClick={ this.toggleDiscographySection }
 													/>
 											}
 										</div>
-									</div>				
+									</div>
 									{
-										(this.state.artProjectsOpen) &&
-										<ArtProjects 
-											artProjects={ this.state.artProjects }
-										/>
+										(this.state.discographyOpen) &&
+										<Discography />
 									}
 
 									<HorizontalDivider height='1px' subtle />
@@ -349,10 +332,10 @@ class EditUserDetails extends React.Component {
 											// 	await editUser();
 											// }}
 										/>
-									</div>								
-								</div>							
-							</form>							
-						);
+									</div>
+								</div>
+							</form>
+						)
 					}
 				}
 			</Mutation>
@@ -364,14 +347,14 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const editUserDetailsClasses = ClassNames(styles.editUserDetails, themeClass, shapeClass);
+	const editArtProjectDetailsClasses = ClassNames(styles.editArtProjectDetails, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		editUserDetailsClasses,
+		editArtProjectDetailsClasses,
 		titleBarClasses
 	};
 }
 
-EditUserDetails.contextType = ThemeContext;
-export default EditUserDetails;
+EditArtProjectDetails.contextType = ThemeContext;
+export default EditArtProjectDetails;

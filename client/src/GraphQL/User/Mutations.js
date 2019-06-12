@@ -79,7 +79,7 @@ export const EDIT_USER_MUTATION = gql`
 							 lastName: $lastName,
 							 email: $email,
 							 password: $password,
-							 passwordConfimation: $passwordConfimation,
+							 passwordConfirmation: $passwordConfirmation,
 							 image: $image,
 							 biography: $biogrpahy,
 							 city: $city) {

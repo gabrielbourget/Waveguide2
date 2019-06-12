@@ -84,6 +84,25 @@ export const ARTPROJECT_BY_ID_QUERY = gql`
 	}
 `;
 
+/**
+ * ART_PROJECT_DETAILS_QUERY
+ * Description: Grab a thorough set of a user's profile information. 
+ * 						  Used to populate the profile editing form.
+ */
+export const ART_PROJECT_DETAILS_QUERY = gql`
+	query ART_PROJECT_DETAILS_QUERY ($id: ID!) {
+		ArtProject(id: $id) {
+			id
+			name
+			biography
+			socialMediaLinks {
+				network 
+				link 
+			} 
+		}
+	}
+`;
+
 
 
 /**
