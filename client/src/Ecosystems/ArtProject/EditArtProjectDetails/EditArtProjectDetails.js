@@ -46,7 +46,7 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './EditArtProject.module.scss';
+import styles from './EditArtProjectDetails.module.scss';
 
 // - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
@@ -58,7 +58,7 @@ class EditArtProjectDetails extends React.Component {
 		biographyOpen: false,
 		socialMediaLinksOpen: false,
 		discographyOpen: false,
-		artProjectName: '',
+		name: '',
 		contactEmail: '',
 		biography: '',
 		socialMediaLinks: [],
