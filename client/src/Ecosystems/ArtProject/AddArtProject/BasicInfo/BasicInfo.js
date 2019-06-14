@@ -27,36 +27,26 @@ class BasicInfo extends React.Component {
 		//const initObject = prepareComponent(this.state);
 
 		return (
-			<React.Fragment>
-				<div className={ styles.basicInfo }>
-					<LabelAndInput 
-						htmlFor='name'
-						labelText='Name'
-						type='text'
-						name='name'
-						placeholder='Name'
-						value={ this.props.name }
-						onChange={ this.props.onChange }
-					/>
-					<LabelAndInput 
-						htmlFor='contactEmail'
-						labelText='Contact Email'
-						type='email'
-						name='contactEmail'
-						placeholder='Contact Email'
-						value={ this.props.info.contactEmail }
-						onChange={ this.props.onChange }
-					/>				
-				</div>
-				<div className={ styles.bottom }>
-					<Link to='/changepassword'>
-						<OutlineButton 
-							text='Change Password'
-							onClick={ () => {} }
-						/>			
-					</Link>
-				</div>
-			</React.Fragment>
+			<div className={ styles.basicInfo }>
+				<LabelAndInput 
+					htmlFor='name'
+					labelText='Name'
+					type='text'
+					name='name'
+					placeholder='Name'
+					value={ this.props.name }
+					onChange={ this.props.onChange }
+				/>
+				<LabelAndInput 
+					htmlFor='contactEmail'
+					labelText='Contact Email'
+					type='email'
+					name='contactEmail'
+					placeholder='Contact Email'
+					value={ this.props.info.contactEmail }
+					onChange={ this.props.onChange }
+				/>				
+			</div>
 		);
 	}
 }

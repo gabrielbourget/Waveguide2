@@ -8,7 +8,10 @@ import styles from './Discography.module.scss';
 class Discography extends React.Component {
 	render() {
 		return (
-			<div>boop</div>
+			<div>
+				Under Dev... Needs to display songs by different groups such as alphabetical,
+				chronological from release, by song grouping, etc...
+			</div>
 		);
 	}
 }

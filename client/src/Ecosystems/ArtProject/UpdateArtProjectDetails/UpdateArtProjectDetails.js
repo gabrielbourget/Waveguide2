@@ -22,7 +22,7 @@ import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
 import { ART_PROJECT_DETAILS_QUERY } from '../../../GraphQL/ArtProject/Queries';
-import { EDIT_ART_PROJECT_MUTATION } from '../../../GraphQL/ArtProject/Mutations';
+import { UPDATE_ART_PROJECT_MUTATION } from '../../../GraphQL/ArtProject/Mutations';
 
 // -- WITHIN COMPONENT DIRECTORY -- //
 
@@ -46,12 +46,12 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './EditArtProjectDetails.module.scss';
+import styles from './UpdateArtProjectDetails.module.scss';
 
 // - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
-class EditArtProjectDetails extends React.Component {
+class UpdateArtProjectDetails extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
@@ -116,16 +116,16 @@ class EditArtProjectDetails extends React.Component {
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(editArtProject, { error, loading }) => {
+					(updateArtProject, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.editArtProjectDetailsClasses }
+								className={ initObject.updateArtProjectDetailsClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await editArtProject();
+									await updateArtProject();
 								}}
 							>
 								{/* - CARD HEADER - */}
@@ -289,6 +289,7 @@ class EditArtProjectDetails extends React.Component {
 												(this.state.discographyOpen) ? 
 													<React.Fragment>
 														<Link to='/createartproject'>
+															{/* TODO -> Make a dropdown here to add new Songs or SongGroups */}
 															<IconButton 
 																size='25px'
 																highlighted={ <PlusIconHighlighted /> }
@@ -347,14 +348,14 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const editArtProjectDetailsClasses = ClassNames(styles.editArtProjectDetails, themeClass, shapeClass);
+	const updateArtProjectDetailsClasses = ClassNames(styles.updateArtProjectDetails, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		editArtProjectDetailsClasses,
+		updateArtProjectDetailsClasses,
 		titleBarClasses
 	};
 }
 
-EditArtProjectDetails.contextType = ThemeContext;
-export default EditArtProjectDetails;
+UpdateArtProjectDetails.contextType = ThemeContext;
+export default UpdateArtProjectDetails;
