@@ -20,8 +20,10 @@ class LinkEntry extends React.Component {
 			<div className={ styles.linkEntry }>
 				<select 
 					name="networkPicker"
-					value={ this.props.network }
-					onChange={ this.props.onChange }
+					defaultValue={ this.props.network }
+					onChange={ (e) => {
+						console.log(e.target.value);
+					}}
 				>
 					{
 						Object.keys(supportedNetworks).map((key, i) => {

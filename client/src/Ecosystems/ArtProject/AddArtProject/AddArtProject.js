@@ -50,7 +50,7 @@ import styles from './AddArtProject.module.scss';
 // - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
-class UpdateArtProjectDetails extends React.Component {
+class AddArtProject extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
@@ -77,9 +77,13 @@ class UpdateArtProjectDetails extends React.Component {
 		shape: PropTypes.string
 	};
 
+	saveSocialMediaLinkToState = (e) => {
+		
+	};
+
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
-	};	
+	};
 
 	// - TODO -> Find a way to refactor these into one 
 	// 					 without having to make a seperate version 
@@ -324,7 +328,7 @@ class UpdateArtProjectDetails extends React.Component {
 
 									<div className={ styles.bottom }>									
 										<FilledButton
-											text='Create Art Project'
+											text='Add Art Project'
 											type='submit'
 											onClick={ () => {} }
 											// onClick={ async (e) => {
@@ -356,5 +360,5 @@ const prepareComponent = (context, { shape }) => {
 	};
 }
 
-UpdateArtProjectDetails.contextType = ThemeContext;
-export default UpdateArtProjectDetails;
+AddArtProject.contextType = ThemeContext;
+export default AddArtProject;

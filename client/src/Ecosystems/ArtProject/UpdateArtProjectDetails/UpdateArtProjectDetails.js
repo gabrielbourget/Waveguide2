@@ -111,7 +111,7 @@ class UpdateArtProjectDetails extends React.Component {
 
 		return (
 			<Mutation
-				mutation={ EDIT_ART_PROJECT_MUTATION }
+				mutation={ UPDATE_ART_PROJECT_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>

@@ -9,6 +9,7 @@ class SocialMediaLinks extends React.Component {
 
 	state = {
 		windowWidth: window.innerWidth,
+		links: this.props.links,
 		newLinkEntries: 0
 	};
 
