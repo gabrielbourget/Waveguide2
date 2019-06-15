@@ -28,7 +28,8 @@ import ChangePassword from '../../Components/ChangePassword/ChangePassword';
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
 // import EditUserDetails from '../User/EditUserDetails/EditUserDetails';
 // import UpdateArtProjectDetails from '../ArtProject/UpdateArtProjectDetails/UpdateArtProjectDetails';
-import AddArtProject from '../ArtProject/AddArtProject/AddArtProject';
+// import AddArtProject from '../ArtProject/AddArtProject/AddArtProject';
+import AddSong from '../Song/AddSong/AddSong';
 // import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
 // import { artProjects } from '../../Datasets/artProjects';
 import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
@@ -135,7 +136,7 @@ class App extends React.Component {
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle>
-                          <AddArtProject shape='rounded'/>
+                          <AddSong shape='rounded'/>
                         </CenteringCradle>
                       )}
                     />

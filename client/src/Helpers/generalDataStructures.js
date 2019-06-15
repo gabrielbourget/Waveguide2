@@ -60,3 +60,22 @@ export const keySignatureEnum = Object.freeze({
 	'A_FLAT_MIN': 30
 });
 
+// ---------------------------- //
+// - SUPPORTED EXTERNAL LINKS - //
+// ---------------------------- //
+
+// - Corresponds to the external links I have icon support for.
+export const supportedNetworks = {
+	'soundCloud': 'Soundcloud',
+	'spotify': 'Spotify',
+	'bandcamp': 'Bandcamp',
+	'apple': 'Apple',
+	'youtube': 'Youtube',
+	'personalWebsite': 'Personal Website',
+	'facebook': 'Facebook',
+	'instagram': 'Instagram',
+	'twitter': 'Twitter',
+	'vk': 'VK',
+	'snapchat': 'Snapchat'
+};
+ 

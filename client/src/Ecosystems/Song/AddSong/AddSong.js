@@ -22,7 +22,7 @@ import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
-import { ADD_SONG_MUTATION } from '../../../GraphQL/ArtProject/Mutations';
+import { ADD_SONG_MUTATION } from '../../../GraphQL/Song/Mutations';
 
 // -- WITHIN COMPONENT DIRECTORY -- //
 
@@ -46,7 +46,7 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './AddArtProject.module.scss';
+import styles from './AddSong.module.scss';
 
 // - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
@@ -99,18 +99,18 @@ class AddSong extends React.Component {
 	};
 
 	toggleAdvancedInfoSection = () => {
-		const current = this.static.advancedInfoOpen;
+		const current = this.state.advancedInfoOpen;
 		this.setState({ advancedInfoOpen: !current });
 	};
 
 	toggleDescriptionSection = () => {
-		const current = this.state.biographyOpen;
-		this.setState({ biographyOpen: !current });
+		const current = this.state.descriptionOpen;
+		this.setState({ descriptionOpen: !current });
 	};
 
 	toggleExternalLinksSection = () => {
-		const current = this.state.socialMediaLinksOpen;
-		this.setState({ socialMediaLinksOpen: !current });
+		const current = this.state.externalLinksOpen;
+		this.setState({ externalLinksOpen: !current });
 	};	
 
 	render() {
@@ -162,7 +162,7 @@ class AddSong extends React.Component {
 										placeItems: 'center',
 										placeContent: 'center'
 									}}>
-										<ProfilePhotoButton onClick={ this.photoUpload }/>
+										<SongArtButton onClick={ this.photoUpload }/>
 									</div>
 
 									{/* - BASIC INFO SECTION - */}
@@ -201,6 +201,7 @@ class AddSong extends React.Component {
 									<HorizontalDivider height='1px' subtle />
 
 									{/* - ADVANCED INFO SECTION - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Advanced Info</h4>
 										{
@@ -269,6 +270,7 @@ class AddSong extends React.Component {
 									<HorizontalDivider height='1px' subtle />
 
 									{/* - EXTERNAL LINKS SECTION - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>External Links</h4>
 										<div className={ styles.right }>
@@ -314,7 +316,7 @@ class AddSong extends React.Component {
 									</div>
 									{
 										(this.state.externalLinksOpen) &&
-										<SocialMediaLinks 
+										<ExternalLinks 
 											//newLinkEntries={ this.state.newLinkEntries }
 											externalLinks={ this.state.externalLinks }
 											onChange={ this.saveToState }
