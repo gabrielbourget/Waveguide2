@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { DatePicker } from 'react-datepicker';
 // import ClassNames from 'classnames';
 
 import LabelAndInput from '../../../../Components/LabelAndInput/LabelAndInput';
@@ -24,7 +25,6 @@ class AdvancedInfo extends React.Component {
 	componentWillUnmount = () => window.removeEventListener('resize', this.handleResize);
 
 	render() {
-		//const initObject = prepareComponent(this.state);
 
 		return (
 			<div className={ styles.advancedInfo }>
@@ -50,7 +50,5 @@ class AdvancedInfo extends React.Component {
 		);
 	}
 }
-
-// const prepareComponent
 
 export default AdvancedInfo;

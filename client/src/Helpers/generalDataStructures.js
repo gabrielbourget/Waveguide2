@@ -78,4 +78,21 @@ export const supportedNetworks = {
 	'vk': 'VK',
 	'snapchat': 'Snapchat'
 };
+
+// ------------------------------- //
+// - SUPPORTED CONTRIBUTOR ROLES - //
+// ------------------------------- //
+
+// - Corresponds to the types of relationships that are supported to 
+//   some artistic work in terms of one's contribution to it.
+export const supportedContributionRoles = {
+	'SOUND_DESIGN_CONTRIBUTION': 'Sound Design',
+	'PRODUCTION_CONTRIBUTION': 'Production',
+	'ENGINEERING_CONTRIBUTION': 'Engineering',
+	'RECORDING_CONTRIBUTION': 'Recording',
+	'MIXING_CONTRIBUTION': 'Mixing',
+	'MASTERING_CONTRIBUTION': 'Mastering',
+	'VISUAL_ART_CONTRIBUTION': 'Visual Art',
+	'MARKETING_CONTRIBUTION': 'Marketing'
+};
  
