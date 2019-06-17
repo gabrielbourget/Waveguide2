@@ -18,7 +18,7 @@ export const SWITCH_THEME_MUTATION = gql`
  * triggering it to render in and out of the application. 
  */
 export const TOGGLE_SIDE_DRAWER_MUTATION = gql`
-	mutation {
+	mutation TOGGLE_SIDE_DRAWER_MUTATION {
 		toggleSideDrawer @client
 	}
 `;
@@ -29,7 +29,7 @@ export const TOGGLE_SIDE_DRAWER_MUTATION = gql`
  * triggering it to render in and out of the application.
  */
 export const TOGGLE_SETTINGS_PANEL_MUTATION = gql`
-	mutation {
+	mutation TOGGLE_SETTINGS_PANEL_MUTATION {
 		toggleSettingsPanel @client
 	}
 `;
@@ -39,7 +39,7 @@ export const TOGGLE_SETTINGS_PANEL_MUTATION = gql`
  * Description: Turn backdrop component on or off
  */
 export const TOGGLE_BACKDROP_MUTATION = gql`
-	mutation {
+	mutation TOGGLE_BACKDROP_MUTATION {
 		toggleBackdrop @client
 	}
 `;

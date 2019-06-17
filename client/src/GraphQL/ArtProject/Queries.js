@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
  * from a query in the Search component. 
  */
 export const STORED_ART_PROJECTS_QUERY = gql`
-	query {
+	query STORED_ART_PROJECTS_QUERY {
 		storedArtProjects @client {
 			id 
 			imageURL 

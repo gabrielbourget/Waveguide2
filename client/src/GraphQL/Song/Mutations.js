@@ -1,14 +1,16 @@
 import gql from 'graphql-tag';
 
 /**
- * ADD_SONG_MUTATION
+ * CREATE_SONG_MUTATION
  * Description: Add a new song into the persistence graph.
  */
 // - TODO -> Add other input fields, probably just create input type.
-export const ADD_SONG_MUTATION = gql`
-	mutation AddSong($name: String) {
-		id
-		name
+export const CREATE_SONG_MUTATION = gql`
+	mutation CREATE_SONG_MUTATION($name: String) {
+		CreateSong(name: $name) {
+			id
+			name
+		}
 	}
 `;
 
@@ -18,9 +20,11 @@ export const ADD_SONG_MUTATION = gql`
  */
 // - TODO -> Add other input fields, probably just create input type.
 export const UPDATE_SONG_MUTATION = gql`
-	mutation UpdateSong($name: String) {
-		id 
-		name
+	mutation UPDATE_SONG_MUTATION($name: String) {
+		UpdateSong(name: $name) {
+			id 
+			name
+		}
 	}
 `;
 

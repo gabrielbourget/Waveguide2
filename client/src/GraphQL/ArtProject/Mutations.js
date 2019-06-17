@@ -1,14 +1,14 @@
 import gql from 'graphql-tag';
 
 /**
- * ADD_ART_PROJECT_MUTATION
+ * CREATE_ART_PROJECT_MUTATION
  * Description: Creates and adds a new ArtProject into the 
  * persistence graph. 
  */
 // - TODO -> Add other input fields, probably just create input type.
-export const ADD_ART_PROJECT_MUTATION = gql`
-	mutation AddArtProject($name: String!) {
-		AddArtProject(name: $name) {
+export const CREATE_ART_PROJECT_MUTATION = gql`
+	mutation CREATE_ART_PROJECT_MUTATION($name: String!) {
+		CreateArtProject(name: $name) {
 			id 
 			name 
 			biography

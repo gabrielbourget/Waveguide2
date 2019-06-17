@@ -59,6 +59,21 @@ export const RESET_PASSWORD_MUTATION = gql`
 `;
 
 /**
+ * CREATE_USER_MUTATION
+ * Description: Add a new song into the persistence graph.
+ */
+// - TODO -> Add other input fields, probably just create input type.
+export const CREATE_USER_MUTATION = gql`
+	mutation CREATE_USER_MUTATION($name: String) {
+		CreateUser(name: $name) {
+			id
+			name
+		}
+	}
+`;
+
+
+/**
  * UPDATE_USER_MUTATION
  * Description: Modifies user profile data.
  */

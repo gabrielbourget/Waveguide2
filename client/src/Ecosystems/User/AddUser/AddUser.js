@@ -8,7 +8,6 @@ import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
 // -- WITHIN /SRC -- //
-
 import { ThemeContext } from '../../../ThemeContext';
 
 // - External Components
@@ -21,16 +20,16 @@ import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
-import { CREATE_ART_PROJECT_MUTATION } from '../../../GraphQL/ArtProject/Mutations';
+import { CREATE_USER_MUTATION } from '../../../GraphQL/User/Mutations';
 
 // -- WITHIN COMPONENT DIRECTORY -- //
 
-// - Internal Components 
+// - Internal Components
 import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Biography from './Biography/Biography';
 import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
-import Discography from './Discography/Discography';
+import ArtProjects from './ArtProjects/ArtProjects';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -45,23 +44,34 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './AddArtProject.module.scss';
+import styles from './AddUser.module.scss';
 
-// - TODO -> Once login is hooked up across the stack, grab detailed art project 
+// - TODO -> Once back end is up and running properly, grab detailed user 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
-class AddArtProject extends React.Component {
+
+class AddUser extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
 		biographyOpen: false,
-		socialMediaLinksOpen: false,
-		discographyOpen: false,
+		socialMediaLinksOpen: false, 
+		artProjectsOpen: false,
+		newLinkEntries: 0,
+		username: '',
 		name: '',
-		contactEmail: '',
+		firstName: '',
+		middleNames: [],
+		lastName: '',
+		email: '',
+		password: '',
+		image: '',
 		biography: '',
+		city: '',
+		country: '',
 		socialMediaLinks: [],
-		discography: [], // - Maybe draw this out of graph topology as a flat list of songs.
+		artProjects: [],
+		musicLabels: [],
 	};
 
 	// - TODO -> Find a way to fire off native file browser by 
@@ -77,13 +87,13 @@ class AddArtProject extends React.Component {
 		shape: PropTypes.string
 	};
 
-	saveSocialMediaLinkToState = (e) => {
-		
-	};
-
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
-	};
+	};	
+
+	// saveSocialLinkToState = (e) => {
+	// 	this.setState([e.target.name]:)
+	// }
 
 	// - TODO -> Find a way to refactor these into one 
 	// 					 without having to make a seperate version 
@@ -104,9 +114,9 @@ class AddArtProject extends React.Component {
 		this.setState({ socialMediaLinksOpen: !current });
 	};	
 
-	toggleDiscographySection = () => {
-		const current = this.state.discographyOpen;
-		this.setState({ discographyOpen: !current });
+	toggleArtProjectsSection = () => {
+		const current = this.state.artProjectsOpen;
+		this.setState({ artProjectsOpen: !current });
 	};
 
 	render() {
@@ -114,32 +124,34 @@ class AddArtProject extends React.Component {
 
 		return (
 			<Mutation
-				mutation={ CREATE_ART_PROJECT_MUTATION }
+				mutation={ CREATE_USER_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(createArtProject, { error, loading }) => {
+					(createUser, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.addArtProjectClasses }
+								className={ initObject.addUserClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await createArtProject();
+									await createUser();
 								}}
 							>
+
 								{/* - CARD HEADER - */}
+
 								<div className={ initObject.titleBarClasses }>
-									<h2>Add Art Project</h2>
+									<h2>Add User</h2>
 								</div>
 								{
-									(this.context === 'dark') &&
-									<div
-										style={{
-											padding: '0px 30px',
+									(this.context === 'dark') &&									
+									<div 
+										style={{ 
+											padding: '0px 30px', 
 											display: 'grid',
 											alignItems: 'center'
 										}}
@@ -162,10 +174,11 @@ class AddArtProject extends React.Component {
 									</div>
 
 									{/* - BASIC INFO SECTION - */}
+
 									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Basic Info</h4>
+										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Basic Info</h4>
 										{
-											(this.state.basicInfoOpen) ?
+											(this.state.basicInfoOpen) ? 
 											<IconButton 
 												size='25px'
 												highlighted={ <CircleUpIconHighlighted/> }
@@ -179,18 +192,23 @@ class AddArtProject extends React.Component {
 												darkTheme={ <CircleDownIconDarkTheme/> }
 												lightTheme={ <CircleDownIconLightTheme/> }
 												onClick={ this.toggleBasicInfoSection }
-											/>											
+											/>
 										}
 									</div>
 									{
-										(this.state.basicInfoOpen) &&
+										(this.state.basicInfoOpen) &&									
 										<BasicInfo 
 											info={{
+												username: this.state.username,
+												email: this.state.email,
+												password: this.state.password,
 												name: this.state.name,
-												contactEmail: this.state.contactEmail
+												firstName: this.state.firstName,
+												lastName: this.state.lastName,
+												city: this.state.city
 											}}
 											onChange={ this.saveToState }
-										/>
+										/>	
 									}
 
 									<HorizontalDivider height='1px' subtle />
@@ -218,7 +236,7 @@ class AddArtProject extends React.Component {
 										}
 									</div>
 									{
-										(this.state.biographyOpen) && 
+										(this.state.biographyOpen) &&
 										<Biography 
 											value={ this.state.biography }
 											onChange={ this.saveToState }
@@ -229,6 +247,7 @@ class AddArtProject extends React.Component {
 									<HorizontalDivider height='1px' subtle />
 
 									{/* - SOCIAL MEDIA LINKS SECTION - */}
+
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Social Media Links</h4>
 										<div className={ styles.right }>
@@ -275,24 +294,23 @@ class AddArtProject extends React.Component {
 									{
 										(this.state.socialMediaLinksOpen) &&
 										<SocialMediaLinks 
-											//newLinkEntries={ this.state.newLinkEntries }
+											newLinkEntries={ this.state.newLinkEntries }
 											socialMediaLinks={ this.state.socialMediaLinks }
 											onChange={ this.saveToState }
 										/>
 									}
-
+									
 									<HorizontalDivider height='1px' subtle />
 
-									{/* - DISCOGRAPHY SECTION - */}
+									{/* - ART PROJECTS SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Discography</h4>
+										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
 										<div className={ styles.right }>
 											{
-												(this.state.discographyOpen) ? 
+												(this.state.artProjectsOpen) ? 
 													<React.Fragment>
 														<Link to='/createartproject'>
-															{/* TODO -> Make a dropdown here to add new Songs or SongGroups */}
 															<IconButton 
 																size='25px'
 																highlighted={ <PlusIconHighlighted /> }
@@ -306,7 +324,7 @@ class AddArtProject extends React.Component {
 															highlighted={ <CircleUpIconHighlighted/> }
 															darkTheme={ <CircleUpIconDarkTheme/> }
 															lightTheme={ <CircleUpIconLightTheme/> }
-															onClick={ this.toggleDiscographySection }
+															onClick={ this.toggleArtProjectsSection }
 														/> 
 													</React.Fragment> :
 													<IconButton 
@@ -314,21 +332,23 @@ class AddArtProject extends React.Component {
 														highlighted={ <CircleDownIconHighlighted/> }
 														darkTheme={ <CircleDownIconDarkTheme/> }
 														lightTheme={ <CircleDownIconLightTheme/> }
-														onClick={ this.toggleDiscographySection }
+														onClick={ this.toggleArtProjectsSection }
 													/>
 											}
 										</div>
-									</div>
+									</div>				
 									{
-										(this.state.discographyOpen) &&
-										<Discography />
+										(this.state.artProjectsOpen) &&
+										<ArtProjects 
+											artProjects={ this.state.artProjects }
+										/>
 									}
 
 									<HorizontalDivider height='1px' subtle />
 
 									<div className={ styles.bottom }>									
 										<FilledButton
-											text='Add Art Project'
+											text='Add User'
 											type='submit'
 											onClick={ () => {} }
 											// onClick={ async (e) => {
@@ -336,10 +356,10 @@ class AddArtProject extends React.Component {
 											// 	await editUser();
 											// }}
 										/>
-									</div>
-								</div>
-							</form>
-						)
+									</div>								
+								</div>							
+							</form>							
+						);
 					}
 				}
 			</Mutation>
@@ -351,14 +371,14 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const addArtProjectClasses = ClassNames(styles.addArtProject, themeClass, shapeClass);
+	const addUserClasses = ClassNames(styles.addUser, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		addArtProjectClasses,
+		addUserClasses,
 		titleBarClasses
 	};
 }
 
-AddArtProject.contextType = ThemeContext;
-export default AddArtProject;
+AddUser.contextType = ThemeContext;
+export default AddUser;

@@ -26,10 +26,11 @@ import ChangePassword from '../../Components/ChangePassword/ChangePassword';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
+import AddUser from '../User/AddUser/AddUser';
 // import UpdateUser from '../User/UpdateUser/UpdateUser';
-// import UpdateArtProjectDetails from '../ArtProject/UpdateArtProjectDetails/UpdateArtProjectDetails';
 // import AddArtProject from '../ArtProject/AddArtProject/AddArtProject';
-import AddSong from '../Song/AddSong/AddSong';
+// import UpdateArtProject from '../ArtProject/UpdateArtProject/UpdateArtProject';
+// import AddSong from '../Song/AddSong/AddSong';
 // import UpdateSong from '../Song/UpdateSong/UpdateSong';
 // import SmallArtProjectCard from '../../Components/Cards/SmallArtProjectCard/SmallArtProjectCard';
 // import { artProjects } from '../../Datasets/artProjects';
@@ -137,7 +138,7 @@ class App extends React.Component {
                       path='/componentdevplayground'
                       render={ () => (
                         <CenteringCradle>
-                          <AddSong shape='rounded'/>
+                          <AddUser shape='rounded'/>
                         </CenteringCradle>
                       )}
                     />

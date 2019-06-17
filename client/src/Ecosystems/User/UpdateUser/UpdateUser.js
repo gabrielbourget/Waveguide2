@@ -27,7 +27,7 @@ import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
 // - TODO -> Once back end is up and running, compose this query around component as well
 // 					 to provide details on the current user into the component. 
 import { USER_DETAILS_QUERY } from '../../../GraphQL/User/Queries';
-import { EDIT_USER_MUTATION } from '../../../GraphQL/User/Mutations';
+import { UPDATE_USER_MUTATION } from '../../../GraphQL/User/Mutations';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -48,7 +48,7 @@ import styles from './UpdateUser.module.scss';
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
 
-class UpdateUserDetails extends React.Component {
+class UpdateUser extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
@@ -121,7 +121,7 @@ class UpdateUserDetails extends React.Component {
 
 		return (
 			<Mutation
-				mutation={ EDIT_USER_MUTATION }
+				mutation={ UPDATE_USER_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
@@ -344,7 +344,7 @@ class UpdateUserDetails extends React.Component {
 
 									<div className={ styles.bottom }>									
 										<FilledButton
-											text='Save Changes'
+											text='Update User'
 											type='submit'
 											onClick={ () => {} }
 											// onClick={ async (e) => {
@@ -367,11 +367,11 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const updateUserDetailsClasses = ClassNames(styles.updateUserDetails, themeClass, shapeClass);
+	const updateUserClasses = ClassNames(styles.updateUser, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		updateUserDetailsClasses,
+		updateUserClasses,
 		titleBarClasses
 	};
 }

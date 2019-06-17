@@ -22,7 +22,7 @@ import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
-import { ADD_SONG_MUTATION } from '../../../GraphQL/Song/Mutations';
+import { CREATE_SONG_MUTATION } from '../../../GraphQL/Song/Mutations';
 
 // -- WITHIN COMPONENT DIRECTORY -- //
 
@@ -48,7 +48,7 @@ import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHi
 
 import styles from './AddSong.module.scss';
 
-// - TODO -> Once login is hooked up across the stack, grab detailed art project 
+// - TODO -> Once back end is up and running properly, grab detailed song 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
 class AddSong extends React.Component {
@@ -118,12 +118,12 @@ class AddSong extends React.Component {
 
 		return (
 			<Mutation
-				mutation={ ADD_SONG_MUTATION }
+				mutation={ CREATE_SONG_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(addSong, { error, loading }) => {
+					(createSong, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
@@ -132,7 +132,7 @@ class AddSong extends React.Component {
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await addSong();
+									await createSong();
 								}}
 							>
 								{/* - CARD HEADER - */}
