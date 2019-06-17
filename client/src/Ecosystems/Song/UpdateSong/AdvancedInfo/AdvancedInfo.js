@@ -44,7 +44,7 @@ class AdvancedInfo extends React.Component {
 					placeholder='Song Group'
 					value={ this.props.songGroup }
 					onChange={ this.props.onChange }
-				/>			
+				/>	
 				<Contributors
 					contributors={ this.props.info.contributors }
 					onChange={ this.props.onChange }

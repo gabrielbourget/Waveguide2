@@ -63,12 +63,12 @@ class UpdateSong extends React.Component {
 		descriptionOpen: false,
 		externalLinksOpen: false,
 		title: '',
-		contributors: [],
-		tempo: 0,
+		tempo: '',
 		keySignature: '',
-		description: '',
+		contributors: [],
 		releaseDate: {},
 		songGroups: [],
+		description: '',
 		externalLinks: []
 	};
 

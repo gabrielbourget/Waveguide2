@@ -86,6 +86,8 @@ export const supportedNetworks = {
 // - Corresponds to the types of relationships that are supported to 
 //   some artistic work in terms of one's contribution to it.
 export const supportedContributionTypes = {
+	'MAIN_COMPOSER_CONTRIBUTION': 'Main Composer',
+	'COLLABORATOR_CONTRIBUTION': 'Collaborator',
 	'SOUND_DESIGN_CONTRIBUTION': 'Sound Design',
 	'PRODUCTION_CONTRIBUTION': 'Production',
 	'ENGINEERING_CONTRIBUTION': 'Engineering',
