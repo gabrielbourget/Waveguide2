@@ -1,8 +1,32 @@
 .contributorEntry {
 	height: auto;
 	width: 100%;
-	padding: 10px 0px;
+	padding: 10px 10px;
 
-	display: grid;
-	grid-gap: 1rem;
+	&.darkTheme { border: 1px solid var(--c_lowContrastDarkTheme); }
+	&.lightTheme { border: 1px solid var(--c_lowContrastLightTheme); }
+
+	.roles {
+		display: grid;
+		grid-template-rows: 50px 1fr;
+		grid-gap: 1rem;
+
+		.top {
+			height: auto;
+			width: 100%;
+
+			display: grid;
+			grid-auto-flow: column;
+			justify-content: space-between;
+			align-content: center;
+		}
+
+		.body {
+			height: auto;
+			width: 100%;
+			display: grid;
+			//place-content: ;
+		}
+	}
+	
 }

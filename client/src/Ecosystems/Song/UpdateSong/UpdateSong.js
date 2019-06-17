@@ -1,10 +1,16 @@
+// -- WITHIN PROJECT BOUNDARY -- //
+
 // - External Modules
 import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
+
+// -- WITHIN /SRC -- //
+
 import { ThemeContext } from '../../../ThemeContext';
+import { keySignatureEnum } from '../../../Helpers/generalDataStructures';
 
 // - External Components
 import LaggingLinesLoader from '../../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
@@ -14,20 +20,22 @@ import HorizontalDivider from '../../../Components/Dividers/HorizontalDivider/Ho
 // import { StatusOutlineInner } from '../StatusOutlineInner/StatusOutlineInner';
 import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
-// - Internal Components
-import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
-import BasicInfo from './BasicInfo/BasicInfo';
-import Biography from './Biography/Biography';
-import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
-import ArtProjects from './ArtProjects/ArtProjects';
-
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
 
 // - TODO -> Once back end is up and running, compose this query around component as well
 // 					 to provide details on the current user into the component. 
-import { USER_DETAILS_QUERY } from '../../../GraphQL/User/Queries';
-import { EDIT_USER_MUTATION } from '../../../GraphQL/User/Mutations';
+import { SONG_DETAILS_QUERY } from '../../../GraphQL/Song/Queries';
+import { UPDATE_SONG_MUTATION } from '../../../GraphQL/Song/Mutations';
+
+// -- WITHIN COMPONENT DIRECTORY -- //
+
+// - Internal Components 
+import SongArtButton from './SongArtButton/SongArtButton';
+import BasicInfo from './BasicInfo/BasicInfo';
+import AdvancedInfo from './AdvancedInfo/AdvancedInfo';
+import Description from './Description/Description';
+import ExternalLinks from './ExternalLinks/ExternalLinks';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -42,33 +50,26 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './UpdateUser.module.scss';
+import styles from './UpdateSong.module.scss';
 
-// - TODO -> Once login is hooked up across the stack, grab detailed user 
+// - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
-
-class UpdateUserDetails extends React.Component {
+class UpdateSong extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
-		biographyOpen: false,
-		socialMediaLinksOpen: false, 
-		artProjectsOpen: false,
-		newLinkEntries: 0,
-		username: '',
-		name: '',
-		firstName: '',
-		middleNames: [],
-		lastName: '',
-		email: '',
-		image: '',
-		biography: '',
-		city: '',
-		country: '',
-		socialMediaLinks: [],
-		artProjects: [],
-		musicLabels: [],
+		advancedInfoOpen: false,
+		descriptionOpen: false,
+		externalLinksOpen: false,
+		title: '',
+		contributors: [],
+		tempo: 0,
+		keySignature: '',
+		description: '',
+		releaseDate: {},
+		songGroups: [],
+		externalLinks: []
 	};
 
 	// - TODO -> Find a way to fire off native file browser by 
@@ -84,13 +85,13 @@ class UpdateUserDetails extends React.Component {
 		shape: PropTypes.string
 	};
 
+	saveExternalLinkToState = (e) => {
+		
+	};
+
 	saveToState = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
-	};	
-
-	// saveSocialLinkToState = (e) => {
-	// 	this.setState([e.target.name]:)
-	// }
+	};
 
 	// - TODO -> Find a way to refactor these into one 
 	// 					 without having to make a seperate version 
@@ -101,54 +102,52 @@ class UpdateUserDetails extends React.Component {
 		this.setState({ basicInfoOpen: !current });
 	};
 
-	toggleBiographySection = () => {
-		const current = this.state.biographyOpen;
-		this.setState({ biographyOpen: !current });
+	toggleAdvancedInfoSection = () => {
+		const current = this.state.advancedInfoOpen;
+		this.setState({ advancedInfoOpen: !current });
 	};
 
-	toggleSocialMediaLinksSection = () => {
-		const current = this.state.socialMediaLinksOpen;
-		this.setState({ socialMediaLinksOpen: !current });
+	toggleDescriptionSection = () => {
+		const current = this.state.descriptionOpen;
+		this.setState({ descriptionOpen: !current });
+	};
+
+	toggleExternalLinksSection = () => {
+		const current = this.state.externalLinksOpen;
+		this.setState({ externalLinksOpen: !current });
 	};	
-
-	toggleArtProjectsSection = () => {
-		const current = this.state.artProjectsOpen;
-		this.setState({ artProjectsOpen: !current });
-	};
 
 	render() {
 		const initObject = prepareComponent(this.context, this.props);
 
 		return (
 			<Mutation
-				mutation={ EDIT_USER_MUTATION }
+				mutation={ UPDATE_SONG_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(updateUser, { error, loading }) => {
+					(updateSong, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.updateUserDetailsClasses }
+								className={ initObject.updateSongClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await updateUser();
+									await updateSong();
 								}}
 							>
-
 								{/* - CARD HEADER - */}
-
 								<div className={ initObject.titleBarClasses }>
-									<h2>Update User</h2>
+									<h2>Update Song</h2>
 								</div>
 								{
-									(this.context === 'dark') &&									
-									<div 
-										style={{ 
-											padding: '0px 30px', 
+									(this.context === 'dark') &&
+									<div
+										style={{
+											padding: '0px 30px',
 											display: 'grid',
 											alignItems: 'center'
 										}}
@@ -167,15 +166,14 @@ class UpdateUserDetails extends React.Component {
 										placeItems: 'center',
 										placeContent: 'center'
 									}}>
-										<ProfilePhotoButton onClick={ this.photoUpload }/>
+										<SongArtButton onClick={ this.photoUpload }/>
 									</div>
 
 									{/* - BASIC INFO SECTION - */}
-
 									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Basic Info</h4>
+										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Basic Info</h4>
 										{
-											(this.state.basicInfoOpen) ? 
+											(this.state.basicInfoOpen) ?
 											<IconButton 
 												size='25px'
 												highlighted={ <CircleUpIconHighlighted/> }
@@ -189,66 +187,99 @@ class UpdateUserDetails extends React.Component {
 												darkTheme={ <CircleDownIconDarkTheme/> }
 												lightTheme={ <CircleDownIconLightTheme/> }
 												onClick={ this.toggleBasicInfoSection }
-											/>
+											/>											
 										}
 									</div>
 									{
-										(this.state.basicInfoOpen) &&									
+										(this.state.basicInfoOpen) &&
 										<BasicInfo 
 											info={{
-												username: this.state.username,
-												email: this.state.email,
-												name: this.state.name,
-												firstName: this.state.firstName,
-												lastName: this.state.lastName,
-												city: this.state.city
+												title: this.state.title,
+												keySignature: this.state.keySignature,
+												tempo: this.state.tempo
 											}}
 											onChange={ this.saveToState }
-										/>	
-									}
-
-									<HorizontalDivider height='1px' subtle />
-
-									{/* - BIOGRAPHY SECTION - */}
-
-									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Biography</h4>
-										{
-											(this.state.biographyOpen) ? 
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleUpIconHighlighted/> }
-												darkTheme={ <CircleUpIconDarkTheme/> }
-												lightTheme={ <CircleUpIconLightTheme/> }
-												onClick={ this.toggleBiographySection }
-											/> :
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleDownIconHighlighted/> }
-												darkTheme={ <CircleDownIconDarkTheme/> }
-												lightTheme={ <CircleDownIconLightTheme/> }
-												onClick={ this.toggleBiographySection }
-											/>
-										}
-									</div>
-									{
-										(this.state.biographyOpen) &&
-										<Biography 
-											value={ this.state.biography }
-											onChange={ this.saveToState }
-											name='biography'
 										/>
 									}
 
 									<HorizontalDivider height='1px' subtle />
 
-									{/* - SOCIAL MEDIA LINKS SECTION - */}
+									{/* - ADVANCED INFO SECTION - */}
 
 									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Social Media Links</h4>
+										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Advanced Info</h4>
+										{
+											(this.state.advancedInfoOpen) ?
+											<IconButton 
+												size='25px'
+												highlighted={ <CircleUpIconHighlighted/> }
+												darkTheme={ <CircleUpIconDarkTheme/> }
+												lightTheme={ <CircleUpIconLightTheme/> }
+												onClick={ this.toggleAdvancedInfoSection }
+											/> :
+											<IconButton 
+												size='25px'
+												highlighted={ <CircleDownIconHighlighted/> }
+												darkTheme={ <CircleDownIconDarkTheme/> }
+												lightTheme={ <CircleDownIconLightTheme/> }
+												onClick={ this.toggleAdvancedInfoSection }
+											/>											
+										}
+									</div>
+									{
+										(this.state.advancedInfoOpen) &&
+										<AdvancedInfo 
+											info={{
+												contributors: this.state.contributors,
+												releaseDate: this.state.releaseDate,
+												songGroups: this.state.songGroups
+											}}
+											onChange={ this.saveToState }
+										/>
+									}
+
+									<HorizontalDivider height='1px' subtle />									
+
+									{/* - DESCRIPTION SECTION - */}
+
+									<div className={ styles.sectionTitleBar }>
+										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Description</h4>
+										{
+											(this.state.descriptionOpen) ? 
+											<IconButton 
+												size='25px'
+												highlighted={ <CircleUpIconHighlighted/> }
+												darkTheme={ <CircleUpIconDarkTheme/> }
+												lightTheme={ <CircleUpIconLightTheme/> }
+												onClick={ this.toggleDescriptionSection }
+											/> :
+											<IconButton 
+												size='25px'
+												highlighted={ <CircleDownIconHighlighted/> }
+												darkTheme={ <CircleDownIconDarkTheme/> }
+												lightTheme={ <CircleDownIconLightTheme/> }
+												onClick={ this.toggleDescriptionSection }
+											/>
+										}
+									</div>
+									{
+										(this.state.descriptionOpen) && 
+										<Description 
+											value={ this.state.description }
+											onChange={ this.saveToState }
+											name='description'
+										/>
+									}
+
+									<HorizontalDivider height='1px' subtle />
+
+									{/* - EXTERNAL LINKS SECTION - */}
+
+									<div className={ styles.sectionTitleBar }>
+										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>External Links</h4>
 										<div className={ styles.right }>
 											{
-												(this.state.socialMediaLinksOpen) ? 
+												(this.state.externalLinksOpen) ? 
 													<React.Fragment>
 														<IconButton 
 															size='25px'
@@ -274,7 +305,7 @@ class UpdateUserDetails extends React.Component {
 															highlighted={ <CircleUpIconHighlighted/> }
 															darkTheme={ <CircleUpIconDarkTheme/> }
 															lightTheme={ <CircleUpIconLightTheme/> }
-															onClick={ this.toggleSocialMediaLinksSection }
+															onClick={ this.toggleExternalLinksSection }
 														/> 
 													</React.Fragment> :
 													<IconButton 
@@ -282,61 +313,17 @@ class UpdateUserDetails extends React.Component {
 														highlighted={ <CircleDownIconHighlighted/> }
 														darkTheme={ <CircleDownIconDarkTheme/> }
 														lightTheme={ <CircleDownIconLightTheme/> }
-														onClick={ this.toggleSocialMediaLinksSection }
+														onClick={ this.toggleExternalLinksSection }
 													/>
 											}
 										</div>
 									</div>
 									{
-										(this.state.socialMediaLinksOpen) &&
-										<SocialMediaLinks 
-											newLinkEntries={ this.state.newLinkEntries }
-											socialMediaLinks={ this.state.socialMediaLinks }
+										(this.state.externalLinksOpen) &&
+										<ExternalLinks 
+											//newLinkEntries={ this.state.newLinkEntries }
+											externalLinks={ this.state.externalLinks }
 											onChange={ this.saveToState }
-										/>
-									}
-									
-									<HorizontalDivider height='1px' subtle />
-
-									{/* - ART PROJECTS SECTION - */}
-
-									<div className={ styles.sectionTitleBar }>
-										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
-										<div className={ styles.right }>
-											{
-												(this.state.artProjectsOpen) ? 
-													<React.Fragment>
-														<Link to='/createartproject'>
-															<IconButton 
-																size='25px'
-																highlighted={ <PlusIconHighlighted /> }
-																darkTheme={ <PlusIconDarkTheme /> }
-																lightTheme={ <PlusIconLightTheme /> }
-																onClick={ () => {} }
-															/>
-														</Link>
-														<IconButton 
-															size='25px'
-															highlighted={ <CircleUpIconHighlighted/> }
-															darkTheme={ <CircleUpIconDarkTheme/> }
-															lightTheme={ <CircleUpIconLightTheme/> }
-															onClick={ this.toggleArtProjectsSection }
-														/> 
-													</React.Fragment> :
-													<IconButton 
-														size='25px'
-														highlighted={ <CircleDownIconHighlighted/> }
-														darkTheme={ <CircleDownIconDarkTheme/> }
-														lightTheme={ <CircleDownIconLightTheme/> }
-														onClick={ this.toggleArtProjectsSection }
-													/>
-											}
-										</div>
-									</div>				
-									{
-										(this.state.artProjectsOpen) &&
-										<ArtProjects 
-											artProjects={ this.state.artProjects }
 										/>
 									}
 
@@ -344,7 +331,7 @@ class UpdateUserDetails extends React.Component {
 
 									<div className={ styles.bottom }>									
 										<FilledButton
-											text='Save Changes'
+											text='Update Song'
 											type='submit'
 											onClick={ () => {} }
 											// onClick={ async (e) => {
@@ -352,10 +339,10 @@ class UpdateUserDetails extends React.Component {
 											// 	await editUser();
 											// }}
 										/>
-									</div>								
-								</div>							
-							</form>							
-						);
+									</div>
+								</div>
+							</form>
+						)
 					}
 				}
 			</Mutation>
@@ -367,14 +354,14 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const updateUserDetailsClasses = ClassNames(styles.updateUserDetails, themeClass, shapeClass);
+	const updateSongClasses = ClassNames(styles.updateSong, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		updateUserDetailsClasses,
+		updateSongClasses,
 		titleBarClasses
 	};
 }
 
-UpdateUserDetails.contextType = ThemeContext;
-export default UpdateUserDetails;
+UpdateSong.contextType = ThemeContext;
+export default UpdateSong;
