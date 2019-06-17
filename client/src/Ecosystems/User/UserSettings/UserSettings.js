@@ -3,7 +3,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 import { ThemeContext } from '../../../ThemeContext';
 
-import styles from './Settings.module.scss';
+import styles from './UserSettings.module.scss';
 
 class Settings extends React.Component {
 	render() {

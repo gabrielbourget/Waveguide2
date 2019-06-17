@@ -39,7 +39,7 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './UpdateUserDetails.module.scss';
+import styles from './UpdateUser.module.scss';
 
 // - TODO -> Once login is hooked up across the stack, grab detailed user 
 // 					 info from the database and populate the form with existing info. 

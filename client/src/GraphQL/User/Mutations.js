@@ -59,11 +59,11 @@ export const RESET_PASSWORD_MUTATION = gql`
 `;
 
 /**
- * EDIT_USER_MUTATION
+ * UPDATE_USER_MUTATION
  * Description: Modifies user profile data.
  */
-export const EDIT_USER_MUTATION = gql`
-	mutation EDIT_USER_MUTATION($username: String,
+export const UPDATE_USER_MUTATION = gql`
+	mutation UPDATE_USER_MUTATION($username: String,
 															$name: String,
 															$firstName: String,
 															$lastName: String

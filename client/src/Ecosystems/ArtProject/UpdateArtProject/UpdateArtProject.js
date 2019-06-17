@@ -46,7 +46,7 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './UpdateArtProjectDetails.module.scss';
+import styles from './UpdateArtProject.module.scss';
 
 // - TODO -> Once login is hooked up across the stack, grab detailed art project 
 // 					 info from the database and populate the form with existing info. 
@@ -121,7 +121,7 @@ class UpdateArtProjectDetails extends React.Component {
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.updateArtProjectDetailsClasses }
+								className={ initObject.updateArtProjectClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
@@ -348,11 +348,11 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const updateArtProjectDetailsClasses = ClassNames(styles.updateArtProjectDetails, themeClass, shapeClass);
+	const updateArtProjectClasses = ClassNames(styles.updateArtProject, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		updateArtProjectDetailsClasses,
+		updateArtProjectClasses,
 		titleBarClasses
 	};
 }
