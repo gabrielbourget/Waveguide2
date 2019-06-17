@@ -39,13 +39,13 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './EditUserDetails.module.scss';
+import styles from './UpdateUserDetails.module.scss';
 
 // - TODO -> Once login is hooked up across the stack, grab detailed user 
 // 					 info from the database and populate the form with existing info. 
 // 					 Once payload comes in, just set local form state with matching fields.
 
-class EditUserDetails extends React.Component {
+class UpdateUserDetails extends React.Component {
 
 	state = {
 		basicInfoOpen: false,
@@ -123,23 +123,23 @@ class EditUserDetails extends React.Component {
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(editUser, { error, loading }) => {
+					(updateUser, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.editUserDetailsClasses }
+								className={ initObject.updateUserDetailsClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await editUser();
+									await updateUser();
 								}}
 							>
 
 								{/* - CARD HEADER - */}
 
 								<div className={ initObject.titleBarClasses }>
-									<h2>User Profile Details</h2>
+									<h2>Update User Details</h2>
 								</div>
 								{
 									(this.context === 'dark') &&									
@@ -364,14 +364,14 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const editUserDetailsClasses = ClassNames(styles.editUserDetails, themeClass, shapeClass);
+	const updateUserDetailsClasses = ClassNames(styles.updateUserDetails, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		editUserDetailsClasses,
+		updateUserDetailsClasses,
 		titleBarClasses
 	};
 }
 
-EditUserDetails.contextType = ThemeContext;
-export default EditUserDetails;
+UpdateUserDetails.contextType = ThemeContext;
+export default UpdateUserDetails;

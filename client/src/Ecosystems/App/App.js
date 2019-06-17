@@ -26,7 +26,7 @@ import ChangePassword from '../../Components/ChangePassword/ChangePassword';
 
 // - Component Development Imports
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-// import EditUserDetails from '../User/EditUserDetails/EditUserDetails';
+// import UpdateUserDetails from '../User/UpdateUserDetails/UpdateUserDetails';
 // import UpdateArtProjectDetails from '../ArtProject/UpdateArtProjectDetails/UpdateArtProjectDetails';
 // import AddArtProject from '../ArtProject/AddArtProject/AddArtProject';
 import AddSong from '../Song/AddSong/AddSong';

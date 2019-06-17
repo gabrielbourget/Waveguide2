@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassNames from 'classnames';
 
-import LinkEntry from './LinkEntry/LinkEntry';
+import LinkEntry from '../../../../Components/LinkEntry/LinkEntry';
 
 import styles from './SocialMediaLinks.module.scss';
 
@@ -49,7 +49,7 @@ class SocialMediaLinks extends React.Component {
 		// - Return number of links they have + number of new fields 
 		//   they've popped down but haven't committed yet.
 		return (
-			<div className={ styles.socialMediaLinks }>			
+			<React.Fragment>			
 				{
 					(socialMediaLinks).map((linkEntry, i) => (
 						<LinkEntry 
@@ -67,7 +67,7 @@ class SocialMediaLinks extends React.Component {
 						/>
 					}
 				*/}
-			</div>
+			</React.Fragment>
 		);
 	};
 

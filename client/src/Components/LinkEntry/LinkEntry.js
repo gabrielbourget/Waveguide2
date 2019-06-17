@@ -1,8 +1,8 @@
 import React from 'react';
 
-import LabelAndInput from '../../../../../Components/LabelAndInput/LabelAndInput';
+import LabelAndInput from '../LabelAndInput/LabelAndInput';
 
-import { supportedNetworks } from './helpers';
+import { supportedNetworks } from '../../Helpers/generalDataStructures';
 import styles from './LinkEntry.module.scss';
 
 class LinkEntry extends React.Component {
@@ -20,10 +20,8 @@ class LinkEntry extends React.Component {
 			<div className={ styles.linkEntry }>
 				<select 
 					name="networkPicker"
-					defaultValue={ this.props.network }
-					onChange={ (e) => {
-						console.log(e.target.value);
-					}}
+					value={ this.props.network }
+					onChange={ this.props.onChange }
 				>
 					{
 						Object.keys(supportedNetworks).map((key, i) => {

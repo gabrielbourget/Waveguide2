@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DatePicker } from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 // import ClassNames from 'classnames';
 
 import LabelAndInput from '../../../../Components/LabelAndInput/LabelAndInput';
 // import FilledButton from '../../Buttons/FilledButton/FilledButton';
 import OutlineButton from '../../../../Components/Buttons/OutlineButton/OutlineButton';
+
+import Contributors from './Contributors/Contributors';
 
 import styles from './AdvancedInfo.module.scss';
 
@@ -26,26 +28,27 @@ class AdvancedInfo extends React.Component {
 
 	render() {
 
+		const currDate = new Date();
+
 		return (
 			<div className={ styles.advancedInfo }>
-				<LabelAndInput 
-					htmlFor='name'
-					labelText='Name'
-					type='text'
-					name='name'
-					placeholder='Name'
-					value={ this.props.name }
+				<Contributors
+					contributors={ this.props.info.contributors }
 					onChange={ this.props.onChange }
 				/>
-				<LabelAndInput 
-					htmlFor='contactEmail'
-					labelText='Contact Email'
-					type='email'
-					name='contactEmail'
-					placeholder='Contact Email'
-					value={ this.props.info.contactEmail }
+{/*				<DatePicker 
+					selected={ currDate }
 					onChange={ this.props.onChange }
-				/>				
+				/>*/}
+				<LabelAndInput 
+					htmlFor='songGroup'
+					labelText='Song Group'
+					type='text'
+					name='songGroup'
+					placeholder='Song Group'
+					value={ this.props.songGroup }
+					onChange={ this.props.onChange }
+				/>			
 			</div>
 		);
 	}

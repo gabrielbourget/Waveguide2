@@ -1,7 +1,6 @@
 import React from 'react';
-import ClassNames from 'classnames';
 
-import LinkEntry from './LinkEntry/LinkEntry';
+import LinkEntry from '../../../../Components/LinkEntry/LinkEntry';
 
 import styles from './ExternalLinks.module.scss';
 
@@ -12,7 +11,7 @@ class ExternalLinks extends React.Component {
 		newLinkEntries: 0
 	};
 
-	handleResize = () => this.setState( {windowWidth: window.innerWidth });
+	handleResize = () => this.setState( { windowWidth: window.innerWidth });
 
 	componentDidMount = () => {
 		this.setState( { windowWidth: window.innerWidth } );
@@ -49,7 +48,7 @@ class ExternalLinks extends React.Component {
 		// - Return number of links they have + number of new fields 
 		//   they've popped down but haven't committed yet.
 		return (
-			<div className={ styles.externalLinks }>			
+			<React.Fragment>			
 				{
 					(externalLinks).map((linkEntry, i) => (
 						<LinkEntry 
@@ -67,7 +66,7 @@ class ExternalLinks extends React.Component {
 						/>
 					}
 				*/}
-			</div>
+			</React.Fragment>
 		);
 	};
 
