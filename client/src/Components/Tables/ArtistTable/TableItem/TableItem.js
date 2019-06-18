@@ -6,7 +6,7 @@ import styles from './TableItem.module.scss';
 import { prepareLinkGallery } from './helpers';
 import SocialMediaIconComponents from '../../../../Helpers/socialMediaIconComponents';
 
-import ProfileImage from '../../../ImageContainers/ProfileImage/ProfileImage';
+import CoverImage from '../../../ImageContainers/CoverImage/CoverImage';
 import IconButton from '../../../Buttons/IconButton/IconButton';
 
 class TableItem extends React.Component {
@@ -18,7 +18,7 @@ class TableItem extends React.Component {
 			<tr className={ initObject.tableItemClasses }>
 				<td className={ initObject.profileImageClasses }>
 					<div className={ initObject.imageCradleClasses }>
-						<ProfileImage
+						<CoverImage
 							src={ this.props.src }
 							name={ this.props.name }
 						/>

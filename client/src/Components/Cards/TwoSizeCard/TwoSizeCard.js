@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../../ThemeContext';
 
-import ProfileImage from '../../ImageContainers/ProfileImage/ProfileImage';
+import CoverImage from '../../ImageContainers/CoverImage/CoverImage';
 import IconButton from '../../Buttons/IconButton/IconButton';
 import HorizontalDivider from '../../Dividers/HorizontalDivider/HorizontalDivider';
 
@@ -83,7 +83,7 @@ class TwoSizeCard extends React.Component {
 					</div>
 				</div>
 				<div className={ initObject.bodyClasses }>
-					<ProfileImage
+					<CoverImage
 						src={ this.props.src }
 						title={ this.props.name }
 					/>

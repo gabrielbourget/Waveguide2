@@ -53,7 +53,7 @@ import styles from './AddUser.module.scss';
 class AddUser extends React.Component {
 
 	state = {
-		basicInfoOpen: false,
+		basicInfoOpen: true,
 		biographyOpen: false,
 		socialMediaLinksOpen: false, 
 		artProjectsOpen: false,

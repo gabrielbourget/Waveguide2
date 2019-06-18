@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { Query } from 'react-apollo';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../../ThemeContext';
 
-import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
-import ProfileImage from '../../Components/ImageContainers/ProfileImage/ProfileImage';
-import IconButton from '../../Components/Buttons/IconButton/IconButton';
+import CenteringCradle from '../../../Components/Cradles/CenteringCradle/CenteringCradle';
+import LaggingLinesLoader from '../../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import CoverImage from '../../../Components/ImageContainers/CoverImage/CoverImage';
+import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 
-import { ARTPROJECT_BY_ID_QUERY } from '../../GraphQL/ArtProject/Queries';
-import styles from './SingleArtProject.module.scss';
+import { ARTPROJECT_BY_ID_QUERY } from '../../../GraphQL/ArtProject/Queries';
+
 import Cradle from './Cradle/Cradle';
-import SocialMediaIconComponents from '../../Helpers/socialMediaIconComponents';
+import SocialMediaIconComponents from '../../../Helpers/socialMediaIconComponents';
 import { prepareLinkGallery } from './helpers';
+import styles from './SingleArtProject.module.scss';
 
 class SingleArtProject extends React.Component {
 
@@ -52,7 +53,7 @@ class SingleArtProject extends React.Component {
 							<Cradle>
 								<div className={ initObject.containerClasses }>
 									<div className={ styles.one }>
-										<ProfileImage src={ ArtProject[0].imageURL } title={ ArtProject[0].name }/>
+										<CoverImage src={ ArtProject[0].imageURL } title={ ArtProject[0].name }/>
 										<div className={ styles.right }>
 											<h1>{ ArtProject[0].name }</h1>
 											<h3>Art Project</h3>

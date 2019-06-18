@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../ThemeContext';
 
-import ProfileImage from '../../ImageContainers/ProfileImage/ProfileImage';
+import CoverImage from '../../ImageContainers/CoverImage/CoverImage';
 
 import styles from './SmallArtProjectCard.module.scss';
 
@@ -19,7 +19,7 @@ class SmallArtProjectCard extends React.Component {
 				style={ { textDecoration: 'none' } } 
 			>
 				<div className={ initObject.cardClasses }>
-					<ProfileImage src={ artProject.imageURL } title={ artProject.name }/>
+					<CoverImage src={ artProject.imageURL } title={ artProject.name }/>
 					<div className={ styles.info }>
 						<div className="title">
 							<h2 style={{ 'textDecoration': 'underline' }}>{ artProject.name }</h2>

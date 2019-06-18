@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './ProfileImage.module.scss';
+import styles from './CoverImage.module.scss';
 
-class ProfileImage extends React.Component {
+class CoverImage extends React.Component {
 	// - TODO -> Create fallback SVG icon for missing src scenario.
 
 	render() {
@@ -16,4 +16,4 @@ class ProfileImage extends React.Component {
 	};
 }
 
-export default ProfileImage;
+export default CoverImage;
