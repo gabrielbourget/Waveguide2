@@ -59,12 +59,13 @@ class AddSong extends React.Component {
 		descriptionOpen: false,
 		externalLinksOpen: false,
 		title: '',
-		contributors: [],
-		tempo: 0,
+		tempo: '',
+		duration: '',
 		keySignature: '',
+		contributors: [],
 		description: '',
 		releaseDate: {},
-		songGroups: [],
+		songGroup: '',
 		externalLinks: []
 	};
 

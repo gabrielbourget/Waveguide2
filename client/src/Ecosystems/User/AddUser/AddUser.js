@@ -29,7 +29,7 @@ import ProfilePhotoButton from './ProfilePhotoButton/ProfilePhotoButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Biography from './Biography/Biography';
 import SocialMediaLinks from './SocialMediaLinks/SocialMediaLinks';
-import ArtProjects from './ArtProjects/ArtProjects';
+// import ArtProjects from './ArtProjects/ArtProjects';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -303,7 +303,7 @@ class AddUser extends React.Component {
 									<HorizontalDivider height='1px' subtle />
 
 									{/* - ART PROJECTS SECTION - */}
-
+{/*
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center'}}>Art Projects</h4>
 										<div className={ styles.right }>
@@ -345,7 +345,7 @@ class AddUser extends React.Component {
 									}
 
 									<HorizontalDivider height='1px' subtle />
-
+*/}
 									<div className={ styles.bottom }>									
 										<FilledButton
 											text='Add User'

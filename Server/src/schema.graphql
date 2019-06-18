@@ -64,13 +64,13 @@ type ArtProject {
 
 type Song {
 	id: ID!
-	title: String
 	image: String
+	title: String
+	tempo: Int
 	duration: Int
 	keySignature: String
-	tempo: Int
 	releaseDate: DateTime
-	socialMediaLinks: [SocialMediaLink] @relation(name:"HAS_LINK_TO", direction: "OUT")
+	externalLinks: [SocialMediaLink] @relation(name:"HAS_LINK_TO", direction: "OUT")
 	songGroup: SongGroup @relation(name: "PART_OF", direction: "OUT")
 }
 
