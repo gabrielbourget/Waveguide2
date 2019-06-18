@@ -15,7 +15,7 @@ import SideDrawer from '../../Components/SideDrawer/SideDrawer';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 
 // - Internal Components
-import Routing from './Routing/Routing';
+import Routing from '../Routing/Routing';
 
 import styles from './App.module.css';
 

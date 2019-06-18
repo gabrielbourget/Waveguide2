@@ -3,7 +3,7 @@ import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { ThemeContext } from '../../../ThemeContext';
 
-class AddSongGroup extends React.Component {
+class UpdateSongGroup extends React.Component {
 	render() {
 		return (
 			<div>boop</div>
@@ -11,5 +11,5 @@ class AddSongGroup extends React.Component {
 	}
 }
 
-AddSongGroup.contextType = ThemeContext;
-export default AddSongGroup;
+UpdateSongGroup.contextType = ThemeContext;
+export default UpdateSongGroup;

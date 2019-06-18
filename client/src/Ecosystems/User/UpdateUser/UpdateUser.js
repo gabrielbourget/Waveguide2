@@ -376,5 +376,5 @@ const prepareComponent = (context, { shape }) => {
 	};
 }
 
-UpdateUserDetails.contextType = ThemeContext;
-export default UpdateUserDetails;
+UpdateUser.contextType = ThemeContext;
+export default UpdateUser;
