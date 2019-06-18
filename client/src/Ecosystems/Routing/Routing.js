@@ -9,9 +9,8 @@ import Register from '../../Components/Register/Register';
 import RequestReset from '../../Components/RequestReset/RequestReset';
 import ResetPassword from '../../Components/ResetPassword/ResetPassword';
 import ChangePassword from '../../Components/ChangePassword/ChangePassword';
-import SingleArtProject from '../ArtProject/SingleArtProject/SingleArtProject';
 import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-import NotFoundPageComponent from '../../Components/NotFoundPageComponent/NotFoundPageComponent';
+// import NotFoundPageComponent from '../../Components/NotFoundPageComponent/NotFoundPageComponent';
 
 // - Component Development Imports
 // import AddArtProject from '../ArtProject/AddArtProject/AddArtProject';
@@ -26,8 +25,9 @@ import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/Lagg
 // import CircleLoader from '../../Components/Loaders/CircleLoader/CircleLoader';
 // import QuarterCircleLoader from '../../Components/Loaders/QuarterCircleLoader/QuarterCircleLoader';
 
-// - Internal Components
+// - Internal Routing Components
 import UserRoutes from './UserRoutes/UserRoutes';
+import ArtProjectRoutes from './ArtProjectRoutes/ArtProjectRoutes';
 import SongRoutes from './SongRoutes/SongRoutes';
 import SongGroupRoutes from './SongGroupRoutes/SongGroupRoutes';
 
@@ -36,18 +36,6 @@ const Routes = () => (
     <Route path='/' exact component={ HomePage }/>
     <Route path='/search' component ={ Search }/>
     <Route path='/settings' component = { Settings }/>
-
-    <Route 
-      //path={`${matchPath}/:artProjectId`}
-      path='/artproject/:artProjectId'
-      render={ ({ match }) => {
-        const id = match.params.artProjectId;
-
-        return (
-          <SingleArtProject id={ id } />
-        );
-      }}
-    />
 
     <Route
       path='/login'
@@ -95,6 +83,7 @@ const Routes = () => (
     />        
 
     <UserRoutes />
+    <ArtProjectRoutes />
     <SongRoutes />
     <SongGroupRoutes />
 
