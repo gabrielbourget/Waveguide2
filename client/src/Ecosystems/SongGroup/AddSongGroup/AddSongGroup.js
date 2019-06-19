@@ -30,7 +30,7 @@ import { CREATE_SONG_GROUP_MUTATION } from '../../../GraphQL/SongGroup/Mutations
 import SongGroupArtButton from './SongGroupArtButton/SongGroupArtButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import AdvancedInfo from './AdvancedInfo/AdvancedInfo';
-import Songs from './Songs/Songs';
+import Songs from '../Songs/Songs';
 import Description from './Description/Description';
 import ExternalLinks from './ExternalLinks/ExternalLinks';
 
@@ -59,6 +59,7 @@ class AddSongGroup extends React.Component {
 		title: '',
 		duration: '',
 		contributors: [],
+		songs: [],
 		description: '',
 		releaseDate: {},
 		externalLinks: []
@@ -238,28 +239,51 @@ class AddSongGroup extends React.Component {
 									{/* - SONGS SECTION SECTION - */}
 									<div className={ styles.sectionTitleBar }>
 										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Songs</h4>
-										{
-											(this.state.songsOpen) ?
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleUpIconHighlighted/> }
-												darkTheme={ <CircleUpIconDarkTheme/> }
-												lightTheme={ <CircleUpIconLightTheme/> }
-												onClick={ this.toggleSongsSection }
-											/> :
-											<IconButton 
-												size='25px'
-												highlighted={ <CircleDownIconHighlighted/> }
-												darkTheme={ <CircleDownIconDarkTheme/> }
-												lightTheme={ <CircleDownIconLightTheme/> }
-												onClick={ this.toggleSongsSection }
-											/>	
-										}
+										<div className={ styles.right }>										
+											{
+												(this.state.songsOpen) ? 
+													<React.Fragment>
+														<IconButton 
+															size='25px'
+															highlighted={ <PlusIconHighlighted /> }
+															darkTheme={ <PlusIconDarkTheme /> }
+															lightTheme={ <PlusIconLightTheme /> }
+															onClick={ (e) => {
+																// - TO_FIX -> Mutation fires off here, and I don't want that. 
+																//e.preventDefault();
+																// const socialMediaLinks = [...this.state.socialMediaLinks];// || [];
+																// console.log('boop');
+																// console.log(socialMediaLinks);
+																// socialMediaLinks.push({
+																// 	network: 'Soundcloud',
+																// 	link: ''
+																// })
+
+																// console.log(socialMediaLinks);
+															}}
+														/>
+														<IconButton 
+															size='25px'
+															highlighted={ <CircleUpIconHighlighted/> }
+															darkTheme={ <CircleUpIconDarkTheme/> }
+															lightTheme={ <CircleUpIconLightTheme/> }
+															onClick={ this.toggleSongsSection }
+														/> 
+													</React.Fragment> :
+													<IconButton 
+														size='25px'
+														highlighted={ <CircleDownIconHighlighted/> }
+														darkTheme={ <CircleDownIconDarkTheme/> }
+														lightTheme={ <CircleDownIconLightTheme/> }
+														onClick={ this.toggleSongsSection }
+													/>
+											}
+										</div>
+									</div>
 										{
 											(this.state.songsOpen) &&
-											<Songs />
+											<Songs songs={ this.state.songs } />
 										}
-									</div>
 
 
 

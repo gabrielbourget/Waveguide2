@@ -1,0 +1,21 @@
+.songs {
+	width: 100%;
+	height: auto;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 1.5rem;
+	align-content: space-around;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+}
+
+.noSongs {
+	width: 50%;
+	height: 200px;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	place-content: center;
+}

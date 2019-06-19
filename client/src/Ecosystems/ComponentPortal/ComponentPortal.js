@@ -102,6 +102,18 @@ class ComponentPortal extends React.Component {
 							onClick={ () => {} }
 						/>
 					</Link>
+					<Link to='/addsonggroup'>
+						<FilledButton 
+							text='Add Song Group'  
+							onClick={ () => {} }
+						/>
+					</Link>
+					<Link to='/updatesonggroup'>
+						<FilledButton 
+							text='Update Song Group'  
+							onClick={ () => {} }
+						/>
+					</Link>
 				</div>		
 			</div>
 		);
