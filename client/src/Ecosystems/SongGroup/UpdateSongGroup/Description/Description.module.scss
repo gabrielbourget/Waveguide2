@@ -1,0 +1,14 @@
+.description {
+	height: auto;
+	width: 400px;
+	padding: 10px 0px;
+
+	display: grid;
+	justify-items: center;
+	justify-content: center;
+	grid-template-columns:  1fr;
+
+	@media(max-width: 800px) {
+		width: 100%;
+	}
+}

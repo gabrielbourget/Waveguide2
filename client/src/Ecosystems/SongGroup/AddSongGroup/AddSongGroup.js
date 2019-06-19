@@ -30,6 +30,7 @@ import { CREATE_SONG_GROUP_MUTATION } from '../../../GraphQL/SongGroup/Mutations
 import SongGroupArtButton from './SongGroupArtButton/SongGroupArtButton';
 import BasicInfo from './BasicInfo/BasicInfo';
 import AdvancedInfo from './AdvancedInfo/AdvancedInfo';
+import Songs from './Songs/Songs';
 import Description from './Description/Description';
 import ExternalLinks from './ExternalLinks/ExternalLinks';
 
@@ -52,6 +53,7 @@ class AddSongGroup extends React.Component {
 	state = {
 		basicInfoOpen: true,
 		advancedInfoOpen: false,
+		songsOpen: false,
 		descriptionOpen: false,
 		externalLinksOpen: false,
 		title: '',
@@ -95,6 +97,11 @@ class AddSongGroup extends React.Component {
 	toggleAdvancedInfoSection = () => {
 		const current = this.state.advancedInfoOpen;
 		this.setState({ advancedInfoOpen: !current });
+	};
+
+	toggleSongsSection = () => {
+		const current = this.state.songsOpen;
+		this.setState({ songsOpen: !current });
 	};
 
 	toggleDescriptionSection = () => {
@@ -225,6 +232,36 @@ class AddSongGroup extends React.Component {
 											onChange={ this.saveToState }
 										/>
 									}
+
+									<HorizontalDivider height='1px' subtle />
+
+									{/* - SONGS SECTION SECTION - */}
+									<div className={ styles.sectionTitleBar }>
+										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Songs</h4>
+										{
+											(this.state.songsOpen) ?
+											<IconButton 
+												size='25px'
+												highlighted={ <CircleUpIconHighlighted/> }
+												darkTheme={ <CircleUpIconDarkTheme/> }
+												lightTheme={ <CircleUpIconLightTheme/> }
+												onClick={ this.toggleSongsSection }
+											/> :
+											<IconButton 
+												size='25px'
+												highlighted={ <CircleDownIconHighlighted/> }
+												darkTheme={ <CircleDownIconDarkTheme/> }
+												lightTheme={ <CircleDownIconLightTheme/> }
+												onClick={ this.toggleSongsSection }
+											/>	
+										}
+										{
+											(this.state.songsOpen) &&
+											<Songs />
+										}
+									</div>
+
+
 
 									<HorizontalDivider height='1px' subtle />									
 

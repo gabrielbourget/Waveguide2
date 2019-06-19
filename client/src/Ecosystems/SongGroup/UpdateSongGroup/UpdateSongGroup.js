@@ -23,7 +23,7 @@ import IconButton from '../../../Components/Buttons/IconButton/IconButton';
 // - GraphQL
 import { CURRENT_USER_QUERY } from '../../../GraphQL/User/Queries';
 import { SONG_GROUP_DETAILS_QUERY } from '../../../GraphQL/SongGroup/Queries';
-import { CREATE_SONG_GROUP_MUTATION } from '../../../GraphQL/SongGroup/Mutations';
+import { UPDATE_SONG_GROUP_MUTATION } from '../../../GraphQL/SongGroup/Mutations';
 
 // -- WITHIN COMPONENT DIRECTORY -- //
 
@@ -47,9 +47,9 @@ import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDark
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 import { ReactComponent as PlusIconHighlighted } from './SVG/PlusIcon/PlusIconHighlighted.svg';
 
-import styles from './AddSongGroup.module.scss';
+import styles from './UpdateSongGroup.module.scss';
 
-class AddSongGroup extends React.Component {
+class UpdateSongGroup extends React.Component {
 	state = {
 		basicInfoOpen: true,
 		advancedInfoOpen: false,
@@ -113,26 +113,26 @@ class AddSongGroup extends React.Component {
 
 		return (
 			<Mutation
-				mutation={ CREATE_SONG_GROUP_MUTATION }
+				mutation={ UPDATE_SONG_GROUP_MUTATION }
 				variables={ this.state }
 				refetchQueries={[{ query: CURRENT_USER_QUERY }]}
 			>
 				{
-					(createSongGroup, { error, loading }) => {
+					(updateSongGroup, { error, loading }) => {
 						if (loading) return <LaggingLinesLoader/>;
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.addSongGroupClasses }
+								className={ initObject.updateSongGroupClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();
-									await createSongGroup();
+									await updateSongGroup();
 								}}
 							>
 								{/* - CARD HEADER - */}
 								<div className={ initObject.titleBarClasses }>
-									<h2>Add Song Group</h2>
+									<h2>Update Song Group</h2>
 								</div>
 								{
 									(this.context === 'dark') &&
@@ -320,7 +320,7 @@ class AddSongGroup extends React.Component {
 
 									<div className={ styles.bottom }>									
 										<FilledButton
-											text='Add Song Group'
+											text='Update Song Group'
 											type='submit'
 											onClick={ () => {} }
 											// onClick={ async (e) => {
@@ -343,14 +343,14 @@ const prepareComponent = (context, { shape }) => {
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const shapeClass = (shape === 'rounded') ? styles.rounded : null;
 
-	const addSongGroupClasses = ClassNames(styles.addSongGroup, themeClass, shapeClass);
+	const updateSongGroupClasses = ClassNames(styles.updateSongGroup, themeClass, shapeClass);
 	const titleBarClasses = ClassNames(styles.titleBar, themeClass, shapeClass);
 
 	return {
-		addSongGroupClasses,
+		updateSongGroupClasses,
 		titleBarClasses
 	};
 }
 
-AddSongGroup.contextType = ThemeContext;
-export default AddSongGroup;
+UpdateSongGroup.contextType = ThemeContext;
+export default UpdateSongGroup;

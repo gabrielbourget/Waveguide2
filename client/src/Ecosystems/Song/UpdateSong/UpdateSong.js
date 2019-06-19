@@ -58,7 +58,7 @@ import styles from './UpdateSong.module.scss';
 class UpdateSong extends React.Component {
 
 	state = {
-		basicInfoOpen: false,
+		basicInfoOpen: true,
 		advancedInfoOpen: false,
 		descriptionOpen: false,
 		externalLinksOpen: false,

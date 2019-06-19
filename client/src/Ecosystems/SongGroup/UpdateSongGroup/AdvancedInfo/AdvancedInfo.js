@@ -1,13 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
 // import ClassNames from 'classnames';
 
 import LabelAndInput from '../../../../Components/LabelAndInput/LabelAndInput';
 // import FilledButton from '../../Buttons/FilledButton/FilledButton';
 import OutlineButton from '../../../../Components/Buttons/OutlineButton/OutlineButton';
 
-import styles from './BasicInfo.module.scss';
+import Contributors from './Contributors/Contributors';
 
-class BasicInfo extends React.Component {
+import styles from './AdvancedInfo.module.scss';
+
+class AdvancedInfo extends React.Component {
 
 	state = {
 		windowWidth: window.innerWidth
@@ -23,24 +27,17 @@ class BasicInfo extends React.Component {
 	componentWillUnmount = () => window.removeEventListener('resize', this.handleResize);
 
 	render() {
+
+		const currDate = new Date();
+
 		return (
-			<div className={ styles.basicInfo }>
-				<LabelAndInput 
-					htmlFor='title'
-					labelText='Title'
-					type='text'
-					name='title'
-					placeholder='Title'
-					value={ this.props.info.title }
+			<div className={ styles.advancedInfo }>
+{/*				<DatePicker 
+					selected={ currDate }
 					onChange={ this.props.onChange }
-				/>
-				<LabelAndInput 
-					htmlFor='duration'
-					labelText='Duration (minutes:seconds)'
-					type='duration'
-					name='duration'
-					placeholder='Duration'
-					value={ this.props.info.duration }
+				/>*/}
+				<Contributors
+					contributors={ this.props.info.contributors }
 					onChange={ this.props.onChange }
 				/>
 			</div>
@@ -48,4 +45,4 @@ class BasicInfo extends React.Component {
 	}
 }
 
-export default BasicInfo;
+export default AdvancedInfo;

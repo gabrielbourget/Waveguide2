@@ -51,7 +51,7 @@ import styles from './UpdateUser.module.scss';
 class UpdateUser extends React.Component {
 
 	state = {
-		basicInfoOpen: false,
+		basicInfoOpen: true,
 		biographyOpen: false,
 		socialMediaLinksOpen: false, 
 		artProjectsOpen: false,
@@ -131,7 +131,7 @@ class UpdateUser extends React.Component {
 						if (error) return <p>Error...</p>;
 						return (
 							<form
-								className={ initObject.updateUserDetailsClasses }
+								className={ initObject.updateUserClasses }
 								method='post'
 								onSubmit={ async (e) => {
 									e.preventDefault();

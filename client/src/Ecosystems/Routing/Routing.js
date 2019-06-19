@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import HomePage from '../HomePage/HomePage';
+import ComponentPortal from '../ComponentPortal/ComponentPortal';
 import Search from '../Search/Search';
 import Settings from '../User/UserSettings/UserSettings';
 import Login from '../../Components/Login/Login';
@@ -36,6 +37,15 @@ const Routes = () => (
     <Route path='/' exact component={ HomePage }/>
     <Route path='/search' component ={ Search }/>
     <Route path='/settings' component = { Settings }/>
+
+    <Route 
+      path='/componentportal'
+      render={ () => (
+        <CenteringCradle>
+          <ComponentPortal shape='rounded'/>
+        </CenteringCradle>
+      )}
+    />
 
     <Route
       path='/login'

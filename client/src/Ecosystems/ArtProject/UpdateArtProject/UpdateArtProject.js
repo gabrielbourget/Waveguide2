@@ -54,7 +54,7 @@ import styles from './UpdateArtProject.module.scss';
 class UpdateArtProjectDetails extends React.Component {
 
 	state = {
-		basicInfoOpen: false,
+		basicInfoOpen: true,
 		biographyOpen: false,
 		socialMediaLinksOpen: false,
 		discographyOpen: false,
@@ -130,7 +130,7 @@ class UpdateArtProjectDetails extends React.Component {
 							>
 								{/* - CARD HEADER - */}
 								<div className={ initObject.titleBarClasses }>
-									<h2>Art Project Details</h2>
+									<h2>Update Art Project</h2>
 								</div>
 								{
 									(this.context === 'dark') &&

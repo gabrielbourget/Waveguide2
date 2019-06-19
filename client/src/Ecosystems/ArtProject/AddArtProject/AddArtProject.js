@@ -53,7 +53,7 @@ import styles from './AddArtProject.module.scss';
 class AddArtProject extends React.Component {
 
 	state = {
-		basicInfoOpen: false,
+		basicInfoOpen: true,
 		biographyOpen: false,
 		socialMediaLinksOpen: false,
 		discographyOpen: false,
