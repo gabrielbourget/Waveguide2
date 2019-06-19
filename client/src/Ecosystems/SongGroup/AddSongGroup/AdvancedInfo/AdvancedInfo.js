@@ -44,16 +44,7 @@ class AdvancedInfo extends React.Component {
 					placeholder='Song Group'
 					value={ this.props.songGroup }
 					onChange={ this.props.onChange }
-				/>	
-				<LabelAndInput 
-					htmlFor='ISRC'
-					labelText='ISRC Code'
-					type='text'
-					name='ISRC'
-					placeholder='ISRC'
-					value={ this.props.ISRC }
-					onChange={ this.props.onChange }
-				/>	
+				/>			
 				<Contributors
 					contributors={ this.props.info.contributors }
 					onChange={ this.props.onChange }

@@ -62,10 +62,11 @@ class AddSong extends React.Component {
 		tempo: '',
 		duration: '',
 		keySignature: '',
+		songGroup: '',
+		releaseDate: {},
+		ISRC:'',
 		contributors: [],
 		description: '',
-		releaseDate: {},
-		songGroup: '',
 		externalLinks: []
 	};
 
@@ -193,7 +194,8 @@ class AddSong extends React.Component {
 											info={{
 												title: this.state.title,
 												keySignature: this.state.keySignature,
-												tempo: this.state.tempo
+												tempo: this.state.tempo,
+												duration: this.state.duration
 											}}
 											onChange={ this.saveToState }
 										/>
@@ -227,9 +229,10 @@ class AddSong extends React.Component {
 										(this.state.advancedInfoOpen) &&
 										<AdvancedInfo 
 											info={{
-												contributors: this.state.contributors,
+												songGroups: this.state.songGroups,
 												releaseDate: this.state.releaseDate,
-												songGroups: this.state.songGroups
+												ISRC: this.state.ISRC,
+												contributors: this.state.contributors
 											}}
 											onChange={ this.saveToState }
 										/>

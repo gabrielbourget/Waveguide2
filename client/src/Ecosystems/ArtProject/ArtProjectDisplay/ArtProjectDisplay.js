@@ -1,12 +1,13 @@
 import React from 'react';
 import ClassNames from 'classnames';
 // import { Query } from 'react-apollo';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../../ThemeContext';
+
+import ArtistGallery from '../../../Components/Galleries/ArtistGallery/ArtistGallery';
+import ArtistTable from '../../../Components/Tables/ArtistTable/ArtistTable';
+import FromTheTopCradle from '../../../Components/Cradles/FromTheTopCradle/FromTheTopCradle';
 
 import TopBar from './TopBar/TopBar';
-import ArtistGallery from '../../Components/Galleries/ArtistGallery/ArtistGallery';
-import ArtistTable from '../../Components/Tables/ArtistTable/ArtistTable';
-import FromTheTopCradle from '../../Components/Cradles/FromTheTopCradle/FromTheTopCradle';
 
 import styles from './ArtProjectDisplay.module.scss';
 import { sortArtists } from './helpers';
@@ -55,6 +56,7 @@ class ArtProjectDisplay extends React.Component {
 					<TopBar 
 						onSortClick={ sortArtists }
 						onSwitchViewModeClick={ this.switchViewMode }
+						shape='rounded'
 					/>
 					{ this.resolveDisplayMode(initObject) }
 				</div>				

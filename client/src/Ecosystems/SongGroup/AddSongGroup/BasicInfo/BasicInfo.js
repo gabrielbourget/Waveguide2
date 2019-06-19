@@ -43,7 +43,7 @@ class BasicInfo extends React.Component {
 					placeholder='Duration'
 					value={ this.props.info.duration }
 					onChange={ this.props.onChange }
-				/>				
+				/>					 
 				{/* 
 						- TODO -> Restrict selection range to those corresponding to keysig enums. 
 											Provide a way to toggle between normal note notation and camelot

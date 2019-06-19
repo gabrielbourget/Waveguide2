@@ -1,6 +1,10 @@
 import React from 'react';
 import ClassNames from 'classnames';
-import { ThemeContext } from '../../../ThemeContext';
+import PropTypes from 'prop-types';
+import { ThemeContext } from '../../../../ThemeContext';
+
+import IconButton from '../../../../Components/Buttons/IconButton/IconButton';
+import HorizontalDivider from '../../../../Components/Dividers/HorizontalDivider/HorizontalDivider';
 
 // - Sort Icon
 import { ReactComponent as SortIconDarkTheme } from './SVG/SortIcon/SortIconDarkTheme.svg';
@@ -24,14 +28,20 @@ import { ReactComponent as GalleryViewIconLightTheme } from './SVG/GalleryViewIc
 import { ReactComponent as GalleryViewIconHighlighted } from './SVG/GalleryViewIcon/GalleryViewIconHighlighted.svg';
 
 import styles from './TopBar.module.scss';
-import { sortCriteriaEnum } from '../../../Helpers/generalDataStructures';
-import IconButton from '../../../Components/Buttons/IconButton/IconButton';
-import HorizontalDivider from '../../../Components/Dividers/HorizontalDivider/HorizontalDivider';
+import { sortCriteriaEnum } from '../../../../Helpers/generalDataStructures';
 
 class TopBar extends React.Component {
 	state = {
 		sortMenuOpen: false
 	};
+
+	static propTypes = {
+		shape: PropTypes.string
+	}
+
+	static defaultProps = {
+		shape: 'rounded'
+	}
 
 	handleSortMenuClick = () => {
 		const prevState = this.state;
@@ -97,9 +107,9 @@ class TopBar extends React.Component {
 						/>
 					</div> 
 				</div> 
-				<div className={ styles.bottom }>
+{/*				<div className={ styles.bottom }>
 					<HorizontalDivider />
-				</div>
+				</div>*/}
 			</div> 
 		);
 	}
@@ -108,7 +118,8 @@ class TopBar extends React.Component {
 const prepareComponent = (context, props, state) => {
 
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
-	const topBarClasses = ClassNames(styles.topBar, themeClass);
+	const shapeClass = (props.shape === 'rounded') ? styles.rounded : null;
+	const topBarClasses = ClassNames(styles.topBar, shapeClass, themeClass);
 
 	return { topBarClasses };
 };

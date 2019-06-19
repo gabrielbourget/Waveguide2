@@ -1,4 +1,4 @@
-import { sortCriteriaEnum } from '../../Helpers/generalDataStructures';
+import { sortCriteriaEnum } from '../../../Helpers/generalDataStructures';
 
 // - Return copy of input array that only includes matches to search query.
 export const searchThroughArtists = (queryToMatch, artists) => {

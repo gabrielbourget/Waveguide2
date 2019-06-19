@@ -4,17 +4,21 @@ import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
 import { ApolloConsumer } from 'react-apollo';
 //import debounce from 'lodash';
+
+import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/ArtProject/Queries';
+import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/ArtProject/Queries';
+
+import ArtProjectDisplay from '../ArtProject/ArtProjectDisplay/ArtProjectDisplay';
+import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
+import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
+import SearchBar from '../../Components/SearchBar/SearchBar';
 import { ThemeContext } from '../../ThemeContext';
 
 import RecentSearches from './RecentSearches/RecentSearches';
 // import SearchResults from './SearchResults/SearchResults';
-import ArtProjectDisplay from '../ArtProjectDisplay/ArtProjectDisplay';
-import CenteringCradle from '../../Components/Cradles/CenteringCradle/CenteringCradle';
-import LaggingLinesLoader from '../../Components/Loaders/LaggingLinesLoader/LaggingLinesLoader';
 
 import styles from './Search.module.scss';
-import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/ArtProject/Queries';
-import { ALL_ARTPROJECTS_QUERY } from '../../GraphQL/ArtProject/Queries';
+
 // import { capitalize } from '../../Helpers/stringProcessing';
 // import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
 
@@ -34,9 +38,7 @@ class Search extends React.Component {
 
 		const searchQuery = e.target.value;
 
-		this.setState({ 
-			searchQuery
-		});
+		this.setState({ searchQuery });
 
 		// - Don't hit the database for an empty query string.
 		if (searchQuery === '') return;
@@ -104,24 +106,10 @@ class Search extends React.Component {
 		return (
 			<div className={ styles.search }>
 				<div className={ initObject.searchBarClasses }>
-					<ApolloConsumer>
-						{
-							(client) => (
-								<input 
-								  className={ initObject.searchInputClasses }
-									type='text'
-									ref={ this.searchInputRef }
-									id='searchInput' // - Temporary until ref issue fixed.
-									value={ this.state.searchQuery }
-									onChange={ (e) => {
-										e.persist();
-										this.onChange(e, client);
-									}}
-									placeholder='Search.'
-								/>
-							)
-						}
-					</ApolloConsumer>
+					<SearchBar 
+						onChange={ this.onChange }
+						searchQuery={ this.state.searchQuery }
+					/>
 				</div>
 				{ this.renderLogic() }
 			</div>

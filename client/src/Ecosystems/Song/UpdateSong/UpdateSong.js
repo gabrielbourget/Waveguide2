@@ -65,9 +65,10 @@ class UpdateSong extends React.Component {
 		title: '',
 		tempo: '',
 		keySignature: '',
-		contributors: [],
-		releaseDate: {},
 		songGroups: [],
+		releaseDate: {},
+		ISRC: '',
+		contributors: [],
 		description: '',
 		externalLinks: []
 	};
@@ -230,9 +231,10 @@ class UpdateSong extends React.Component {
 										(this.state.advancedInfoOpen) &&
 										<AdvancedInfo 
 											info={{
-												contributors: this.state.contributors,
+												songGroups: this.state.songGroups,
 												releaseDate: this.state.releaseDate,
-												songGroups: this.state.songGroups
+												ISRC: this.state.ISRC,
+												contributors: this.state.contributors,
 											}}
 											onChange={ this.saveToState }
 										/>

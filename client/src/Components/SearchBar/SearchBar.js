@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { withRouter } from 'react-router';
-import { ThemeContext } from '../../../ThemeContext';
+import { ApolloConsumer } from 'react-apollo';
 
-import IconButton from '../../../Components/Buttons/IconButton/IconButton';
-import OutlineButton from '../../../Components/Buttons/OutlineButton/OutlineButton';
-
-import styles from './SearchBar.module.scss';
 import { SEARCH_ARTPROJECTS_QUERY } from '../../GraphQL/Queries';
 import { SEARCH_DEBOUNCE_TIME } from '../../clientConfig';
+
+import IconButton from '../Buttons/IconButton/IconButton';
+import OutlineButton from '../Buttons/OutlineButton/OutlineButton';
+import { ThemeContext } from '../../ThemeContext';
+
+import styles from './SearchBar.module.scss';
 
 class SearchBar extends React.Component {
 	state = {
@@ -54,27 +56,24 @@ class SearchBar extends React.Component {
 
 		return (
 			<div className={ initObject.searchBarClasses }>
-				<React.Fragment>
-					<form 
-						className={ styles.searchField }
-						onSubmit={ (e) => this.props.handleSearchFormSubmit(e) }
-					>
-						<input 
-							type='text'
-							ref={ this.searchInputRef }
-							id='searchInput' // - Temporary until ref issue fixed.
-							value={ this.state.searchQueryText }
-							onChange={ (e) => this.setState({ searchQueryText: e.target.value }) }
-							className={ initObject.searchInputClasses }
-							placeholder={ this.props.defaultText }
-						/>
-					</form>
-					<OutlineButton
-						text='Search'
-						onClick={ (e) => this.props.handleSearchSubmit(e) }
-						shape='rounded'
-					/>
-				</React.Fragment> 			
+				<ApolloConsumer>
+					{
+						(client) => (
+							<input 
+							  className={ initObject.searchInputClasses }
+								type='text'
+								ref={ this.searchInputRef }
+								id='searchInput' // - Temporary until ref issue fixed.
+								value={ this.props.searchQuery }
+								onChange={ (e) => {
+									e.persist();
+									this.props.onChange(e, client);
+								}}
+								placeholder='Search.'
+							/>
+						)
+					}
+				</ApolloConsumer>
 			</div>
 		);
 	}

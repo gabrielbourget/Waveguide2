@@ -2,14 +2,11 @@ import React from 'react';
 import ClassNames from 'classnames';
 import { ThemeContext } from '../../../../ThemeContext';
 
-import styles from './SongArtButton.module.scss';
 
 // - Add Person Icon
 import { ReactComponent as AddPersonIconDarkTheme } from './SVG/AddPersonIcon/AddPersonIconDarkTheme.svg';
 import { ReactComponent as AddPersonIconLightTheme } from './SVG/AddPersonIcon/AddPersonIconLightTheme.svg';
 // import { ReactComponent as AddPersionIconHighlighted } from './SVG/AddPersonIcon/AddPersonIconHighlighted.svg';
-
-// - TODO -> Create or use some sort of placeholder icon for song art.
 
 // - Image Icon
 import { ReactComponent as ImageIconDarkTheme } from './SVG/ImageIcon/ImageIconDarkTheme.svg';
@@ -20,7 +17,9 @@ import { ReactComponent as ImageIconLightTheme } from './SVG/ImageIcon/ImageIcon
 import { ReactComponent as PlusIconDarkTheme } from './SVG/PlusIcon/PlusIconDarkTheme.svg';
 import { ReactComponent as PlusIconLightTheme } from './SVG/PlusIcon/PlusIconLightTheme.svg';
 
-class SongArtButton extends React.Component {	
+import styles from './SongGroupArtButton.module.scss';
+
+class SongGroupArtButton extends React.Component {	
 
 	handleButtonClick = (e) => {
 		this.props.onClick(e);
@@ -54,6 +53,5 @@ class SongArtButton extends React.Component {
 	}
 }
 
-SongArtButton.contextType = ThemeContext;
-
-export default SongArtButton;
+SongGroupArtButton.contextType = ThemeContext;
+export default SongGroupArtButton;

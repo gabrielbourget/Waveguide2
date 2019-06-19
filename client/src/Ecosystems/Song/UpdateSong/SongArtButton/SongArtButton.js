@@ -28,7 +28,7 @@ class SongArtButton extends React.Component {
 
 	render() {
 
-		const icon = (this.context === 'dark') ? <AddPersonIconDarkTheme/> : <AddPersonIconLightTheme/>;
+		const icon = (this.context === 'dark') ? <ImageIconDarkTheme/> : <ImageIconLightTheme/>;
 
 		const themeClass = (this.context === 'dark') ? styles.darkTheme : styles.lightTheme;
 		const songArtButtonClasses = ClassNames(styles.songArtButton, themeClass);

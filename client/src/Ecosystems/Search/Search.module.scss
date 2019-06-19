@@ -5,6 +5,7 @@
 	grid-gap: 1rem;
 	// min-height: 100vh;
 	// overflow-y: auto;
+	padding: 20px 0px;
 }
 
 .searchBar {
@@ -21,45 +22,45 @@
 	align-items: center;
 }
 
-.searchForm {
-	height: 100%;
-	width: 100%;
-	display: grid;
+// .searchForm {
+// 	height: 100%;
+// 	width: 100%;
+// 	display: grid;
 
-	&.active {
-		&.darkTheme { 
-			border: 2px solid var(--c_light); 
-			border-radius: 5px;
-		}
-		&.lightTheme { 
-			border: 2px solid var(--black); 
-			border-radius: 5px;
-		}
-	}
-}
+// 	&.active {
+// 		&.darkTheme { 
+// 			border: 2px solid var(--c_light); 
+// 			border-radius: 5px;
+// 		}
+// 		&.lightTheme { 
+// 			border: 2px solid var(--black); 
+// 			border-radius: 5px;
+// 		}
+// 	}
+// }
 
-.searchInput {
-	background: none;
-	border: none;
-	height: 40px;
-	padding: 5px 10px;
-	border-radius: 3px;
+// .searchInput {
+// 	background: none;
+// 	border: none;
+// 	height: 40px;
+// 	padding: 5px 10px;
+// 	border-radius: 3px;
 
-	&.darkTheme { 
-		color: var(--c_light); 
-		border: 3px solid var(--c_light) 
-	}
-	&.lightTheme { 
-		color: var(--black);
-		border: 3px solid var(--black);
-	}
+// 	&.darkTheme { 
+// 		color: var(--c_light); 
+// 		border: 3px solid var(--c_light) 
+// 	}
+// 	&.lightTheme { 
+// 		color: var(--black);
+// 		border: 3px solid var(--black);
+// 	}
 
-	font: {
-		family: var(--sansSerifStack);
-		size: 1.8rem;
-	}
+// 	font: {
+// 		family: var(--sansSerifStack);
+// 		size: 1.8rem;
+// 	}
 
-	&:focus {
-		outline: none;
-	}
-}
+// 	&:focus {
+// 		outline: none;
+// 	}
+// }

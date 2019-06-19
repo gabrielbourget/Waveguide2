@@ -1,0 +1,37 @@
+.songArtButton {
+
+	height: 150px;
+	width: 150px;
+	// border-radius: 50px;
+	border: none;
+	transition: all 1s ease-out;
+	
+	display: grid;
+	place-items: center;
+	place-content: center;
+	position:relative;
+
+	// position: fixed;
+	// bottom: 15px;
+	// right: 15px;
+
+	z-index: var(--aboveFloatingElementZIndex);
+
+	&:hover {
+		cursor: pointer;
+		&.darkTheme { box-shadow: 0 15px 15px rgba(255,255,255,0.1); }
+		&.lightTheme { box-shadow: var(--boxShadowLightTheme); }
+	}
+
+	&:focus { outline: none; }
+
+	background: transparent;
+
+	&.darkTheme {
+		background: var(--black);
+	}
+
+	&.lightTheme {
+		background: var(--c_light);
+	}
+}
