@@ -185,8 +185,6 @@ class AddSongGroup extends React.Component {
 										<BasicInfo 
 											info={{
 												title: this.state.title,
-												keySignature: this.state.keySignature,
-												tempo: this.state.tempo,
 												duration: this.state.duration
 											}}
 											onChange={ this.saveToState }
@@ -223,7 +221,6 @@ class AddSongGroup extends React.Component {
 											info={{
 												contributors: this.state.contributors,
 												releaseDate: this.state.releaseDate,
-												songGroups: this.state.songGroups
 											}}
 											onChange={ this.saveToState }
 										/>

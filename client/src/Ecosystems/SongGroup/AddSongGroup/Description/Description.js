@@ -19,7 +19,7 @@ class Description extends React.Component {
 
 	componentWillUnmount = () => window.removeEventListener('resize', this.handleResize);
 	render() {
-		const prompt = `Song Description`;
+		const prompt = `Song Group Description`;
 		
 		return (
 			<div className={ styles.description }>			
