@@ -8,6 +8,8 @@
 	grid-template-columns: 65px 1fr;
 	transition: box-shadow 0.3s ease-in-out;
 
+	&:hover { cursor: pointer; }
+
 	&.darkTheme:hover {
 		box-shadow: var(--boxShadowDarkTheme);
 	}
@@ -15,6 +17,8 @@
 	&.lightTheme:hover {
 		box-shadow: var(--boxShadowLightTheme);
 	}
+
+	border-radius: 5px;
 }
 
 .songImage {
@@ -36,7 +40,7 @@
 	height: 100%;
 	width: 100%;
 	padding: 0px 5px;
-	grid-area: title;
+	// grid-area: title;
 
 	display: grid;
 	align-items: center;

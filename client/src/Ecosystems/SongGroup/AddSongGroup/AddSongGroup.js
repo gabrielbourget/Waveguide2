@@ -51,9 +51,9 @@ import styles from './AddSongGroup.module.scss';
 
 class AddSongGroup extends React.Component {
 	state = {
-		basicInfoOpen: true,
+		basicInfoOpen: false,
 		advancedInfoOpen: false,
-		songsOpen: false,
+		songsOpen: true,
 		descriptionOpen: false,
 		externalLinksOpen: false,
 		title: '',

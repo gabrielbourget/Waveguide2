@@ -36,6 +36,8 @@ class Song extends React.Component {
 				<div className={ styles.songTitle }>
 					<p>{ this.props.title }</p>
 				</div>
+				{/*<div>one</div>*/}
+				{/*<div>two</div>*/}
 			</div>
 		);
 	}
