@@ -280,12 +280,10 @@ class AddSongGroup extends React.Component {
 											}
 										</div>
 									</div>
-										{
-											(this.state.songsOpen) &&
-											<Songs songs={ this.state.songs } />
-										}
-
-
+									{
+										(this.state.songsOpen) &&
+										<Songs songs={ this.state.songs } />
+									}
 
 									<HorizontalDivider height='1px' subtle />									
 

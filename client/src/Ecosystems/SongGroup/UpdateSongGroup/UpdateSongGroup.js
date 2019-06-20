@@ -33,6 +33,7 @@ import BasicInfo from './BasicInfo/BasicInfo';
 import AdvancedInfo from './AdvancedInfo/AdvancedInfo';
 import Description from './Description/Description';
 import ExternalLinks from './ExternalLinks/ExternalLinks';
+import Songs from '../Songs/Songs';
 
 // - Circle Down Icon
 import CircleDownIconDarkTheme from './SVG/CircleDownIcon/CircleDownIcon_DarkTheme';
@@ -53,6 +54,7 @@ class UpdateSongGroup extends React.Component {
 	state = {
 		basicInfoOpen: true,
 		advancedInfoOpen: false,
+		songsOpen: false,
 		descriptionOpen: false,
 		externalLinksOpen: false,
 		title: '',
@@ -96,6 +98,11 @@ class UpdateSongGroup extends React.Component {
 	toggleAdvancedInfoSection = () => {
 		const current = this.state.advancedInfoOpen;
 		this.setState({ advancedInfoOpen: !current });
+	};
+
+	toggleSongsSection = () => {
+		const current = this.state.songsOpen;
+		this.setState({ songsOpen: !current });
 	};
 
 	toggleDescriptionSection = () => {
@@ -227,7 +234,58 @@ class UpdateSongGroup extends React.Component {
 										/>
 									}
 
-									<HorizontalDivider height='1px' subtle />									
+									<HorizontalDivider height='1px' subtle />	
+
+									{/* - SONGS SECTION SECTION - */}
+									<div className={ styles.sectionTitleBar }>
+										<h4 style={{ 'display':'grid', 'alignItems':'center' }}>Songs</h4>
+										<div className={ styles.right }>										
+											{
+												(this.state.songsOpen) ? 
+													<React.Fragment>
+														<IconButton 
+															size='25px'
+															highlighted={ <PlusIconHighlighted /> }
+															darkTheme={ <PlusIconDarkTheme /> }
+															lightTheme={ <PlusIconLightTheme /> }
+															onClick={ (e) => {
+																// - TO_FIX -> Mutation fires off here, and I don't want that. 
+																//e.preventDefault();
+																// const socialMediaLinks = [...this.state.socialMediaLinks];// || [];
+																// console.log('boop');
+																// console.log(socialMediaLinks);
+																// socialMediaLinks.push({
+																// 	network: 'Soundcloud',
+																// 	link: ''
+																// })
+
+																// console.log(socialMediaLinks);
+															}}
+														/>
+														<IconButton 
+															size='25px'
+															highlighted={ <CircleUpIconHighlighted/> }
+															darkTheme={ <CircleUpIconDarkTheme/> }
+															lightTheme={ <CircleUpIconLightTheme/> }
+															onClick={ this.toggleSongsSection }
+														/> 
+													</React.Fragment> :
+													<IconButton 
+														size='25px'
+														highlighted={ <CircleDownIconHighlighted/> }
+														darkTheme={ <CircleDownIconDarkTheme/> }
+														lightTheme={ <CircleDownIconLightTheme/> }
+														onClick={ this.toggleSongsSection }
+													/>
+											}
+										</div>
+									</div>
+									{
+										(this.state.songsOpen) &&
+										<Songs songs={ this.state.songs } />
+									}
+
+									<HorizontalDivider height='1px' subtle />
 
 									{/* - DESCRIPTION SECTION - */}
 
