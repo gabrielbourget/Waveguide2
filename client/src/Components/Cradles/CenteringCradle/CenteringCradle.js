@@ -27,7 +27,7 @@ class CenteringCradle extends React.Component {
 	}
 }
 
-const prepareComponent = (context, props) => {
+const prepareComponent = (context, props) => {  
 	const themeClass = (context === 'dark') ? styles.darkTheme : styles.lightTheme;
 	const stretchClass = (props.stretch === 'true') ? styles.stretch : null;
 	const cradleClasses = ClassNames(styles.cradle, themeClass, stretchClass);

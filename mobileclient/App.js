@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import CenteringCradle from './src/Components/Cradles/CenteringCradle/CenteringCradle';
+
+
 export default function App() {
   return (
-    <View style={styles.container}>
+    <CenteringCradle>
       <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    </CenteringCradle>
   );
 }
 
