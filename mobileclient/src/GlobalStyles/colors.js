@@ -9,7 +9,7 @@ const c_white = '#FFFFFF';
 const c_mainAccent = '#F49D93';
 const c_success = '#319606';
 const c_error = '#B73434'
-
+ 
 export default colors = {
     c_light,
     c_lowContrastLightTheme,

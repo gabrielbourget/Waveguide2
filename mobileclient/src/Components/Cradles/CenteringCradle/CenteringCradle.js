@@ -5,7 +5,7 @@ import { spacing } from '../../../GlobalStyles/spacing'
 
 class CenteringCradle extends React.Component { 
     render() {
-        console.log(spacing);
+        // console.log(spacing);
 
         return (
             <View style={ styles.cradle }>
